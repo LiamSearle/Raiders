@@ -58,7 +58,7 @@
   ?>
     <!creating footer with links to different pages>
     <div>
-    <footer id="footer"> <nav>
+    <footer id="footer" style="position: absolute; bottom:0; width: 100%"> <nav>
        <table>
             <tr>
                 <td><img src="images/logoo.png" height="40px"></td>
