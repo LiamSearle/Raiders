@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
 
   <style>
           /* Style the tab */
@@ -13,7 +14,7 @@
         border: 1px solid #ccc;
         background-color: #f1f1f1;
         position: absolute;
-        top: 20px;
+        top: 100px;
       }
 
       /* Style the buttons that are used to open the tab content */
@@ -45,16 +46,27 @@
         border-top: none;
       }
   </style>
+
 </head>
 <body>
-<div class="navbar">
-    <!-- <a class="logo"><img src="images/logo.png" alt=""></a> -->
-    <a class="active" href="#"><i class="fas fa-home"></i> Home</a> 
-    <a href="#"><i class="fas fa-user"></i> Client</a> 
-    <a href="#"><i class="fas fa-address-book"></i> Bookings</a> 
-    <div class="button">
-        <input type="submit" name="submit" value="Log Out">
-    </div>
+<!-- general navigation bar code   -->
+<div class="nav">
+<table>
+            <tr>
+                <td><img src="images/logoo.png" height="50px"></td>
+                <td><a href="bookingreq.php"><i class="fas fa-home"></i>Home</a></td>
+                <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
+                <td><a href="booking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
+                <td><form action="search.php" method="post">
+                <i class="fas fa-search"></i>
+                <input type="search" name="txtSearch">
+                <input type="submit" name="submit" value="Go">
+                <div class="button">
+                    <input type="submit" name="submit" value="Log Out">
+                </div>  
+                </form></td>
+            </tr>
+        </table>
   </div>
   <div>
     <!-- Tab links -->
@@ -99,6 +111,20 @@
     evt.currentTarget.className += " active";
   }
 </script>
+
+ <!-- general footer code  -->
+ <div class="footer"> 
+  <nav>
+    <table>
+        <tr>
+            <td><a href="aboutus.php">About Us</a></td>
+            <td><a href="#######">FAQs</a></td>
+            <td><a href="#######">Legal</a></td>
+            <td><a href="#######">Terms & Conditions</a></td>
+        </tr>
+    </table>
+  </nav>
+</div>    
 
 </body>
 </html>

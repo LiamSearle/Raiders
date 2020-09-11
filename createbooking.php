@@ -8,21 +8,25 @@
     <title>Document</title>
 </head>
 <body>
-<nav>
-       <table>
+<!-- general navigation bar code   -->
+<div class="nav">
+<table>
             <tr>
-                <td><img src="images/logoo.png" height="40px"></td>
-                <td><a href="bookingreq.php">Home</a></td>
-                <td><a href="clients.php">Clients</a></td>
-                <td><a href="booking.php">Bookings</a></td>
+                <td><img src="images/logoo.png" height="50px"></td>
+                <td><a href="bookingreq.php"><i class="fas fa-home"></i>Home</a></td>
+                <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
+                <td><a href="booking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td><form action="search.php" method="post">
                 <i class="fas fa-search"></i>
                 <input type="search" name="txtSearch">
                 <input type="submit" name="submit" value="Go">
+                <div class="button">
+                    <input type="submit" name="submit" value="Log Out">
+                </div>  
                 </form></td>
             </tr>
         </table>
-    </nav>
+</div>
   <fieldset>
   <h2>Enter booking details</h2>
     <form action="createbooking.php" method="GET">
@@ -56,20 +60,20 @@
     }
     
   ?>
-    <!creating footer with links to different pages>
-    <div>
-    <footer id="footer" style="position: absolute; bottom:0; width: 100%"> <nav>
-       <table>
-            <tr>
-                <td><img src="images/logoo.png" height="40px"></td>
-                <td><a href="aboutus.php">About Us</a></td>
-                <td><a href="#######">FAQs</a></td>
-                <td><a href="#######">Legal</a></td>
-                <td><a href="#######">Terms & Conditions</a></td>
-            </tr>
-        </table>
-    </nav>
-</footer>
-    </div>
+
+ <!-- general footer code  -->
+ <div class="footer"> 
+  <nav>
+    <table>
+        <tr>
+            <td><a href="aboutus.php">About Us</a></td>
+            <td><a href="#######">FAQs</a></td>
+            <td><a href="#######">Legal</a></td>
+            <td><a href="#######">Terms & Conditions</a></td>
+        </tr>
+    </table>
+  </nav>
+</div>    
+
 </body>
 </html>
