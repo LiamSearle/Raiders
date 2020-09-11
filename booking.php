@@ -15,6 +15,11 @@
                 <td><a href="bookingreq.php">Home</a></td>
                 <td><a href="clients.php">Clients</a></td>
                 <td><a href="booking.php">Bookings</a></td>
+                <td><form action="search.php" method="post">
+                <i class="fas fa-search"></i>
+                <input type="search" name="txtSearch">
+                <input type="submit" name="submit" value="Go">
+                </form></td>
             </tr>
         </table>
     </nav>
@@ -45,5 +50,47 @@
        </tr>
    </table>
 </fieldset>
+<?php
+    //add database credentials 
+    require_once("config.php");
+    //checking if the searching form has been submitted 
+    if (isset($_REQUEST['submit'])) {
+        //get the value from the form
+        $search = $_REQUEST['txtSearch'];
+        //make the connection to database
+        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+        or die("Could not connect to the database!");
+        //issue out the query instructions
+        $query = "SELECT * FROM bookings WHERE bookingID LIKE '%$search%'
+        ORDER BY bookingID ASC";
+        $results = mysqli_query($conn, $query)
+        or die("Could not retrieve the data!");
+        //extract the data 
+        echo "<ol>";
+        while ($row = mysqli_fetch_array($results)){
+            echo "<li>";
+            echo $row['bookingID'];
+            echo "</li>";
+        }
+        echo "</ol>";
+        //close the connection to the database
+        mysqli_close($conn);
+    }
+    ?>
+      <!creating footer with links to different pages>
+    <div>
+    <footer id="footer"> <nav>
+       <table>
+            <tr>
+                <td><img src="images/logoo.png" height="40px"></td>
+                <td><a href="aboutus.php">About Us</a></td>
+                <td><a href="#######">FAQs</a></td>
+                <td><a href="#######">Legal</a></td>
+                <td><a href="#######">Terms & Conditions</a></td>
+            </tr>
+        </table>
+    </nav>
+</footer>
+    </div>
 </body>
 </html>

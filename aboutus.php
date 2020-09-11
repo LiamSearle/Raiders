@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <nav>
+<nav>
        <table>
             <tr>
                 <td><img src="images/logoo.png" height="40px"></td>
@@ -24,39 +24,52 @@
         </table>
     </nav>
     <br>
-    <h2>Booking Requests</h2>
+<div class="about-section">
+  <h1>About Us </h1>
+  <p>Some text about who we are and what we do.</p>
+</div>
 
-<form action="bookingreq.php" method="post">
-    <a href="createbooking.php"><input type="button" value="Create booking request"></a>
-</form>
-<?php
-    //add database credentials 
-    require_once("config.php");
-    //checking if the searching form has been submitted 
-    if (isset($_REQUEST['submit'])) {
-        //get the value from the form
-        $search = $_REQUEST['txtSearch'];
-        //make the connection to database
-        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-        or die("Could not connect to the database!");
-        //issue out the query instructions
-        $query = "SELECT * FROM bookings WHERE bookingID LIKE '%$search%'
-        ORDER BY bookingID ASC";
-        $results = mysqli_query($conn, $query)
-        or die("Could not retrieve the data!");
-        //extract the data 
-        echo "<ol>";
-        while ($row = mysqli_fetch_array($results)){
-            echo "<li>";
-            echo $row['bookingID'];
-            echo "</li>";
-        }
-        echo "</ol>";
-        //close the connection to the database
-        mysqli_close($conn);
-    }
-    ?>
-    <!creating footer with links to different pages>
+<h2 style="text-align:center">Our Team</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <div class="container">
+        <h2>Mercilove Xerinda</h2>
+        <p class="title">Team member</p>
+        <p>Information system 3 student</p>
+        <p>mercilove.j.xerinda@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
+      <div class="container">
+        <h2>batista</h2>
+        <p class="title">Art Director</p>
+        <p>type here</p>
+        <p>kknnnm@njhb.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <img src="/w3images/team3.jpg" alt="John" style="width:100%">
+      <div class="container">
+        <h2>22555</h2>
+        <p class="title">Designer</p>
+        <p>type here</p>
+        <p>bhh@hhghgh.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+<!creating footer with links to different pages>
     <div>
     <footer id="footer"> <nav>
        <table>
@@ -71,7 +84,6 @@
     </nav>
 </footer>
     </div>
-    
-    
+
 </body>
 </html>
