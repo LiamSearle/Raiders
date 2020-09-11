@@ -45,14 +45,16 @@
         <tr><td><label for="date">Departure Date:</label></td>
         <td><input type="text" id="date" name="date" placeholder="Departure Date"></td></tr>
         <tr><td> </td> 
-        <td><button type="submit" name="submit">Add</button></td></tr>   
+        <td><button type="submit" name="go">Add</button></td></tr>   
     </table>
     </form>
   </fieldset>
 
   <?php
-
-    echo "New booking was created!";
+    if(array_key_exists('go', $_GET)){
+        echo "New booking was created!";
+    }
+    
   ?>
     <!creating footer with links to different pages>
     <div>
