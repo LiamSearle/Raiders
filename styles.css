@@ -1,0 +1,21 @@
+body{
+    background-image: url("images/background.jpg");
+    color: black;
+    position: center;
+    height: 200px;
+}
+nav{
+    background-color: lightgray;
+}
+nav table {
+    width: 100%;
+}
+nav table a{
+    text-decoration: none;
+    color: crimson;
+}
+.login{
+position: absolute; /* or absolute */
+  top: 20%;
+  left: 45%;
+}
