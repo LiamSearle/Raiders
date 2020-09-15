@@ -5,3 +5,7 @@ Minali
 - navigationalbar.html like our demo file to check things
 - index.html maybe two buttons client or admin??
 - can delete stylesheet.css
+- raiders.php not centered
+- client tab should go to returningAndNewClient.php
+- LogOut button issues?
+- doesn't make sense the table on returning and new client page because the driver wont be assigned and stuff 

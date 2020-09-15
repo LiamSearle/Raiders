@@ -63,8 +63,8 @@ body {
     }
 
     .login{
-        /*???*/
-        position: absolute; /* or absolute */ 
+        /*controls log in page*/
+        position: absolute;  /*or absolute */ 
           top: 20%;
           left: 45%;
         }
