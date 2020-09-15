@@ -6,42 +6,46 @@
   <title>Document</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
+
   <!-- logout button code -->
-  <script>
-    function logOut()
-    {
-      alert("Are you sure you'd like to log out?");
-      window.location=("raiders.php");
-    }
-  </script>
+<script>
+     function logOut() {
+        var retVal = confirm("Are you sure you'd like to log out?");
+        if( retVal == true ) {
+          window.location=("raiders.php"); 
+           return true;
+        } 
+        else {
+          window.location.reload(); //stays on the same page
+           return false;
+        }
+     } 
+</script>
 
 </head>
 
 <body>
 
 <!-- general navigation bar code   -->
-  <div class="nav">
-    <table>
+<div class="nav">
+ 
+ <table>
       <tr>
           <td><img src="images/logoo.png" height="50px"></td>
           <td><a href="bookingreq.php"><i class="fas fa-home"></i>Home</a></td>
           <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
           <td><a href="booking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
-          <td><div class="button">
-            <input type="submit" name="submit" value="Log Out" onclick="logOut();">
-          </div></td>  
           <td><form action="search.php" method="post">
           <i class="fas fa-search"></i>
           <input type="search" name="txtSearch">
           <input type="submit" name="submit" value="Go">
-          </td>
-         <!--  <td><div class="button">
-              <input type="submit" name="submit" value="Log Out" onclick="logOut();">
-          </div></td>   -->
-          </form>
+        </form></td> 
+          <td><div class="button">
+            <input type="submit" name="submit" value="Log Out" onclick="logOut();">
+          </div></td>      
       </tr>
-  </table>
-  </div>
+  </table> 
+  </div> 
 
 
 

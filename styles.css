@@ -41,13 +41,14 @@ body {
         background-color: #008080;
             }
     
+    
     .button {
         /*controls logout button on navigation bar*/
         float: right;
         overflow: hidden;
         position: relative;
-        top: 0px;
-        right:-600px;
+        top: 10px;
+        right:0px;
         }
     
     .button .content {

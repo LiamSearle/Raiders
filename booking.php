@@ -7,6 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
     <title>Document</title>
+
+    <!-- logout button code -->
+<script>
+     function logOut() {
+        var retVal = confirm("Are you sure you'd like to log out?");
+        if( retVal == true ) {
+          window.location=("raiders.php"); 
+           return true;
+        } 
+        else {
+          window.location.reload(); //stays on the same page
+           return false;
+        }
+     } 
+</script>
+
 </head>
 <body>
 <!-- general navigation bar code   -->
@@ -21,13 +37,15 @@
                 <i class="fas fa-search"></i>
                 <input type="search" name="txtSearch">
                 <input type="submit" name="submit" value="Go">
-                <div class="button">
-                    <input type="submit" name="submit" value="Log Out">
-                </div>  
-                </form></td>
+                </form>
+                <td><div class="button">
+                    <input type="submit" name="submit" value="Log Out" onclick="logOut();">
+                </div></td>
             </tr>
         </table>
 </div>
+
+
     <br>
     <fieldset>
    <table>
