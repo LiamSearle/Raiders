@@ -39,7 +39,7 @@
                 <input type="submit" name="submit" value="Go">
                 </form>
                 <td><div class="button">
-                    <input type="submit" name="submit" value="Log Out" onclick="logOut();">
+                    <input type="submit" name="submit" value="Log Out" onclick="logOut();" id="logout">
                 </div></td>
             </tr>
         </table>

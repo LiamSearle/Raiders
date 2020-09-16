@@ -48,6 +48,19 @@
 </div>
 
 <h2 style="text-align:center">Our Team</h2>
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <div class="container">
+        <h2>Minali Harjivan Chouhan</h2>
+        <p class="title">Team member</p>
+        <p>Information system 3 student</p>
+        <p>mercilove.j.xerinda@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
 <div class="row">
   <div class="column">
     <div class="card">

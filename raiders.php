@@ -12,13 +12,30 @@
 <body>
     <div class="login">
         <img src="images/logoo.png" alt="login picture" width="160px">
-        <form>
+        <form method="POST" action="raiders.php">
             <input type="text" placeholder="Username" name="username">
             <p><input type="password" placeholder="Password" name="password"></p>
             <p><input type="checkbox" name="check"><label for="checkbox">Remember me</label></p>
-            <p><a href="bookingreq.php"><input type="button" name="submit" value="Login"></a></p>
+            <input type="submit" name="submit" value="Login"><br>
             <a href="#">Forgot password</a>
         </form>
+        <p>
+         <?php   
+            if(isset($_REQUEST['submit'])){
+                require_once("config.php");
+                $password = $_REQUEST['password'];
+                    //connection to the database 
+                $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+                or die("could not connect");
+                    //issue query instruction 
+                $query = "SELECT passwords FROM Client WHERE contactNumber = $password";
+                $results = mysqli_query($conn, $query);
+                //or die("Invalid password or username");
+                header("Location:bookingreq.php");
+                mysqli_close($conn);
+            }
+        ?>
+        </p>
     </div>
 </body>
 
