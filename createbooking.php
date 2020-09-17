@@ -31,14 +31,16 @@
                 <td><img src="images/logoo.png" height="50px"></td>
                 <td><a href="bookingreq.php"><i class="fas fa-home"></i>Home</a></td>
                 <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
-                <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
+                <td><a href="booking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td><form action="search.php" method="post">
                 <i class="fas fa-search"></i>
                 <input type="search" name="txtSearch">
                 <input type="submit" name="submit" value="Go">
                 </form>
-                <td><div class="button">
-                    <input type="submit" name="submit" value="Log Out">
+                <td><div>                 
+                <form action = "post" class = "Logout">
+                <input type="submit" name="submit" value="Logout" onclick="logOut();">
+                 </form>
                 </div></td>
             </tr>
         </table>
@@ -71,10 +73,41 @@
   </fieldset>
 
   <?php
-    if(array_key_exists('go', $_GET)){
-        echo "New booking was created!";
-    }
-    
+
+require_once("config.php");
+//checking if the searching form has been submitted 
+if (isset($_REQUEST['submit'])) {
+    //get the value from the form
+    $name = $_REQUEST['firstName'];
+    $surname = $_REQUEST['lastName'];
+    $email =$_REQUEST['email'];
+    $contact = $_REQUEST['contactNumber'];
+    $startDepot = $_REQUEST['startDepot'];
+    $destinationDepot = $_REQUEST['destinationDepot'];
+    $passengers = $_REQUEST['numberPassengers'];
+    $date = $_REQUEST['date'];
+
+
+     // Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}lst
+
+$sql = "INSERT INTO bookings (bookingID, startDate, endDate, numberPassengers, initialCollectionPoint, clientID, driverID)
+ VALUES ($name, $surname, $email, $contact, $startDepot, $destinationDepot, $passengers,$date);"
+
+
+if ($conn->query($sql) === TRUE) {
+  echo "Booking created successfully";
+} 
+else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+}
+
+$conn->close();
   ?>
 
  <!-- general footer code  -->

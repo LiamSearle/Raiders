@@ -29,14 +29,16 @@
                 <td><img src="images/logoo.png" height="50px"></td>
                 <td><a href="bookingreq.php"><i class="fas fa-home"></i>Home</a></td>
                 <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
-                <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
+                <td><a href="booking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td><form action="search.php" method="post">
                 <i class="fas fa-search"></i>
                 <input type="search" name="txtSearch">
                 <input type="submit" name="submit" value="Go">
                 </form>
-                <td><div class="button">
-                    <input type="submit" name="submit" value="Log Out" onclick="logOut();">
+                <td><div>                 
+                <form action = "post" class = "Logout">
+                <input type="submit" name="submit" value="Logout" onclick="logOut();">
+                 </form>
                 </div></td>
             </tr>
         </table>

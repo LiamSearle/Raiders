@@ -11,8 +11,9 @@ body {
       font-family: Arial, Helvetica, sans-serif;
         }
 .logout{
-    position: fixed;
-    right: 0;
+    position:absolute;
+    right:5%;
+    top: 5%;
 }
     .nav {
         /*top navigation panel*/
@@ -45,13 +46,15 @@ body {
             }
     
     
-    .button {
+    .Logout {
         /*controls logout button on navigation bar*/
         float: right;
         overflow: hidden;
-        position: relative;
-        top: 10px;
+        position: absolute;
+        padding-top: 10%;
         right:0px;
+        width: 300px;
+        padding: 10px;
         }
     
     .button .content {

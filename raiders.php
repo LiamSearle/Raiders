@@ -24,14 +24,22 @@
             if(isset($_REQUEST['submit'])){
                 require_once("config.php");
                 $password = $_REQUEST['password'];
+                $user = $_REQUEST['username'];
                     //connection to the database 
                 $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
                 or die("could not connect");
                     //issue query instruction 
-                $query = "SELECT passwords FROM Client WHERE contactNumber = $password";
-                $results = mysqli_query($conn, $query);
-                //or die("Invalid password or username");
-                header("Location:bookingreq.php");
+                $query = "SELECT passwords FROM client WHERE contactNumber = $user";
+                $results = mysqli_query($conn, $query)
+                or die("Invalid password or username");
+                $row = mysqli_fetch_array($results);
+                $pass = $row['passwords'];
+                if($pass == $password){
+                    header("Location:bookingreq.php");
+                }
+                else{
+                    echo "<strong style=\"color:red;\">password wrong!</strong>";
+                }
                 mysqli_close($conn);
             }
         ?>

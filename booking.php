@@ -38,8 +38,10 @@
                 <input type="search" name="txtSearch">
                 <input type="submit" name="submit" value="Go">
                 </form>
-                <td><div class="button">
-                    <input type="submit" name="submit" value="Log Out" onclick="logOut();" id="logout">
+                <td><div>                 
+                <form action = "post" class = "Logout">
+                <input type="submit" name="submit" value="Logout" onclick="logOut();">
+                 </form>
                 </div></td>
             </tr>
         </table>
