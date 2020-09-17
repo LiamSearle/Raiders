@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Clients</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
 
@@ -45,6 +45,21 @@
         border: 1px solid #ccc;
         border-top: none;
       }
+
+      #clientTable{
+        margin-left:auto;
+        margin-right:auto;
+      }
+
+      #clientTable th,td,tr {
+        text-align: left;
+        padding: 5px;
+      }   
+    
+      #clientHeader{
+        position:relative;
+        top:20px;
+      }
   </style>
 
   <!-- logout button code -->
@@ -55,15 +70,18 @@
           window.location=("raiders.php"); 
            return true;
         } 
-        else {
-          window.location.reload(); //stays on the same page
+        else {         
+           //stays on the same page
            return false;
         }
      } 
 </script>
 
 </head>
+
+
 <body>
+
 <!-- general navigation bar code   -->
 <div class="nav">
 <table>
@@ -81,17 +99,57 @@
                     <input type="submit" name="submit" value="Log Out" onclick="logOut();">
                 </div></td>
             </tr>
-        </table>
-  </div>
-  <div>
-    <!-- Tab links -->
+</table>      
+</div>
+
+<h2 id="clientHeader">Client ID:
+<input type="text" name="clientID" id="clientID">
+<input type="submit" name="submit" value="Search"></h2>
+ 
+<fieldset>
+<legend>Booking ID: ???</legend>
+<table id="clientTable">
+  <tr>
+    <th>First Name:</th>
+    <th><input type="text" name="firstName"></th>
+    <th>Last Name: </th>
+    <th><input type="text" name="lastName"></th>
+  </tr>
+
+  <tr>
+    <th>Starting Destination: </th>
+    <th><input type="text" name="startDestination"></th>
+    <th>Start Date: </th>
+    <th><input type="text" name="startDate"></th>
+  </tr>
+
+  <tr>
+    <th>Ending Destination: </th>
+    <th><input type="text" name="endDestination"></th>
+    <th>End Date: </th>
+    <th><input type="text" name="endDate"></th>
+  </tr>
+
+  <tr>   
+    <th>E-mail: </th>
+    <th><input type="text" name="email"></th>
+    <th>Contact Number: </th>
+    <th><input type="text" name="contactNumber"></th>
+    <th>Number of Passengers: </th>
+    <th><input type="text" name="passengerNumber"></th>
+  </tr>
+</table>
+</fieldset>
+
+  <!-- <div>
+  Tab links 
 <div class="tab">
   <button class="tablinks" onclick="showClient(event, 'return')">Returning Client</button>
   <button class="tablinks" onclick="showClient(event, 'new')">New Client</button>
   
 </div>
 
-<!-- Tab content -->
+ Tab content 
 <div id="return" class="tabcontent">
   <h3>This is for returning Clients</h3>
   <p>Bla bla bla.</p>
@@ -125,8 +183,9 @@
     document.getElementById(clientType).style.display = "block";
     evt.currentTarget.className += " active";
   }
-</script>
-
+</script> 
+-->
+ 
  <!-- general footer code  -->
  <div class="footer"> 
   <nav>

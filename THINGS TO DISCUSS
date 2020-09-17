@@ -11,3 +11,7 @@ Minali
 - doesn't make sense the table on returning and new client page because the driver wont be assigned and stuff 
 - when you click bookings now takes you too the adminNewBookingPage that Liam created
 - after you logged out and redirected to the raiders.php page maybe something at the top saying sucessfully logged out?
+- why doesn't the id code for the clienttable same thing with the logout button 
+(see navigation.html for further explanation) not want to be called from the external style sheet??
+- maybe a reports tab?
+- returningandnewclients.php booking id would be passed into the legend of the fieldset

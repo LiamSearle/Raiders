@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Bookings</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
 
@@ -16,7 +16,7 @@
            return true;
         } 
         else {
-          window.location.reload(); //stays on the same page
+          //stays on the same page
            return false;
         }
      } 

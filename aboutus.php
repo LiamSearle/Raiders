@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>About Us</title>
 <!-- logout button code -->
 <script>
      function logOut() {
@@ -16,11 +16,21 @@
            return true;
         } 
         else {
-          window.location.reload(); //stays on the same page
+         //stays on the same page
            return false;
         }
      } 
 </script>
+<style>
+  #button {
+        /*controls logout button on navigation bar*/
+        float: right;
+        overflow: hidden;
+        position: relative;
+        top: 2px;
+        left:650px;
+        }
+</style>
 </head>
 <body>
 <div class="nav">
@@ -35,9 +45,9 @@
                 <input type="search" name="txtSearch">
                 <input type="submit" name="submit" value="Go">
                 </form>
-                <td><div class="button">
-                    <input type="submit" name="submit" value="Log Out" onclick="logOut();">
-                </div></td>
+                <td>
+                    <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
+                </td>
             </tr>
         </table>
 </div>
@@ -90,7 +100,8 @@
 
 
 
-<div class="footer"> 
+ <!-- general footer code  -->
+ <div class="footer"> 
   <nav>
     <table>
         <tr>
@@ -102,6 +113,7 @@
     </table>
   </nav>
 </div>
+
 
 </body>
 </html>
