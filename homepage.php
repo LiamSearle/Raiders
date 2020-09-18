@@ -33,16 +33,10 @@
                 <td><a class="active" href="bookingreq.php"><i class="fas fa-home"></i>Home</a></td>
                 <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
                 <td><a href="adminNewBookPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
-                <td><form action="search.php" method="post">
-                <i class="fas fa-search"></i>
-                <input type="search" name="txtSearch">
-                <input type="submit" name="submit" value="Go">
-                </form>
-                <td><div>                 
-                <form action = "post" class = "Logout">
-                <input type="submit" name="submit" value="Logout" onclick="logOut();">
-                 </form>
-                </div></td>
+                <td><a href="reports.php"><i class="fas fa-list"></i> Reports</a></td>
+                <td>
+            <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
+          </td>      
             </tr>
         </table>
 </div>
@@ -85,10 +79,11 @@
   <nav>
     <table>
         <tr>
-            <td><a href="aboutus.php">About Us</a></td>
-            <td><a href="#######">FAQs</a></td>
-            <td><a href="#######">Legal</a></td>
-            <td><a href="#######">Terms & Conditions</a></td>
+        <td><a href="aboutus.php">About Us</a> | </td>
+            <td><a href="help.php">Help</a> | </td>
+            <td><a href="faq.php">FAQs</a> | </td>
+            <td><a href="legal.php">Legal</a> | </td>
+            <td>&copy; Copyright 2020 Raiders</td>
         </tr>
     </table>
   </nav>

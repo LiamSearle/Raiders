@@ -13,19 +13,25 @@ body {
 
 .nav {
     /*top navigation panel*/
-        width: 100%;
+        /* width: 100%;
         overflow: hidden;
         background-color: #C0C0C0;
         position: relative;
-        top: 25px;
+        top: 15px;  */
+
+        position: sticky; 
+        position: -webkit-sticky;
+        background-color: #C0C0C0;
+        top: 0; 
 }
     
 .nav a {
     /*controls when navigation panel is active*/
+
     float: left;
     padding: 5px;
     color: black;
-    padding: 14px 16px;
+    padding: 12px 14px;
     text-decoration: none;
     font-size: 17px;
     text-align: center;
@@ -63,49 +69,77 @@ body {
         
 .footer {
     /*controls what happens at the bottom of the page*/
-    position: absolute;
     bottom: 0;
     width: 100%;
-    height: 2.5rem;            /* Footer height */
+    height: 1.75rem;            /* Footer height */
+    background-color: #C0C0C0;
+    position: fixed;
+    left: 0;
 }
 
+#clienttable {
+    /*controls the table found in client page*/
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#clienttable th,td,tr {
+    /*controls the table found in client page*/
+    text-align: left;
+    padding: 5px;
+}    
+
 fieldset {
+    /*controls all fieldsets throught website*/
     background-color: white;
     opacity: 0.8;
     position: relative;
     color: black;
-    top:20px;
+    top:10px;
     border: black 1px solid;
     width: 75%; 
     display: inline-block;
 }
 
 legend {
+    /*controls legend in the fieldset for admin clients page*/
     background-color: white;
     opacity: 0.8;
     border: black 3px solid;
     padding: 15px 15px;
 }
 
-/* #clienttable {
-    margin-left:auto;
-    margin-right:auto;
-}
-
-#clienttable th,td,tr {
-    text-align: left;
-    padding: 5px;
-}    
 
 #button {
-    /* controls logout button on navigation bar 
+    /* controls logout button on navigation bar */
     float: right;
     overflow: hidden;
     position: relative;
     top: 2px;
-    left:650px;
+    left:700px;
     }
-*/
+
+.column {
+    /*controls column in aboutus page*/
+    float: left;
+    width: 35%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+    }
+
+.container {
+    /*controls content in aboutus page*/
+    padding: 0 16px;
+
+    }
+
+.card {
+    /*controls content in aboutus page*/
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+    margin: 8px;
+
+}
+
 
 
         

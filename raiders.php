@@ -35,7 +35,7 @@
                 $row = mysqli_fetch_array($results);
                 $pass = $row['passwords'];
                 if($pass == $password){
-                    header("Location:bookingreq.php");
+                    header("Location:homepage.php");
                 }
                 else{
                     echo "<strong style=\"color:red;\">password wrong!</strong>";

@@ -22,56 +22,6 @@
      } 
 </script>
 
-  <style>
-          /* Style the tab */
-      .tab {
-        overflow: hidden;
-        border: 1px solid #ccc;
-        background-color: #f1f1f1;
-        position: absolute;
-        top: 100px;
-      }
-
-      /* Style the buttons that are used to open the tab content */
-      .tab button {
-        background-color: inherit;
-        float: left;
-        border: none;
-        outline: none;
-        cursor: pointer;
-        padding: 14px 16px;
-        transition: 0.3s;
-      }
-
-      /* Change background color of buttons on hover */
-      .tab button:hover {
-        background-color: #ddd;
-      }
-
-      /* Create an active/current tablink class */
-      .tab button.active {
-        background-color: #ccc;
-      }
-
-      /* Style the tab content */
-      .tabcontent {
-        display: none;
-        padding: 6px 12px;
-        border: 1px solid #ccc;
-        border-top: none;
-      }
-      .container {
-        width: 500px;
-        clear: both;
-      }
-
-      .inputLabel {
-       left: 10px;
-       width: 100%;
-       clear: both;
-       display: inline-block;
-      }
-  </style>
 
 </head>
 <body>
@@ -80,17 +30,13 @@
     <table>
                 <tr>
                     <td><img src="images/logoo.png" height="50px"></td>
-                    <td><a href="bookingreq.php"><i class="fas fa-home"></i>Home</a></td>
+                    <td><a href="homepage.php"><i class="fas fa-home"></i>Home</a></td>
                     <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
                     <td><a class="active" href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
-                    <td><form action="search.php" method="post">
-                    <i class="fas fa-search"></i>
-                    <input type="search" name="txtSearch">
-                    <input type="submit" name="submit" value="Go">
-                    </form>
-                    <td><div class="button">
-                        <input type="submit" name="submit" value="Log Out" onclick="logOut();">
-                    </div></td>
+                    <td><a href="reports.php"><i class="fas fa-list"></i> Reports</a></td>
+                    <td>
+                        <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
+                    </td>
                 </tr>
             </table>
 </div>
@@ -158,10 +104,11 @@
   <nav>
     <table>
         <tr>
-            <td><a href="aboutus.php">About Us</a></td>
-            <td><a href="#######">FAQs</a></td>
-            <td><a href="#######">Legal</a></td>
-            <td><a href="#######">Terms & Conditions</a></td>
+            <td><a href="aboutus.php">About Us</a> | </td>
+            <td><a href="help.php">Help</a> | </td>
+            <td><a href="faq.php">FAQs</a> | </td>
+            <td><a href="legal.php">Legal</a> | </td>
+            <td>&copy; Copyright 2020 Raiders</td>
         </tr>
     </table>
   </nav>
