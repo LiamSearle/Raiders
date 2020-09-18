@@ -13,8 +13,8 @@
     <div class="login">
         <img src="images/logoo.png" alt="login picture" width="160px">
         <form method="POST" action="raiders.php">
-            <input type="text" placeholder="Username" name="username">
-            <p><input type="password" placeholder="Password" name="password"></p>
+            <input type="text" placeholder="Username" name="username" required>
+            <p><input type="password" placeholder="Password" name="password" required></p>
             <p><input type="checkbox" name="check"><label for="checkbox">Remember me</label></p>
             <input type="submit" name="submit" value="Login"><br>
             <a href="#">Forgot password</a>
