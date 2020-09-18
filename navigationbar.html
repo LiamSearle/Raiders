@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Demo</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
 
@@ -16,12 +16,21 @@
            return true;
         } 
         else {
-          window.location.reload(); //stays on the same page
            return false;
         }
      } 
 </script>
 
+<style>
+  #button {
+        /*controls logout button on navigation bar*/
+        float: right;
+        overflow: hidden;
+        position: relative;
+        top: 2px;
+        left:650px;
+        }
+</style>
 </head>
 
 <body>
@@ -40,9 +49,9 @@
           <input type="search" name="txtSearch">
           <input type="submit" name="submit" value="Go">
         </form></td> 
-          <td><div class="button">
-            <input type="submit" name="submit" value="Log Out" onclick="logOut();">
-          </div></td>      
+          <td>
+            <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
+          </td>      
       </tr>
   </table> 
   </div> 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Clients-should delete</title>
     <!-- logout button code -->
 <script>
      function logOut() {
@@ -16,7 +16,7 @@
            return true;
         } 
         else {
-          window.location.reload(); //stays on the same page
+          //stays on the same page
            return false;
         }
      } 
@@ -66,7 +66,11 @@
            <td><input type="text" name="client_email"></td>
        </tr>
        <tr>
-           <td>Contact Number</td>
+           <td>Start Date</td>
+           <td><input type="text" name="client_number"></td>
+       </tr>
+       <tr>
+           <td>End Date</td>
            <td><input type="text" name="client_number"></td>
        </tr>
    </table>

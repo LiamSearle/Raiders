@@ -1,86 +1,111 @@
 /* stylesheet that controls the navigation bar and background image across all pages*/
 body {
-    /*background picture*/
-      background-image: url('images/main_background.jpg');
-      background-repeat: no-repeat;
-      background-attachment: fixed;  
-      width: 100%;
-      height: auto;
-      text-align: center;
-      background-size: cover;
-      font-family: Arial, Helvetica, sans-serif;
-        }
-.logout{
-    position:absolute;
-    right:5%;
-    top: 5%;
+/*background picture*/
+    background-image: url('images/main_background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
 }
-    .nav {
-        /*top navigation panel*/
-            width: 100%;
-            overflow: hidden;
-            background-color: #C0C0C0;
-            position: relative;
-            top: 25px;
-            }
-        
-    .nav a {
-        /*controls when navigation panel is active*/
-        float: left;
-        padding: 5px;
-        color: black;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-        text-align: center;
-                }
-    
-    .nav a:hover {
-        /*controls what is seen when mouse is just hovering over navigation panel*/
-        background-color: #DCDCDC;
-            }
-    
-    .nav a.active {
-        /*controls what happens when in that specific button*/
-        background-color: #008080;
-            }
-    
-    
-    .Logout {
-        /*controls logout button on navigation bar*/
-        float: right;
-        overflow: hidden;
-        position: absolute;
-        padding-top: 10%;
-        right:0px;
-        width: 300px;
-        padding: 10px;
-        }
-    
-    .button .content {
-        /*controls content of logout button on navigation bar*/
-        font-size: 17px;  
-        border: black;
-        outline: none;
-        color: white;
-        padding: 5px 5px;
-        background-color: inherit;
-        font-family: inherit;
-        margin:0;
-    }
 
-    .login{
-        /*controls log in page*/
-        position: absolute;  /*or absolute */ 
-          top: 20%;
-          left: 45%;
-        }
-          
-    .footer {
-        /*controls what happens at the bottom of the page*/
-        position: absolute;
-        bottom: 0;
+.nav {
+    /*top navigation panel*/
         width: 100%;
-        height: 2.5rem;            /* Footer height */
-        }
+        overflow: hidden;
+        background-color: #C0C0C0;
+        position: relative;
+        top: 25px;
+}
     
+.nav a {
+    /*controls when navigation panel is active*/
+    float: left;
+    padding: 5px;
+    color: black;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    text-align: center;
+}
+
+.nav a:hover {
+    /*controls what is seen when mouse is just hovering over navigation panel*/
+    background-color: #DCDCDC;
+}
+
+.nav a.active {
+    /*controls what happens when in that specific button*/
+    background-color: #008080;
+}
+
+
+.button .content {
+    /*controls content of logout button on navigation bar*/
+    font-size: 17px;  
+    border: black;
+    outline: none;
+    color: white;
+    padding: 5px 5px;
+    background-color: inherit;
+    font-family: inherit;
+    margin:0;
+}
+
+.login{
+    /*controls log in page*/
+    position: absolute;  /*or absolute */ 
+    top: 20%;
+    left: 45%;
+}
+        
+.footer {
+    /*controls what happens at the bottom of the page*/
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;            /* Footer height */
+}
+
+fieldset {
+    background-color: white;
+    opacity: 0.8;
+    position: relative;
+    color: black;
+    top:20px;
+    border: black 1px solid;
+    width: 75%; 
+    display: inline-block;
+}
+
+legend {
+    background-color: white;
+    opacity: 0.8;
+    border: black 3px solid;
+    padding: 15px 15px;
+}
+
+/* #clienttable {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#clienttable th,td,tr {
+    text-align: left;
+    padding: 5px;
+}    
+
+#button {
+    /* controls logout button on navigation bar 
+    float: right;
+    overflow: hidden;
+    position: relative;
+    top: 2px;
+    left:650px;
+    }
+*/
+
+
+        

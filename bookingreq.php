@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Home Page</title>
 
     <!-- logout button code -->
 <script>
@@ -17,7 +17,7 @@
            return true;
         } 
         else {
-          window.location.reload(); //stays on the same page
+           //stays on the same page
            return false;
         }
      } 
