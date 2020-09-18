@@ -39,15 +39,23 @@
                 <td><img src="images/logoo.png" height="50px"></td>
                 <td><a href="bookingreq.php"><i class="fas fa-home"></i>Home</a></td>
                 <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
-                <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
+                <td><a href="booking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td><form action="search.php" method="post">
                 <i class="fas fa-search"></i>
                 <input type="search" name="txtSearch">
                 <input type="submit" name="submit" value="Go">
                 </form>
+<<<<<<< HEAD
                 <td>
                     <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
                 </td>
+=======
+                <td><div>                 
+                <form action = "post" class = "Logout">
+                <input type="submit" name="submit" value="Logout" onclick="logOut();">
+                 </form>
+                </div></td>
+>>>>>>> 9e16a506a3463ca1fe07c5b19dfcd9c828c9e98e
             </tr>
         </table>
 </div>
@@ -58,6 +66,19 @@
 </div>
 
 <h2 style="text-align:center">Our Team</h2>
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <div class="container">
+        <h2>Minali Harjivan Chouhan</h2>
+        <p class="title">Team member</p>
+        <p>Information system 3 student</p>
+        <p>mercilove.j.xerinda@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
 <div class="row">
   <div class="column">
     <div class="card">

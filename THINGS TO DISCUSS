@@ -15,3 +15,8 @@ Minali
 (see navigation.html for further explanation) not want to be called from the external style sheet??
 - maybe a reports tab?
 - returningandnewclients.php booking id would be passed into the legend of the fieldset
+
+
+ <td><div class="button">
+                    <input type="submit" name="submit" value="Log Out" onclick="logOut();">
+                    </div></td>
