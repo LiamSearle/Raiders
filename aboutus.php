@@ -45,17 +45,11 @@
                 <input type="search" name="txtSearch">
                 <input type="submit" name="submit" value="Go">
                 </form>
-<<<<<<< HEAD
-                <td>
-                    <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
-                </td>
-=======
                 <td><div>                 
                 <form action = "post" class = "Logout">
                 <input type="submit" name="submit" value="Logout" onclick="logOut();">
                  </form>
                 </div></td>
->>>>>>> 9e16a506a3463ca1fe07c5b19dfcd9c828c9e98e
             </tr>
         </table>
 </div>
