@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
-    <title>About Us</title>
+    <title>Legal</title>
 <!-- logout button code -->
 <script>
      function logOut() {
@@ -21,16 +21,16 @@
         }
      } 
 </script>
+
 </head>
 <body>
-  <!-- general navigation code  -->
 <div class="nav">
 <table>
             <tr>
                 <td><img src="images/logoo.png" height="50px"></td>
                 <td><a href="homepage.php"><i class="fas fa-home"></i>Home</a></td>
                 <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
-                <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
+                <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>  
                 <td><a href="reports.php"><i class="fas fa-list"></i> Reports</a></td>    
                 <td>
                     <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
@@ -38,68 +38,12 @@
             </tr>
         </table>
 </div>
-    <br>
-<div class="about-section">
-<fieldset>
-  <h1>About Us </h1>
-  <p>Raiders is an information systems development team established in 2020.</p>
-
-
-<h2 style="text-align:center">Our Team</h2>
-
-
-<div class="row">
-  <div class="column">
-    <div class="card">
-      <div class="container">
-        <h2>Minali Harjivan Chouhan</h2>
-        <p class="title">Project Manager</p>
-        <a href = "mailto: minali.chouhan@gmail.com">minali.chouhan@gmail.com</a>
-      </div>
-    </div>
-  </div>
-
-<div class="row">
-  <div class="column">
-    <div class="card">
-      <div class="container">
-        <h2>Mercilove Xerinda</h2>
-        <p class="title">System Analyst</p>
-        <a href = "mailto: mercilove.j.xerinda@gmail.com">mercilove.j.xerinda@gmail.com</a>
-      </div>
-    </div>
-  </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <div class="container">
-        <h2>Tshegofatso Molobe</h2>
-        <p class="title">System Tester</p>
-        <a href = "mailto: tmolobe15@gmail.com">tmolobe15@gmail.com</a>
-      </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="column">
-    <div class="card">
-      <div class="container">
-        <h2>Liam Searle</h2>
-        <p class="title">Software Developer</p>
-        <a href = "mailto: liamsearle7@gmail.com">liamsearle7@gmail.com</a>
-      </div>
-      </div>
-    </div>
-  </div>
-
-</fieldset>
-</div>
-    
 
 
 
- <!-- general footer code  -->
+
+
+<!-- general footer code  -->
  <div class="footer"> 
   <nav>
     <table>
