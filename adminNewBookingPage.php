@@ -42,24 +42,16 @@
 </div>
 
 
+<h2 id="bookingHeader">Booking ID:
+<input type="text" name="bookingID" id="bookingID">
+<input type="submit" name="submit" value="Search"></h2>
+ 
+<fieldset style="margin: auto; width: 50%;">
+<legend>New Booking: <?php $_REQUEST['id']; ?></legend>
 
-
-<div 
-    style=  "width: 100px;
-            border: 10px solid white;
-            padding:20px;
-            margin: 20px;
-            background: white;">
-    New Booking
-</div>
-
-<div class="container" style="width: 400px;
-            border: 10px solid white;
-            padding:20px;
-            margin: 20px;
-            background: white;">
-    <form action="" method="POST">
-        <div class="inputLabel">
+<form action="adminNewBookingPage.php" method="POST">
+  <table id="clientTable" style="margin: auto; width: 50%;">
+  <div class="inputLabel">
         <label for="clientID">Client ID </label>
         <input id="clientID" type="text">
         </div>
@@ -94,10 +86,13 @@
         <br><br>
 
         <input type="submit" value="Create Booking">
-  </form>
-</div>
-
-
+      </table>
+      <button type="submit" name="go" style="margin: auto; width: 15%; padding: 10px;">Confirm Details</button>
+    </form>
+    <br>
+  
+    
+</fieldset>
 
  <!-- general footer code  -->
  <div class="footer"> 
