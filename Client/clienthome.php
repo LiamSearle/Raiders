@@ -13,7 +13,7 @@
      function logOut() {
         var retVal = confirm("Are you sure you'd like to log out?");
         if( retVal == true ) {
-          window.location=("raiders.php"); 
+          window.location=("clientlogin.php"); 
            return true;
         } 
         else {
@@ -33,13 +33,8 @@
                 <td><a class="active" href="clienthome.php"><i class="fas fa-home"></i>Home</a></td>
                 <td><a href="details.php"><i class="fas fa-user"></i> Details</a></td>
                 <td><a href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
-                <td><form action="search.php" method="post">
-                <i class="fas fa-search"></i>
-                <input type="search" name="txtSearch">
-                <input type="submit" name="submit" value="Go">
-                </form>
                 <td><div>                 
-                <form action = "raiders.php" class = "Logout">
+                <form action = "clientlogin.php" class = "Logout">
                 <input type="submit" name="submit" value="Logout" onclick="logOut();">
                  </form>
                 </div></td>
@@ -49,36 +44,9 @@
     <br>
     <h2>Booking Requests</h2>
 
-<form action="bookingreq.php" method="post">
+<form action="clienthome.php" method="post">
     <a href="createbooking.php"><input type="button" value="Create booking request"></a>
 </form>
-<?php
-    //add database credentials 
-    require_once("config.php");
-    //checking if the searching form has been submitted 
-    if (isset($_REQUEST['submit'])) {
-        //get the value from the form
-        $search = $_REQUEST['txtSearch'];
-        //make the connection to database
-        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-        or die("Could not connect to the database!");
-        //issue out the query instructions
-        $query = "SELECT * FROM bookings WHERE bookingID LIKE '%$search%'
-        ORDER BY bookingID ASC";
-        $results = mysqli_query($conn, $query)
-        or die("Could not retrieve the data!");
-        //extract the data 
-        echo "<ol>";
-        while ($row = mysqli_fetch_array($results)){
-            echo "<li>";
-            echo $row['bookingID'];
-            echo "</li>";
-        }
-        echo "</ol>";
-        //close the connection to the database
-        mysqli_close($conn);
-    }
-    ?>
 
  <!-- general footer code  -->
  <div class="footer"> 

@@ -24,11 +24,11 @@
         </table>
 </div>
     <br>
-    <form action="raiders.php" method="post"> <fieldset>
+    <form action="clientlogin.php" method="post"> <fieldset>
    
     
  <h1> Register</h1>  
-   <fieldset><p>Please fil in this form to create an account
+   <fieldset><p>Please fill in this form to create an account
    <table>
        <tr>
            <td>First Name</td>
@@ -82,7 +82,8 @@
         $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
         or die("Could not connect to the database!");
         //issue out the query instructions
-        $query = "INSERT INTO CLIENT values ('$name', '$lname', '$email', '$contact', '$password') ";
+        $query = "INSERT INTO client (firstname, lastName, emailAddress, contactNumber, passwords) 
+                    values ('$name', '$lname', '$email', '$contact', '$password') ";
         $results = mysqli_query($conn, $query)
         or die("Could not retrieve the data!");
         //extract the data 
