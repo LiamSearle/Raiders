@@ -14,7 +14,5 @@
     <input type="text" id= "email" name= "email" placeholder="Enter you email" required>
     <input type="button" value="Reset" name = "reset">
     </form>
-    
- 
 </body>
 </html>

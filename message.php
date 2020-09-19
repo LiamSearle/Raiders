@@ -10,8 +10,6 @@
     <?php
      echo "Email sent"
         echo "<form action="raiders.php" method="post"> <input type="button" value="OK"></form>";
-    
-   
     ?>
 </body>
 </html>
