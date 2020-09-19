@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
-    <title>Clients-should delete</title>
+    <title>Document</title>
+
     <!-- logout button code -->
 <script>
      function logOut() {
@@ -16,7 +17,7 @@
            return true;
         } 
         else {
-          //stays on the same page
+          window.location.reload(); //stays on the same page
            return false;
         }
      } 
@@ -26,51 +27,32 @@
 <body>
 <!-- general navigation bar code   -->
 <div class="nav">
-<table>
+    <table>
             <tr>
                 <td><img src="images/logoo.png" height="50px"></td>
-                <td><a href="homepage.php"><i class="fas fa-home"></i>Home</a></td>
-                <td><a class="active" href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
+                <td><a class="active" href="bookingreq.php"><i class="fas fa-home"></i>Home</a></td>
+                <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
                 <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
-                <td><a href="reports.php"><i class="fas fa-list"></i> Reports</a></td>
-                <td>
-                    <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
-               </td>
+                <td><form action="search.php" method="post">
+                <i class="fas fa-search"></i>
+                <input type="search" name="txtSearch">
+                <input type="submit" name="submit" value="Go">
+                </form>
+                <td><div>                 
+                <form action = "post" class = "Logout">
+                <input type="submit" name="submit" value="Logout" onclick="logOut();">
+                 </form>
+                </div></td>
             </tr>
         </table>
 </div>
     <br>
-    <form action="client.php" method="post"> <fieldset>
-    <label for="clientid">Client ID</label>
-    <input type="text" placeholder="Client ID"></fieldset>
-    
-       
-    <fieldset><p>Client Information
-   <table>
-       <tr>
-           <td>First Name</td>
-           <td><input type="text" name="client_fname"></td>
-       </tr>
-       <tr>
-           <td>Last Name</td>
-           <td><input type="text" name="client_lname"></td>
-       </tr>
-       <tr>
-           <td>E-mail</td>
-           <td><input type="text" name="client_email"></td>
-       </tr>
-       <tr>
-           <td>Start Date</td>
-           <td><input type="text" name="client_number"></td>
-       </tr>
-       <tr>
-           <td>End Date</td>
-           <td><input type="text" name="client_number"></td>
-       </tr>
-   </table>
-</p></fieldset>
-    </form>
-    <?php
+    <h2>Booking Requests</h2>
+
+<form action="bookingreq.php" method="post">
+    <a href="createbooking.php"><input type="button" value="Create booking request"></a>
+</form>
+<?php
     //add database credentials 
     require_once("config.php");
     //checking if the searching form has been submitted 
@@ -81,15 +63,15 @@
         $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
         or die("Could not connect to the database!");
         //issue out the query instructions
-        $query = "SELECT * FROM client WHERE clientID LIKE '%$search%'
-        ORDER BY clientID ASC";
+        $query = "SELECT * FROM bookings WHERE bookingID LIKE '%$search%'
+        ORDER BY bookingID ASC";
         $results = mysqli_query($conn, $query)
         or die("Could not retrieve the data!");
         //extract the data 
         echo "<ol>";
         while ($row = mysqli_fetch_array($results)){
             echo "<li>";
-            echo $row['clientID'];
+            echo $row['bookingID'];
             echo "</li>";
         }
         echo "</ol>";
@@ -103,14 +85,15 @@
   <nav>
     <table>
         <tr>
-        <td><a href="aboutus.php">About Us</a> | </td>
-            <td><a href="help.php">Help</a> | </td>
-            <td><a href="faq.php">FAQs</a> | </td>
-            <td><a href="legal.php">Legal</a> | </td>
-            <td>&copy; Copyright 2020 Raiders</td>
+            <td><a href="aboutus.php">About Us</a></td>
+            <td><a href="#######">FAQs</a></td>
+            <td><a href="#######">Legal</a></td>
+            <td><a href="#######">Terms & Conditions</a></td>
         </tr>
     </table>
   </nav>
 </div>    
+    
+    
 </body>
 </html>

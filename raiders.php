@@ -17,8 +17,15 @@
             <p><input type="password" placeholder="Password" name="password" required></p>
             <p><input type="checkbox" name="check"><label for="checkbox">Remember me</label></p>
             <input type="submit" name="submit" value="Login"><br>
-            <a href="#">Forgot password</a>
-        </form>
+        </form> 
+        <form method = "post" action  = "newClient.php"><br>
+        <input type="submit" name="submit" value="Register"><br>
+            </form><br>
+            <form action="forgotpassword.php" method="post">
+            <a href="forgotpassword.php">Forgot password</a>
+            </form>
+
+       
         <p>
          <?php   
             if(isset($_REQUEST['submit'])){

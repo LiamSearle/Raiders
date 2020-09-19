@@ -39,7 +39,7 @@ body {
 
 .nav a:hover {
     /*controls what is seen when mouse is just hovering over navigation panel*/
-    background-color: #DCDCDC;
+    background-color: white;
 }
 
 .nav a.active {
