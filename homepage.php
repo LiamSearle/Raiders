@@ -43,9 +43,23 @@
     <br>
     <h2>Booking Requests</h2>
 
-<form action="bookingreq.php" method="post">
-    <a href="createbooking.php"><input type="button" value="Create booking request"></a>
-</form>
+
+     <fieldset>
+    <?php
+        echo "<table>
+        <tr>
+            <td></td>
+        </tr>";
+        
+        while($row = mysqli_fetch_array($results)) {
+            echo "<tr>";
+            echo "<td>" "<a href=\"clients.php?id=" . $bookingID. "\">" . $row['firstName']. " " . $row['lastName'] . " - Departure Date: " . $row['date'] . "</a>" . "</td>";
+        }
+        echo "</table>";
+      ?>
+     </fieldset>
+
+
 <?php
     //add database credentials 
     require_once("config.php");

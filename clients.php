@@ -48,39 +48,38 @@
 <input type="text" name="clientID" id="clientID">
 <input type="submit" name="submit" value="Search"></h2>
  
-<fieldset>
-<legend>Booking ID: ???</legend>
-<table id="clientTable">
-  <tr>
-    <th>First Name:</th>
-    <th><input type="text" name="firstName"></th>
-    <th>Last Name: </th>
-    <th><input type="text" name="lastName"></th>
-  </tr>
+<fieldset style="margin: auto; width: 50%;">
+<legend>Booking ID: <?php $_REQUEST['id']; ?></legend>
 
-  <tr>
-    <th>Starting Destination: </th>
-    <th><input type="text" name="startDestination"></th>
-    <th>Start Date: </th>
-    <th><input type="text" name="startDate"></th>
-  </tr>
-
-  <tr>
-    <th>Ending Destination: </th>
-    <th><input type="text" name="endDestination"></th>
-    <th>End Date: </th>
-    <th><input type="text" name="endDate"></th>
-  </tr>
-
-  <tr>   
-    <th>E-mail: </th>
-    <th><input type="text" name="email"></th>
-    <th>Contact Number: </th>
-    <th><input type="text" name="contactNumber"></th>
-    <th>Number of Passengers: </th>
-    <th><input type="text" name="passengerNumber"></th>
-  </tr>
-</table>
+<form action="adminNewBookingPage.php" method="POST">
+  <table id="clientTable" style="margin: auto; width: 50%;">
+      <tr><td><label for="firstName">First Name:</label></td>
+      <td><input type="text" id="firstName" name="firstName" placeholder= "First Name"></td></tr>
+          <tr><td><label for="lastName">Last Name:</label></td>
+          <td><input type="text" id="lastName" name="lastName" placeholder="Last Name"></td></tr>
+          <tr><td><label for="email">Email:</label></td>
+          <td><input type="text" id="email" name="email" placeholder="Email"></td></tr>
+          <tr><td><label for="contactNumber">Contact Number:</label></td>
+          <td><input type="text" id="contactNumber" name="contactNumber" placeholder="Contact Number"></td></tr>
+          <tr><td><label for="startDepot">Start Location:</label></td>
+          <td><input type="text" id="startDepot" name="startDepot" placeholder="Start Location"></td></tr>
+          <tr><td><label for="destinationDepot">Destination:</label></td>
+          <td><input type="text" id="destinationDepot" name="destinationDepot" placeholder="Destination"></td></tr>
+          <tr><td><label for="numberPassengers">Number of Passengers:</label></td>
+          <td><input type="text" id="numberPassengers" name="numberPassengers" placeholder="Number of Passengers"></td></tr>
+          <tr><td><label for="date">Departure Date:</label></td>
+          <td><input type="text" id="date" name="date" placeholder="Departure Date"></td></tr>
+          <tr> 
+          <td></td></tr>   
+      </table>
+      <button type="submit" name="go" style="margin: auto; width: 15%; padding: 10px;">Confirm Details</button>
+    </form>
+    <br>
+    <form action="" method="POST">
+      <!-- Sends a message to the client informing them the details they have entered are incorrect. -->
+      <button type="submit" style="margin: auto; width: 15%; padding: 10px;">Reject Details</button>
+    </form>
+    
 </fieldset>
 
  
