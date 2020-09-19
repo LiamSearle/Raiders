@@ -50,7 +50,43 @@
 <legend>New Booking: <?php $_REQUEST['id']; ?></legend>
 
 <form action="adminNewBookingPage.php" method="POST">
+<?php
+  echo "<table style=\" border: 1px solid black; width: 120%;\">
+  <tr>
+  <th> ClientID </th>
+  <th> First Name </th>
+  <th> Last Name </th>
+  <th> Email </th>
+  <th> Contact Number </th>
+  <th> Start Depot </th>
+  <th> Destination Depot </th>
+  <th> Departure Date </th>
+  <th> Number of Passengers </th>
+  </tr>";
+  
+   //displaying data
+   while($row=mysqli_fetch_array($result))
+   {
+     echo "<tr>";
+     echo "<td>" . $row['clientID'] . "</td>";
+     echo "<td>" . $row['firstName'] . "</td>";
+     echo "<td>" . $row['lastName'] .  "</td>";
+     echo "<td>" . $row['email'] . "</td>";
+     echo "<td>" . $row['contactNumber'] . "</td>";
+     echo "<td>" . $row['startDepot'] . "</td>";
+     echo "<td>" . $row['destinationDepot'] . "</td>";
+     echo "<td>" . $row['numberPassengers'] . "</td>";
+     echo "</tr>";
+   }
+  ?>
+
   <table id="clientTable" style="margin: auto; width: 50%;">
+
+  </table>    
+
+  
+
+
   <div class="inputLabel">
         <label for="clientID">Client ID </label>
         <input id="clientID" type="text">
@@ -67,10 +103,7 @@
                     <option value="Etc.">Etc.</option>
                 </select>
         </div>
-
-
-        
-            
+    
         <br><br>
 
         <div class="inputLabel">
@@ -86,7 +119,6 @@
         <br><br>
 
         <input type="submit" value="Create Booking">
-      </table>
       <button type="submit" name="go" style="margin: auto; width: 15%; padding: 10px;">Confirm Details</button>
     </form>
     <br>
