@@ -15,6 +15,18 @@ Minali
 - help at bottom of page take out t@cs
 - LogOut button issues? cant move it more to the left, not displaying
 
+----------DATABASE------------
+
+- firstName needs to be fixed
+- "client" needs to be "clients"
+- daytrip needs to be "daytrips"
+- need to add the remaining databases
+  - vehicleBooking
+  - vehicle
+  - license
+  - driverLicense
+- confirm with ERD that all collumns are there
+
 DONE
 - maybe calling the bookingreq.php page homepage would make more sense
 - why have a search bar what will it do - deleted
