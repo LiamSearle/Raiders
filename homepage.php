@@ -39,6 +39,25 @@
           </td>      
             </tr>
         </table>
+     <?php
+        /* import the config for the database */
+      require_once("config.php");
+
+      /* establish the connection to the database */
+      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+          or die("there was an error connecting to the database.");
+
+      /* define the query */
+      $query = "SELECT * FROM bookings LEFT JOIN client ON bookings.clientID = client.clientID UNION SELECT * FROM bookings RIGHT JOIN client ON bookings.clientID = client.clientID";
+
+      /* get the results of the query and put them into a variable */
+      $result = mysqli_query($conn, $query)
+              or die("There was an error executing the query.");
+
+      /* close the connection */
+      mysqli_close($conn);
+     ?>
+
 </div>
     <br>
     <h2>Booking Requests</h2>
@@ -51,9 +70,9 @@
             <td></td>
         </tr>";
         
-        while($row = mysqli_fetch_array($results)) {
+        while($row = mysqli_fetch_array($result)) {
             echo "<tr>";
-            echo "<td>" "<a href=\"clients.php?id=" . $bookingID. "\">" . $row['firstName']. " " . $row['lastName'] . " - Departure Date: " . $row['date'] . "</a>" . "</td>";
+            echo "<td>" . "<a href=\"clients.php?id=" . $row['bookingID'] . "\">" . $row['firstname']. " " . $row['lastName'] . " - Departure Date: " . $row['startDate'] . "</a>" . "</td>";
         }
         echo "</table>";
       ?>
