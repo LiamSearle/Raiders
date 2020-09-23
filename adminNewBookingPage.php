@@ -46,12 +46,12 @@
 <input type="text" name="bookingID" id="bookingID">
 <input type="submit" name="submit" value="Search"></h2>
  
-<fieldset style="margin: auto; width: 50%;">
+<fieldset style="margin: auto; width: 70%;">
 <legend>New Booking: <?php $_REQUEST['id']; ?></legend>
 
 <form action="adminNewBookingPage.php" method="POST">
 <?php
-  echo "<table style=\" border: 1px solid black; width: 120%;\">
+  echo "<table style=\" border: 1px solid black; width: 100%;\">
   <tr>
   <th> ClientID </th>
   <th> First Name </th>
@@ -83,30 +83,24 @@
   <table id="clientTable" style="margin: auto; width: 50%;">
 
   </table>    
-
-  
-
-
-  <div class="inputLabel">
-        <label for="clientID">Client ID </label>
-        <input id="clientID" type="text">
-        </div>
-        
-        <br><br>
-
+        <br>
         <div class="inputLabel">
             <label for="driver">Driver </label>
-            <select id="driver" name="driver">
+            
+            <!-- put this in php and echo an option for each driver from the database -->
+            <select id="driver" name="driver"> 
                     <option value="Driver 1 From DB">Driver 1 From DB</option>
                     <option value="Driver 2">Driver 2</option>
                     <option value="Driver 3">Driver 3</option>
                     <option value="Etc.">Etc.</option>
-                </select>
+            </select>
         </div>
     
         <br><br>
 
         <div class="inputLabel">
+          <!-- when querying the database, add a WHERE clause to filter on seat number -->
+            <!-- put this in php and echo an option for each vehicle from the database -->
         <label for="driver">Vehicle </label>
             <select id="vehicle" name="vehicle">
                 <option value="Vehicle 1 From DB">Vehicle 1 From DB</option>
@@ -119,7 +113,7 @@
         <br><br>
 
         <input type="submit" value="Create Booking">
-      <button type="submit" name="go" style="margin: auto; width: 15%; padding: 10px;">Confirm Details</button>
+      
     </form>
     <br>
   
@@ -130,16 +124,16 @@
  <div class="footer"> 
   <nav>
     <table>
-        <tr>
+          <tr>
             <td><a href="aboutus.php">About Us</a> | </td>
             <td><a href="help.php">Help</a> | </td>
             <td><a href="faq.php">FAQs</a> | </td>
             <td><a href="legal.php">Legal</a> | </td>
             <td>&copy; Copyright 2020 Raiders</td>
-        </tr>
-    </table>
-  </nav>
-</div>    
+          </tr>
+      </table>
+    </nav>
+  </div>    
 
 </body>
 </html>
