@@ -17,12 +17,12 @@ body {
         overflow: hidden;
         background-color: #C0C0C0;
         position: relative;
-        top: 15px;  */
+        top: 15px; */
 
         position: sticky; 
         position: -webkit-sticky;
         background-color: #C0C0C0;
-        top: 0; 
+        top: 0;  
 }
     
 .nav a {
@@ -84,10 +84,10 @@ body {
 }
 
 #clienttable th,td,tr {
-    /*controls the table found in client page*/
+    /*controls the table found in client page */
     text-align: left;
     padding: 5px;
-}    
+}     
 
 fieldset {
     /*controls all fieldsets throught website*/
@@ -130,7 +130,6 @@ legend {
 .container {
     /*controls content in aboutus page*/
     padding: 0 16px;
-
     }
 
 .card {
@@ -153,6 +152,7 @@ legend {
     width: 10%;
     height: 450px;
     position:relative;
+    
     top:20px;
   }
   
@@ -193,7 +193,7 @@ legend {
     top:20px;
   }
 
-  #reportTable table,td,tr 
+  #reportTable table
      {
         border: 1px solid black;
       }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo</title>
+  <title>Reports</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
 
@@ -70,7 +70,7 @@
 <!-- populating the bookings table with php -->
 <form action="reports.php" method="POST">
 <?php
-
+/*
   //database credentials
   require_once("config.php");
 
@@ -93,9 +93,9 @@
 
   $result=mysqli_query($conn,$query) 
   or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
-
+*/
   //creating bookings table
-  echo "<table style=\" border: 1px solid black; width: 100%;\">
+   echo "<table style=\" border: 1px solid black;  width: 100%;\">
   <tr>
   <th> BookingID </th>
   <th> ClientID </th>
@@ -131,7 +131,7 @@
    echo "</table>"
 
    //close the connection
-   mysqli_close($conn);
+  //  mysqli_close($conn);
   ?>
 
 </fieldset>
@@ -155,7 +155,7 @@
 <form action="reports.php" method="POST">
 <?php
 
-  //database credentials
+/*  //database credentials
   require_once("config.php");
   
   //where do you get the drivers values from tho???
@@ -169,7 +169,7 @@
 
   $result=mysqli_query($conn,$query) 
   or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
-
+*/
   //creating bookings table
   echo "<table style=\" border: 1px solid black; width: 100%;\">
   <tr>
