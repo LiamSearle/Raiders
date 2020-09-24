@@ -79,29 +79,24 @@ if (isset($_REQUEST['submit'])) {
     $startDepot = $_REQUEST['startDepot'];
     $destinationDepot = $_REQUEST['destinationDepot'];
     $passengers = $_REQUEST['numberPassengers'];
-    $date = $_REQUEST['date'];
+    $ddate = $_REQUEST['date'];
 
 
      // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+$conn = new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+  or die("Error connecting to the database");
 }lst
-
-$sql = "INSERT INTO bookings (bookingID, startDate, endDate, numberPassengers, initialCollectionPoint, clientID, driverID)
+//issue the query to insert details to the database
+$query = "INSERT INTO bookings (firstName, lastName, email, passengers, ddate,)
  VALUES ($name, $surname, $email, $contact, $startDepot, $destinationDepot, $passengers,$date);"
 
+//execute the query 
+$result = mysqli_query($conn, $$query)
+or die ("Error adding booking details");
 
-if ($conn->query($sql) === TRUE) {
-  echo "Booking created successfully";
-} 
-else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
-}
-}
+mysqli_close($conn);
 
-$conn->close();
+echo "<strong style= \"color:Red\">New booking was created</strong>";
   ?>
 
  <!-- general footer code  -->

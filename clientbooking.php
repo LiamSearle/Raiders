@@ -30,16 +30,16 @@
        <table>
             <tr>
                 <td><img src="images/logoo.png" height="50px"></td>
-                <td><a href="bookingreq.php"><i class="fas fa-home"></i>Home</a></td>
-                <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
-                <td><a class="active" href="booking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
+                <td><a href="clienthome.php"><i class="fas fa-home"></i>Home</a></td>
+                <td><a href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
+                <td><a class="active" href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td><form action="search.php" method="post">
                 <i class="fas fa-search"></i>
                 <input type="search" name="txtSearch">
                 <input type="submit" name="submit" value="Go">
                 </form>
                 <td><div>                 
-                <form action = "post" class = "Logout">
+                <form action = "clientlogin.php" class = "Logout">
                 <input type="submit" name="submit" value="Logout" onclick="logOut();">
                  </form>
                 </div></td>

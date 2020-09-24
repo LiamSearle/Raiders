@@ -31,7 +31,7 @@
             <tr>
                 <td><img src="images/logoo.png" height="50px"></td>
                 <td><a class="active" href="clienthome.php"><i class="fas fa-home"></i>Home</a></td>
-                <td><a href="details.php"><i class="fas fa-user"></i> Details</a></td>
+                <td><a href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
                 <td><a href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td><div>                 
                 <form action = "clientlogin.php" class = "Logout">
@@ -45,7 +45,7 @@
     <h2>Booking Requests</h2>
 
 <form action="clienthome.php" method="post">
-    <a href="createbooking.php"><input type="button" value="Create booking request"></a>
+    <a href="clientcreatebooking.php"><input type="button" value="Create booking request"></a>
 </form>
 
  <!-- general footer code  -->
@@ -54,8 +54,8 @@
     <table>
         <tr>
             <td><a href="aboutus.php">About Us</a></td>
-            <td><a href="#######">FAQs</a></td>
-            <td><a href="#######">Legal</a></td>
+            <td><a href="faq.php">FAQs</a></td>
+            <td><a href="legal.php">Legal</a></td>
             <td><a href="#######">Terms & Conditions</a></td>
         </tr>
     </table>
