@@ -68,9 +68,7 @@
           <tr><td><label for="numberPassengers">Number of Passengers:</label></td>
           <td><input type="text" id="numberPassengers" name="numberPassengers" placeholder="Number of Passengers"></td></tr>
           <tr><td><label for="date">Departure Date:</label></td>
-          <td><input type="text" id="date" name="date" placeholder="Departure Date"></td></tr>
-          <tr> 
-          <td></td></tr>   
+          <td><input type="text" id="date" name="date" placeholder="Departure Date"></td></tr>  
       </table>
       <button type="submit" name="go" style="margin: auto; width: 15%; padding: 10px;">Confirm Details</button>
     </form>

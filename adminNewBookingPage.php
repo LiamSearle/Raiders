@@ -78,6 +78,8 @@
      echo "<td>" . $row['numberPassengers'] . "</td>";
      echo "</tr>";
    }
+
+   echo "</table>";
   ?>
 
   <table id="clientTable" style="margin: auto; width: 50%;">

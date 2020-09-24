@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo</title>
+  <title>Reports</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
 
@@ -20,15 +20,12 @@
         }
      } 
 </script>
-
-
 </head>
 
 <body>
 
 <!-- general navigation bar code   -->
 <div class="nav">
- 
  <table>
       <tr>
           <td><img src="images/logoo.png" height="50px"></td>
@@ -41,7 +38,204 @@
           </td>      
       </tr>
   </table> 
-  </div> 
+</div> 
+
+<!-- creating the tab section  -->
+<div class="tab">
+  <button class="tablinks" onclick="openReport(event, 'Bookings')" id="defaultOpen">Bookings</button>
+  <button class="tablinks" onclick="openReport(event, 'Drivers')">Drivers</button>
+  <button class="tablinks" onclick="openReport(event, 'Depots')">Depots</button>
+</div>
+
+<!-- bookings tab -->
+<div id="Bookings" class="tabcontent">
+  <fieldset style="margin: auto; width: 100%;">
+
+<!-- navigation bar on the bookings tab -->
+<div class="nav">
+    <table>
+                <tr>
+                 <td><i class="fas fa-search"></i><input type="text" id="search" name="search" placeholder="Search">
+                  <input type="submit" name="search" value="Search"></td>
+                  <td><label for="groupBy"> Group By: </label>
+                  <select id="selections" name="Select">
+                    <option value="Departure Date">Departure Date</option>
+                    <option value="Departure Date">Start Depot</option>
+                    <option value="Departure Date">End Depot</option>
+                </select></td>
+                </tr>
+    </table>
+</div>
+
+<!-- populating the bookings table with php -->
+<form action="reports.php" method="POST">
+<?php
+/*
+  //database credentials
+  require_once("config.php");
+
+  //get the value from the client booking form
+  $name = $_REQUEST['firstName'];
+  $surname = $_REQUEST['lastName'];
+  $email =$_REQUEST['email'];
+  $contact = $_REQUEST['contactNumber'];
+  $startDepot = $_REQUEST['startDepot'];
+  $destinationDepot = $_REQUEST['destinationDepot'];
+  $passengers = $_REQUEST['numberPassengers'];
+  $date = $_REQUEST['date'];
+
+  // making connection
+  $conn=mysqli_connect(servername,username,password,database) 
+  or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
+
+  //query instructions
+  $query="SELECT  *  FROM bookings";
+
+  $result=mysqli_query($conn,$query) 
+  or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
+*/
+  //creating bookings table
+   echo "<table style=\" border: 1px solid black;  width: 100%;\">
+  <tr>
+  <th> BookingID </th>
+  <th> ClientID </th>
+  <th> First Name </th>
+  <th> Last Name </th>
+  <th> Email </th>
+  <th> Contact Number </th>
+  <th> Start Depot </th>
+  <th> Destination Depot </th>
+  <th> Departure Date </th>
+  <th> Number of Passengers </th>
+  <th> Driver ID </th>
+  <th> Vehicle Registration No </th>
+  </tr>";
+  
+   //displaying data
+   while($row=mysqli_fetch_array($result))
+   {
+     echo "<tr>";
+     echo "<td>" . $row['bookingID'] . "</td>";
+     echo "<td>" . $row['clientID'] . "</td>";
+     echo "<td>" . $row['firstName'] . "</td>";
+     echo "<td>" . $row['lastName'] .  "</td>";
+     echo "<td>" . $row['email'] . "</td>";
+     echo "<td>" . $row['contactNumber'] . "</td>";
+     echo "<td>" . $row['startDepot'] . "</td>";
+     echo "<td>" . $row['destinationDepot'] . "</td>";
+     echo "<td>" . $row['numberPassengers'] . "</td>";
+     echo "<td>" . $row['driverID'] . "</td>";
+     echo "<td>" . $row['vehicleRegistration'] . "</td>";
+     echo "</tr>";
+   }
+   echo "</table>"
+
+   //close the connection
+  //  mysqli_close($conn);
+  ?>
+
+</fieldset>
+</div> <!-- end of booking tabs code -->
+
+<!-- drivers tab -->
+<div id="Drivers" class="tabcontent">
+<fieldset style="margin: auto; width: 100%;">
+
+<!-- navigation bar on drivers tab -->
+<div class="nav">
+    <table>
+                <tr>
+                 <td><i class="fas fa-search"></i><input type="text" id="search" name="search" placeholder="Driver ID">
+                  <input type="submit" name="search" value="Search"></td>
+                </tr>
+    </table>
+</div>
+
+<!-- populating the drivers table with php -->
+<form action="reports.php" method="POST">
+<?php
+
+/*  //database credentials
+  require_once("config.php");
+  
+  //where do you get the drivers values from tho???
+
+  // making connection
+  $conn=mysqli_connect(servername,username,password,database) 
+  or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
+
+  //query instructions
+  $query="SELECT  *  FROM driver";
+
+  $result=mysqli_query($conn,$query) 
+  or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
+*/
+  //creating bookings table
+  echo "<table style=\" border: 1px solid black; width: 100%;\">
+  <tr>
+  <th> DriverID </th>
+  <th> First Name </th>
+  <th> Last Name </th>
+  <th> Contact Number </th>
+  <th> Status </th> 
+  </tr>";
+  
+   //displaying data
+   while($row=mysqli_fetch_array($result))
+   {
+     echo "<tr>";
+     echo "<td>" . $row['driverID'] . "</td>";
+     echo "<td>" . $row['firstName'] . "</td>";
+     echo "<td>" . $row['lastName'] .  "</td>";
+     echo "<td>" . $row['contactNumber'] . "</td>"; 
+     echo "<td>" . $row['status'] . "</td>"; // have a status for the driver if out on a trip or not?
+     echo "</tr>";
+   }
+
+   echo "</table>"
+  ?>
+
+</fieldset>
+</div>    <!--end of drivers tab code -->
+
+<!-- depot tab -->
+<div id="Depots" class="tabcontent">
+<fieldset style="margin: auto; width: 100%;">
+<!-- navigation bar on drivers tab -->
+  <div class="nav">
+    <table>
+                <tr>
+                 <td><i class="fas fa-search"></i><input type="text" id="search" name="search" placeholder="Depot ID">
+                  <input type="submit" name="search" value="Search"></td>
+
+                </tr>
+    </table>
+</div>
+
+<!-- write code for depot table -->
+</fieldset>
+</div> <!-- end of depot tab code -->
+
+<!-- javascript code to control the tabs  -->
+<script>
+function openReport(evt, report) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(report).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+
+
 
  <!-- general footer code  -->
  <div class="footer"> 
@@ -58,7 +252,6 @@
     </table>
   </nav>
 </div>
-
 
 </body>
 </html>
