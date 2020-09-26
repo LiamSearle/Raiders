@@ -41,15 +41,17 @@
 </div>
   <fieldset>
   <h2>Enter booking details</h2>
-    <form action="createbooking.php" method="GET">
-    <!create a table >
+    <form action="clientcreatebooking.php" method="POST">
+  
    <table>
      <tr><td><label for="firstName">First Name:</label></td>
     <td><input type="text" id="firstName" name="firstName" placeholder= "First Name"></td></tr>
         <tr><td><label for="lastName">Last Name:</label></td>
         <td><input type="text" id="lastName" name="lastName" placeholder="Last Name"></td></tr>
         <tr><td><label for="email">Email:</label></td>
-        <td><input type="text" id="email" name="email" placeholder="Email"></td></tr>
+        <td><input type="email" id="email" name="email" placeholder="Email"></td></tr>
+        <label for="passwords">Passwords</label>
+        <input type="password" name= "passwords" id= "passwords" placeholder= "Password">
         <tr><td><label for="contactNumber">Contact Number:</label></td>
         <td><input type="text" id="contactNumber" name="contactNumber" placeholder="Contact Number"></td></tr>
         <tr><td><label for="startDepot">Start Location:</label></td>
@@ -59,7 +61,7 @@
         <tr><td><label for="numberPassengers">Number of Passengers:</label></td>
         <td><input type="text" id="numberPassengers" name="numberPassengers" placeholder="Number of Passengers"></td></tr>
         <tr><td><label for="ddate">Departure Date:</label></td>
-        <td><input type="text" id="ddate" name="ddate" placeholder="Departure Date"></td></tr>
+        <td><input type="date" id="ddate" name="ddate" placeholder="Departure Date"></td></tr>
         <tr><td> </td> 
         <td><button type="submit" name="go">Add</button></td></tr>   
     </table>
@@ -72,22 +74,20 @@ require_once("config.php");
 //checking if the searching form has been submitted 
 if (isset($_REQUEST['submit'])) {
     //get the value from the form
+
     $name = $_REQUEST['firstName'];
     $surname = $_REQUEST['lastName'];
     $email =$_REQUEST['email'];
     $contact = $_REQUEST['contactNumber'];
-    $startDepot = $_REQUEST['startDepot'];
-    $destinationDepot = $_REQUEST['destinationDepot'];
-    $passengers = $_REQUEST['numberPassengers'];
-    $date = $_REQUEST['ddate'];
-
 
      // Create connection
 $conn = new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE)
   or die("Error connecting to the database");
 }lst
 //issue the query to insert details to the database
-$query = "INSERT INTO clients(firstName, lastName, email, numberPassengers, ddate) VALUES ('$name', '$surname', '$email', '$passengers','$date')";
+$query = "INSERT INTO `raiders`.`clients` (`firstName`, `lastName`, `emailAddress`, `contactNumber`)
+ VALUES ('$name', '$surname', '$email', '$contact')";
+
 
 //execute the query 
 $result = mysqli_query($conn, $$query)
