@@ -58,8 +58,8 @@
         <td><input type="text" id="destinationDepot" name="destinationDepot" placeholder="Destination"></td></tr>
         <tr><td><label for="numberPassengers">Number of Passengers:</label></td>
         <td><input type="text" id="numberPassengers" name="numberPassengers" placeholder="Number of Passengers"></td></tr>
-        <tr><td><label for="date">Departure Date:</label></td>
-        <td><input type="text" id="date" name="date" placeholder="Departure Date"></td></tr>
+        <tr><td><label for="ddate">Departure Date:</label></td>
+        <td><input type="text" id="ddate" name="ddate" placeholder="Departure Date"></td></tr>
         <tr><td> </td> 
         <td><button type="submit" name="go">Add</button></td></tr>   
     </table>
@@ -79,7 +79,7 @@ if (isset($_REQUEST['submit'])) {
     $startDepot = $_REQUEST['startDepot'];
     $destinationDepot = $_REQUEST['destinationDepot'];
     $passengers = $_REQUEST['numberPassengers'];
-    $ddate = $_REQUEST['date'];
+    $date = $_REQUEST['ddate'];
 
 
      // Create connection
@@ -87,8 +87,7 @@ $conn = new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE)
   or die("Error connecting to the database");
 }lst
 //issue the query to insert details to the database
-$query = "INSERT INTO bookings (firstName, lastName, email, passengers, ddate,)
- VALUES ($name, $surname, $email, $contact, $startDepot, $destinationDepot, $passengers,$date);"
+$query = "INSERT INTO clients(firstName, lastName, email, numberPassengers, ddate) VALUES ('$name', '$surname', '$email', '$passengers','$date')";
 
 //execute the query 
 $result = mysqli_query($conn, $$query)
