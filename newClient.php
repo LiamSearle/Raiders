@@ -24,7 +24,7 @@
         </table>
 </div>
     <br>
-    <form action="clientlogin.php" method="post"> <fieldset>
+    <form action="newClient.php" method="post">
    
     
  <h1> Register</h1>  
@@ -48,7 +48,7 @@
        </tr>
        <tr>
            <td>Password</td>
-           <td><input type="text" name="client_password" placeholder = "Enter Password" required></td>
+           <td><input type="password" name="client_password" placeholder = "Enter Password" required></td>
        </tr>
       <!-- <tr>
            <td>Repeat Password</td>
@@ -60,42 +60,39 @@
        </tr>
      <tr>
       <td></td>
-      <td><button type="submit" class="signupbtn">Sign Up</button><button type="button" class="cancelbtn">Cancel</button></td>
+      <td><input type="submit" class="signupbtn" name="submit" value="Sign Up"><button type="button" class="cancelbtn">Cancel</button></td>
     </tr>  
   
    </table>
 </p></fieldset>
     </form>
-    <?php
+    <p><?php
     //add database credentials 
-    require_once("config.php");
     //checking if the searching form has been submitted 
     if (isset($_REQUEST['submit'])) {
+        require_once("config.php");
         //get the value from the form
         $name = $_REQUEST['client_fname'];
         $lname= $_REQUEST['client_lname'];
         $email = $_REQUEST['client_email'];
         $contact= $_REQUEST['client_contact'];
         $password= $_REQUEST['client_password'];
-        $repeat= $_REQUEST['client_repeat'];
+        //$repeat= $_REQUEST['client_repeat'];
         //make the connection to database
         $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
         or die("Could not connect to the database!");
         //issue out the query instructions
-        $query = "INSERT INTO client (firstname, lastName, emailAddress, contactNumber, passwords) 
+        $query = "INSERT INTO clients (firstName, lastName, emailAddress, contactNumber, passwords) 
                     values ('$name', '$lname', '$email', '$contact', '$password') ";
         $results = mysqli_query($conn, $query)
-        or die("Could not retrieve the data!");
+            or die("Could not retrieve the data!");
         //extract the data 
-        if (mysqli_query($conn, $sql)) {
-            echo "New client created successfully";
-          } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-          }
+        echo "New client created successfully";
         //close the connection to the database
         mysqli_close($conn);
+        header("Location:clientlogin.php");
     }
-    ?>
+    ?></p>
   
 
  <!-- general footer code  -->

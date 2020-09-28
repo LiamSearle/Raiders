@@ -63,38 +63,37 @@
         <tr><td><label for="ddate">Departure Date:</label></td>
         <td><input type="date" id="ddate" name="ddate" placeholder="Departure Date"></td></tr>
         <tr><td> </td> 
-        <td><button type="submit" name="go">Add</button></td></tr>   
+        <td><input type="submit" name="submit" value="Add"></td></tr>  
     </table>
     </form>
   </fieldset>
 
   <?php
 
-require_once("config.php");
-//checking if the searching form has been submitted 
-if (isset($_REQUEST['submit'])) {
-    //get the value from the form
+  require_once("config.php");
+  //checking if the searching form has been submitted 
+  if (isset($_REQUEST['submit'])) {
+      //get the value from the form
 
-    $name = $_REQUEST['firstName'];
-    $surname = $_REQUEST['lastName'];
-    $email =$_REQUEST['email'];
-    $contact = $_REQUEST['contactNumber'];
+      $name = $_REQUEST['firstName'];
+      $surname = $_REQUEST['lastName'];
+      $email =$_REQUEST['email'];
+      $contact = $_REQUEST['contactNumber'];
 
-     // Create connection
-$conn = new mysqli(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-  or die("Error connecting to the database");
-}lst
-//issue the query to insert details to the database
-$query = "INSERT INTO `raiders`.`clients` (`firstName`, `lastName`, `emailAddress`, `contactNumber`)
- VALUES ('$name', '$surname', '$email', '$contact')";
+      // Create connection
+  $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+    or die("Error connecting to the database");
+
+  //issue the query to insert details to the database
+  $query = "INSERT INTO clients (firstName, lastName, emailAddress, contactNumber) VALUES ('$name', '$surname', '$email', '$contact')";
 
 
-//execute the query 
-$result = mysqli_query($conn, $$query)
-or die ("Error adding booking details");
-
-mysqli_close($conn);
-
+  //execute the query 
+  $result = mysqli_query($conn, $query)
+  or die ("Error adding booking details");
+  header("Location:clientcreatebooking.php");
+  mysqli_close($conn);
+}
 echo "<strong style= \"color:Red\">New booking was created</strong>";
   ?>
 

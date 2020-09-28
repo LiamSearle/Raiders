@@ -12,18 +12,18 @@
 <body>
     <div class="login">
         <img src="images/logoo.png" alt="login picture" width="160px">
-        <form method="POST" action="clienthome.php">
+        <form method="POST" action="clientlogin.php">
             <input type="text" placeholder="Username" name="username" required>
             <p><input type="password" placeholder="Password" name="password" required></p>
             <p><input type="checkbox" name="check"><label for="checkbox">Remember me</label></p>
             <input type="submit" name="submit" value="Login"><br>
         </form> 
-        <form method = "post" action  = "newClient.php"><br>
-        <input type="submit" name="submit" value="Register"><br>
-            </form><br>
-            <form action="forgotpassword.php" method="post">
+        <form method ="post" action  = "newClient.php"><br>
+            <a href="newClient.php"><input type="button" name="submit" value="Register"></a><br>
+        </form><br>
+        <form action="forgotpassword.php" method="post">
             <a href="forgotpassword.php">Forgot password</a>
-            </form>
+        </form>
 
        
         <p>
@@ -36,16 +36,16 @@
                 $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
                 or die("could not connect");
                     //issue query instruction 
-                $query = "SELECT passwords FROM client WHERE contactNumber = $user";
+                $query = "SELECT passwords FROM clients WHERE contactNumber = $user";
                 $results = mysqli_query($conn, $query)
-                or die("Invalid password or username");
+                    or die("<strong style=\"color:red;\">Invalid username</strong>");
                 $row = mysqli_fetch_array($results);
                 $pass = $row['passwords'];
                 if($pass == $password){
                     header("Location:clienthome.php");
                 }
                 else{
-                    echo "<strong style=\"color:red;\">password wrong!</strong>";
+                    echo "<strong style=\"color:red;\">Wrong password!</strong>";
                 }
                 mysqli_close($conn);
             }
