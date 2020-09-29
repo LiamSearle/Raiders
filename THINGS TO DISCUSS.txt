@@ -13,3 +13,9 @@ Minali
 - after you logged out and redirected to the raiders.php page maybe something at the top saying sucessfully logged out?
 -change logout button to the far right 
 -create an actual sign up page so that it can dynamically insert new members into the database. This will then attach the user credentials to creating a new booking
+
+Tshego
+* might have to create an admin details table to keep track of employee details
+* table would help HR keep track of employee details
+* it must assign an employee with an employeeID
+* still busy with adminHR page- must create report page
