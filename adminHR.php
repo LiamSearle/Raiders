@@ -9,18 +9,18 @@
     <title>Document</title>
 </head>
 <body>
-//create map
+<!--create map -->
 const createMap = ({ lat, lng }) => {
   return new google.maps.Map(document.getElementById('map'), {
     center: { lat, lng },
     zoom: 15
   });
 };
-//create marker placed on map
+<!--create marker placed on map -->
 const createMarker = ({ map, position }) => {
   return new google.maps.Marker({ map, position });
 };
-//get admin current location on the map
+<!--get admin current location on the map -->
 const getCurrentPosition = ({ onSuccess, onError = () => { } }) => {
   if ('geolocation' in navigator === false) {
     return onError(new Error('Geolocation is not supported by your browser.'));
@@ -45,7 +45,8 @@ const getPositionErrorMessage = code => {
       return null;
   }
 }
-//initialise map using south african coordinate map
+<!--initialise map using south african coordinate map -->
+
 function init() 
 {
   const initialPosition = { lat: 30.5595, lng: 22.9375 };

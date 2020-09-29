@@ -18,6 +18,7 @@
             </tr>
     </table>
 </div><br>
+<!-- admin employee form -->
 <form action="adminEmployeeDetails.php" method="post">     
  <h1> Register</h1>  
    <fieldset><p>Please fill in this form to create an account

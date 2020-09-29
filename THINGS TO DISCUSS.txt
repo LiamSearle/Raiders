@@ -18,4 +18,4 @@ Tshego
 * might have to create an admin details table to keep track of employee details
 * table would help HR keep track of employee details
 * it must assign an employee with an employeeID
-* still busy with adminHR page
+* still busy with adminHR page- must create report page
