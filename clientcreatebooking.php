@@ -102,10 +102,11 @@ echo "<strong style= \"color:Red\">New booking was created</strong>";
   <nav>
     <table>
         <tr>
-        <td><a href="aboutus.php">About Us</a> | </td>
-            <td><a href="help.php">Help</a> | </td>
-            <td><a href="faq.php">FAQs</a> | </td>
-            <td><a href="legal.php">Legal</a> | </td>
+        <td><a href="clientaboutus.php">About Us</a> | </td>
+            <td><a href="clienthelp.php">Help</a> | </td>
+            <td><a href="clientfaq.php">FAQs</a> | </td>
+            <td><a href="clientlegal.php">Legal</a> | </td>
+            <td><a href="clientterms.php">Terms & Conditions</a></td>
             <td>&copy; Copyright 2020 Raiders</td>
         </tr>
     </table>
