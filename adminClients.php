@@ -110,7 +110,8 @@
           <tr><td><label for="date">Departure Date:</label></td>
           <td><input type="text" id="date" name="date" value="<?php echo $departureDate; ?>" readonly></td></tr>
       </table>
-      <button type="submit" name="go" style="margin: auto; width: 15%; padding: 10px;" action="adminNewBookingPage.php?id=">Confirm Details</button>
+      
+      <a href="adminNewBookingPage.php?id=<?php echo $_REQUEST['id']; ?>" > Confirm Details</a>
     </form>
     <form action="" method="POST">
       <!-- Sends a message to the client informing them the details they have entered are incorrect. -->

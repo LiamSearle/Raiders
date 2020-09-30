@@ -60,7 +60,8 @@
 
    /* define the query */
    $query = "SELECT * FROM bookings LEFT JOIN client ON bookings.clientID = client.clientID 
-   UNION SELECT * FROM bookings RIGHT JOIN client ON bookings.clientID = client.clientID";
+            UNION SELECT * FROM bookings RIGHT JOIN client ON bookings.clientID = client.clientID
+            WHERE bookingID = " . $_REQUEST['id'] . ";";
  
    /* get the results of the query and put them into a variable */
    $result = mysqli_query($conn, $query)
