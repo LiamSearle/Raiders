@@ -19,6 +19,7 @@
            return false;
         }
      } 
+
 </script>
 </head>
 
@@ -59,9 +60,9 @@
                   <input type="submit" name="search" value="Search"></td>
                   <td><label for="groupBy"> Group By: </label>
                   <select id="selections" name="Select">
-                    <option value="Departure Date">Departure Date</option>
-                    <option value="Departure Date">Start Depot</option>
-                    <option value="Departure Date">End Depot</option>
+                    <option value="Departure Date" onclick="sort()" >Departure Date</option>
+                    <option value="Start Date" onclick="sort()">Start Depot</option>
+                    <option value="End Date" >End Depot</option>
                 </select></td>
                 </tr>
     </table>
@@ -70,30 +71,20 @@
 <!-- populating the bookings table with php -->
 <form action="reports.php" method="POST">
 <?php
-/*
+
   //database credentials
   require_once("config.php");
 
-  //get the value from the client booking form
-  $name = $_REQUEST['firstName'];
-  $surname = $_REQUEST['lastName'];
-  $email =$_REQUEST['email'];
-  $contact = $_REQUEST['contactNumber'];
-  $startDepot = $_REQUEST['startDepot'];
-  $destinationDepot = $_REQUEST['destinationDepot'];
-  $passengers = $_REQUEST['numberPassengers'];
-  $date = $_REQUEST['date'];
-
   // making connection
-  $conn=mysqli_connect(servername,username,password,database) 
+  $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
   or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
 
   //query instructions
-  $query="SELECT  *  FROM bookings";
+  $query="SELECT * FROM bookings LEFT JOIN client ON bookings.clientID = client.clientID UNION SELECT * FROM bookings RIGHT JOIN client ON bookings.clientID = client.clientID";
 
   $result=mysqli_query($conn,$query) 
   or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
-*/
+
   //creating bookings table
    echo "<table style=\" border: 1px solid black;  width: 100%;\">
   <tr>
@@ -104,8 +95,7 @@
   <th> Email </th>
   <th> Contact Number </th>
   <th> Start Depot </th>
-  <th> Destination Depot </th>
-  <th> Departure Date </th>
+  <th> Start Date </th>
   <th> Number of Passengers </th>
   <th> Driver ID </th>
   <th> Vehicle Registration No </th>
@@ -117,21 +107,21 @@
      echo "<tr>";
      echo "<td>" . $row['bookingID'] . "</td>";
      echo "<td>" . $row['clientID'] . "</td>";
-     echo "<td>" . $row['firstName'] . "</td>";
+     echo "<td>" . $row['firstname'] . "</td>";
      echo "<td>" . $row['lastName'] .  "</td>";
-     echo "<td>" . $row['email'] . "</td>";
+     echo "<td>" . $row['emailAddress'] . "</td>";
      echo "<td>" . $row['contactNumber'] . "</td>";
-     echo "<td>" . $row['startDepot'] . "</td>";
-     echo "<td>" . $row['destinationDepot'] . "</td>";
+     echo "<td>" . $row['initialCollectionPoint'] . "</td>";
+     echo "<td>" . $row['startDate'] . "</td>";
      echo "<td>" . $row['numberPassengers'] . "</td>";
      echo "<td>" . $row['driverID'] . "</td>";
      echo "<td>" . $row['vehicleRegistration'] . "</td>";
      echo "</tr>";
    }
-   echo "</table>"
+   echo "</table>";
 
    //close the connection
-  //  mysqli_close($conn);
+  mysqli_close($conn);
   ?>
 
 </fieldset>
@@ -155,21 +145,22 @@
 <form action="reports.php" method="POST">
 <?php
 
-/*  //database credentials
-  require_once("config.php");
-  
-  //where do you get the drivers values from tho???
+ /* import the config for the database */
+ require_once("config.php");
 
-  // making connection
-  $conn=mysqli_connect(servername,username,password,database) 
-  or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
+ /* establish the connection to the database */
+ $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+     or die("there was an error connecting to the database.");
 
-  //query instructions
-  $query="SELECT  *  FROM driver";
+ /* define the query */
+ $query = "SELECT * FROM driver";
 
-  $result=mysqli_query($conn,$query) 
-  or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
-*/
+ /* get the results of the query and put them into a variable */
+ $result = mysqli_query($conn, $query)
+         or die("There was an error executing the query.");
+
+
+
   //creating bookings table
   echo "<table style=\" border: 1px solid black; width: 100%;\">
   <tr>
@@ -192,7 +183,11 @@
      echo "</tr>";
    }
 
-   echo "</table>"
+   echo "</table>";
+
+      //close the connection
+  mysqli_close($conn);
+
   ?>
 
 </fieldset>
