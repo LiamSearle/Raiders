@@ -30,8 +30,8 @@
     <table>
                 <tr>
                     <td><img src="images/logoo.png" height="50px"></td>
-                    <td><a href="homepage.php"><i class="fas fa-home"></i>Home</a></td>
-                    <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
+                    <td><a href="adminhomepage.php"><i class="fas fa-home"></i>Home</a></td>
+                    <td><a href="adminclients.php"><i class="fas fa-user"></i> Clients</a></td>
                     <td><a class="active" href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                     <td><a href="reports.php"><i class="fas fa-list"></i> Reports</a></td>
                     <td>
@@ -51,6 +51,22 @@
 
 <form action="adminNewBookingPage.php" method="POST">
 <?php
+   /* import the config for the database */
+   require_once("config.php");
+
+   /* establish the connection to the database */
+   $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+       or die("there was an error connecting to the database.");
+
+   /* define the query */
+   $query = "SELECT * FROM bookings LEFT JOIN client ON bookings.clientID = client.clientID 
+   UNION SELECT * FROM bookings RIGHT JOIN client ON bookings.clientID = client.clientID";
+ 
+   /* get the results of the query and put them into a variable */
+   $result = mysqli_query($conn, $query)
+           or die("There was an error executing the query.");
+   
+  //took out destination/end depot in          
   echo "<table style=\" border: 1px solid black; width: 100%;\">
   <tr>
   <th> ClientID </th>
@@ -59,8 +75,7 @@
   <th> Email </th>
   <th> Contact Number </th>
   <th> Start Depot </th>
-  <th> Destination Depot </th>
-  <th> Departure Date </th>
+  <th> Start Date </th>
   <th> Number of Passengers </th>
   </tr>";
   
@@ -69,17 +84,20 @@
    {
      echo "<tr>";
      echo "<td>" . $row['clientID'] . "</td>";
-     echo "<td>" . $row['firstName'] . "</td>";
+     echo "<td>" . $row['firstname'] . "</td>";
      echo "<td>" . $row['lastName'] .  "</td>";
-     echo "<td>" . $row['email'] . "</td>";
+     echo "<td>" . $row['emailAddress'] . "</td>";
      echo "<td>" . $row['contactNumber'] . "</td>";
-     echo "<td>" . $row['startDepot'] . "</td>";
-     echo "<td>" . $row['destinationDepot'] . "</td>";
+     echo "<td>" . $row['initialCollectionPoint'] . "</td>";
+     echo "<td>" . $row['startDate'] . "</td>";
      echo "<td>" . $row['numberPassengers'] . "</td>";
      echo "</tr>";
    }
 
    echo "</table>";
+
+      /* close the connection */
+      mysqli_close($conn);
   ?>
 
   <table id="clientTable" style="margin: auto; width: 50%;">
