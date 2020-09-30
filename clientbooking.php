@@ -108,10 +108,11 @@
   <nav>
     <table>
         <tr>
-            <td><a href="aboutus.php">About Us</a></td>
-            <td><a href="#######">FAQs</a></td>
-            <td><a href="#######">Legal</a></td>
-            <td><a href="#######">Terms & Conditions</a></td>
+            <td><a href="clientaboutus.php">About Us</a></td>
+            <td><a href="clienthelp.php">Help</a> | </td>
+            <td><a href="clientfaq.php">FAQs</a></td>
+            <td><a href="clientlegal">Legal</a></td>
+            <td><a href="clientterms.php">Terms & Conditions</a></td>
         </tr>
     </table>
   </nav>
