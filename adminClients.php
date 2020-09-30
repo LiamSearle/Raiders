@@ -47,10 +47,10 @@
  
 
  <!-- search the client databases using clientID -->
-<h2 id="clientHeader">Client ID:</h2>
+<h2 id="clientHeader">Client ID:
 <input type="search" name="txtSearch" id="clientID">
 <input type="submit" name="submit" value="Search">
- 
+</h2>
 <fieldset style="margin: auto; width: 50%;">
 <!-- populating the client fields -->
 <?php
@@ -63,8 +63,12 @@
 
       /* define the query */
      
+     
       //want it to be ordered by client ID asc
-      $query = "SELECT * FROM bookings LEFT JOIN client ON bookings.clientID = client.clientID UNION SELECT * FROM bookings RIGHT JOIN client ON bookings.clientID = client.clientID";
+      $query = "SELECT * FROM bookings LEFT JOIN client ON bookings.clientID = client.clientID 
+                UNION SELECT * FROM bookings RIGHT JOIN client ON bookings.clientID = client.clientID 
+                WHERE bookingID=" . $_REQUEST['id'] . ";";
+     
 
       /* get the results of the query and put them into a variable */
       $result = mysqli_query($conn, $query)
@@ -85,7 +89,7 @@
       mysqli_close($conn);
      ?>
 
-<legend>Booking ID: <?php echo $bookingID; ?></legend>
+<legend>Booking ID: <?php echo $_REQUEST['id']; ?></legend>
 
 <form action="adminNewBookingPage.php" method="POST">
   <table id="clientTable" style="margin: auto; width: 50%;">
