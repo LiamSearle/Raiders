@@ -47,82 +47,69 @@
 <input type="submit" name="submit" value="Search"></h2>
  
 <fieldset style="margin: auto; width: 70%;">
-<legend>New Booking: <?php $_REQUEST['id']; ?></legend>
+<legend>Booking ID: <?php echo $_REQUEST['id']; ?></legend>
 
 <form action="adminNewBookingPage.php" method="POST">
-<?php
-   /* import the config for the database */
-   require_once("config.php");
+ <?php 
+  /* import the config for the database */
+    require_once("config.php");
 
-   /* establish the connection to the database */
-   $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-       or die("there was an error connecting to the database.");
+    /* establish the connection to the database */
+    $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+        or die("there was an error connecting to the database.");
 
-   /* define the query */
-   $query = "SELECT * FROM bookings LEFT JOIN client ON bookings.clientID = client.clientID 
-            UNION SELECT * FROM bookings RIGHT JOIN client ON bookings.clientID = client.clientID
-            WHERE bookingID = " . $_REQUEST['id'] . ";";
+    /* define the query */
+    $query ="SELECT * FROM bookings INNER JOIN client ON client.clientID=bookings.clientID 
+             WHERE bookings.bookingID=" . $_REQUEST['id'] . ";";
  
-   /* get the results of the query and put them into a variable */
-   $result = mysqli_query($conn, $query)
-           or die("There was an error executing the query.");
+    /* get the results of the query and put them into a variable */
+    $result = mysqli_query($conn, $query)
+            or die("There was an error executing the query.");
    
-  //took out destination/end depot in          
-  echo "<table style=\" border: 1px solid black; width: 100%;\">
-  <tr>
-  <th> ClientID </th>
-  <th> First Name </th>
-  <th> Last Name </th>
-  <th> Email </th>
-  <th> Contact Number </th>
-  <th> Start Depot </th>
-  <th> Start Date </th>
-  <th> Number of Passengers </th>
-  </tr>";
+   //took out destination/end depot in          
+   echo "<table style=\" border: 1px solid black; width: 100%;\">
+   <tr>
+   <th> ClientID </th>
+   <th> First Name </th>
+   <th> Last Name </th>
+   <th> Email </th>
+   <th> Contact Number </th>
+   <th> Start Depot </th>
+   <th> Start Date </th>
+   <th> Number of Passengers </th>
+   </tr>";
   
    //displaying data
    while($row=mysqli_fetch_array($result))
    {
      echo "<tr>";
-     echo "<td>" . $row['clientID'] . "</td>";
+      echo "<td>" . $row['clientID'] . "</td>";
      echo "<td>" . $row['firstname'] . "</td>";
-     echo "<td>" . $row['lastName'] .  "</td>";
+      echo "<td>" . $row['lastName'] .  "</td>";
      echo "<td>" . $row['emailAddress'] . "</td>";
-     echo "<td>" . $row['contactNumber'] . "</td>";
+      echo "<td>" . $row['contactNumber'] . "</td>";
      echo "<td>" . $row['initialCollectionPoint'] . "</td>";
-     echo "<td>" . $row['startDate'] . "</td>";
+      echo "<td>" . $row['startDate'] . "</td>";
      echo "<td>" . $row['numberPassengers'] . "</td>";
-     echo "</tr>";
-   }
+    echo "</tr>";
+    }
 
    echo "</table>";
 
       /* close the connection */
-      mysqli_close($conn);
-  ?>
+      mysqli_close($conn); 
 
-  <table id="clientTable" style="margin: auto; width: 50%;">
+?>
+
+<table id="clientTable" style="margin: auto; width: 50%;">
 
   </table>    
         <br>
-        <div class="inputLabel">
-            <label for="driver">Driver </label>
-            
-            <!-- put this in php and echo an option for each driver from the database -->
-            <select id="driver" name="driver"> 
-                    <option value="Driver 1 From DB">Driver 1 From DB</option>
-                    <option value="Driver 2">Driver 2</option>
-                    <option value="Driver 3">Driver 3</option>
-                    <option value="Etc.">Etc.</option>
-            </select>
-        </div>
-    
-        <br><br>
 
         <div class="inputLabel">
           <!-- when querying the database, add a WHERE clause to filter on seat number -->
             <!-- put this in php and echo an option for each vehicle from the database -->
-        <label for="driver">Vehicle </label>
+        <label for="driver">Assign Vehicle: </label>
             <select id="vehicle" name="vehicle">
                 <option value="Vehicle 1 From DB">Vehicle 1 From DB</option>
                 <option value="Vehicle 2">Vehicle 2</option>
@@ -130,7 +117,41 @@
                 <option value="Etc.">Etc.</option>
         </select>
         </div>
-        
+
+        <br><br>
+
+<!-- retrieving drivers from the database to create drop down -->
+        <div class="inputLabel">
+            <label for="driver">Assign Driver: </label>
+            <select id="driver" name="driver"> 
+                    <?php
+                    /* import the config for the database */
+                      require_once("config.php");
+
+                      /* establish the connection to the database */
+                      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+                          or die("there was an error connecting to the database.");
+
+                      /* define the query */
+                      $query ="SELECT driverID,firstName,lastName FROM `driver`";
+
+                      /* get the results of the query and put them into a variable */
+                      $result = mysqli_query($conn, $query)
+                              or die("There was an error executing the query.");
+
+                      while($row = mysqli_fetch_array($result)) {
+                        echo("<option value='".$row['id']."'>" . 
+                        $row['driverID'] . " " . $row['firstName'] . " " . $row['lastName'] .
+                        "</option>");
+                      }
+
+                      /* close the connection */
+                      mysqli_close($conn);
+                      ?> 
+              <label for="driver">Select</label>
+                </select>
+        </div>
+         
         <br><br>
 
         <input type="submit" value="Create Booking">
