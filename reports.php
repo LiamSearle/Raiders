@@ -30,8 +30,8 @@
  <table>
       <tr>
           <td><img src="images/logoo.png" height="50px"></td>
-          <td><a href="homepage.php"><i class="fas fa-home"></i>Home</a></td>
-          <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
+          <td><a href="adminhomepage.php"><i class="fas fa-home"></i>Home</a></td>
+          <td><a href="adminclients.php"><i class="fas fa-user"></i> Clients</a></td>
           <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
           <td><a class="active" href="reports.php"><i class="fas fa-list"></i> Reports</a></td>
           <td>
@@ -45,7 +45,7 @@
 <div class="tab">
   <button class="tablinks" onclick="openReport(event, 'Bookings')" id="defaultOpen">Bookings</button>
   <button class="tablinks" onclick="openReport(event, 'Drivers')">Drivers</button>
-  <button class="tablinks" onclick="openReport(event, 'Depots')">Depots</button>
+  <button class="tablinks" onclick="openReport(event, 'Vehicles')">Vehicles</button>
 </div>
 
 <!-- bookings tab -->
@@ -56,12 +56,13 @@
 <div class="nav">
     <table>
                 <tr>
-                 <td><i class="fas fa-search"></i><input type="text" id="search" name="search" placeholder="Search">
-                  <input type="submit" name="search" value="Search"></td>
+                <form action="adminReportBookingSearch.php" method="POST">
+                 <td><i class="fas fa-search"></i><input type="text" id="search" name="search" placeholder="Booking ID">
+                  <input type="submit" name="search" value="Search"></td></form>
                   <td><label for="groupBy"> Group By: </label>
                   <select id="selections" name="Select">
-                    <option value="Departure Date" onclick="sort()" >Departure Date</option>
-                    <option value="Start Date" onclick="sort()">Start Depot</option>
+                    <option value="Departure Date" >Departure Date</option>
+                    <option value="Start Date" >Start Depot</option>
                     <option value="End Date" >End Depot</option>
                 </select></td>
                 </tr>
@@ -80,7 +81,8 @@
   or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
 
   //query instructions
-  $query="SELECT * FROM bookings LEFT JOIN client ON bookings.clientID = client.clientID UNION SELECT * FROM bookings RIGHT JOIN client ON bookings.clientID = client.clientID";
+  $query="SELECT * FROM bookings LEFT JOIN client ON bookings.clientID = client.clientID UNION SELECT * FROM bookings 
+  RIGHT JOIN client ON bookings.clientID = client.clientID";
 
   $result=mysqli_query($conn,$query) 
   or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
@@ -194,22 +196,23 @@
 </div>    <!--end of drivers tab code -->
 
 <!-- depot tab -->
-<div id="Depots" class="tabcontent">
+<div id="Vehicles" class="tabcontent">
 <fieldset style="margin: auto; width: 100%;">
 <!-- navigation bar on drivers tab -->
   <div class="nav">
     <table>
                 <tr>
-                 <td><i class="fas fa-search"></i><input type="text" id="search" name="search" placeholder="Depot ID">
+                 <td><i class="fas fa-search"></i><input type="text" id="search" name="search" placeholder="Vehicle Registration No">
                   <input type="submit" name="search" value="Search"></td>
 
                 </tr>
     </table>
 </div>
 
-<!-- write code for depot table -->
+<!-- write code for vehicle table -->
+
 </fieldset>
-</div> <!-- end of depot tab code -->
+</div> <!-- end of vehicle tab code -->
 
 <!-- javascript code to control the tabs  -->
 <script>
