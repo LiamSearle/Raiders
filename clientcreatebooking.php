@@ -50,8 +50,6 @@
         <td><input type="text" id="lastName" name="lastName" placeholder="Last Name"></td></tr>
         <tr><td><label for="email">Email:</label></td>
         <td><input type="email" id="email" name="email" placeholder="Email"></td></tr>
-        <label for="passwords">Passwords</label>
-        <input type="password" name= "passwords" id= "passwords" placeholder= "Password">
         <tr><td><label for="contactNumber">Contact Number:</label></td>
         <td><input type="text" id="contactNumber" name="contactNumber" placeholder="Contact Number"></td></tr>
         <tr><td><label for="startDepot">Start Location:</label></td>
