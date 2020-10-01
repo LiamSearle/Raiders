@@ -16,6 +16,13 @@ Minali
 - LogOut button issues? cant move it more to the left, not displaying
 -in adminnewbooking clientID should be ordered in ascending
 
+
+Liam
+- The global navigation buttons go to admin/client pages depending on which page you click them on,
+  shouldnt it stay in admin/client?
+- The logout button only works on 1 size of screen, need to align it to the right side of the screen
+  on all pages.
+
 ----------DATABASE------------
 
 - firstName needs to be fixed
