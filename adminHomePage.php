@@ -72,9 +72,10 @@
         
         while($row = mysqli_fetch_array($result)) {
             echo "<tr>";
-            echo "<td>" . "<a href=\"adminclients.php?id=" . $row['bookingID'] . "\">" . 
-            $row['bookingID'] . " " . $row['firstname']. " " . $row['lastName'] . 
-            " - Departure Date: " . $row['startDate'] . "</a>" . "</td>";
+            echo "<td>" . "Booking ID: " . "<a href=\"adminclients.php?id=" . $row['bookingID'] . "\">" . 
+            $row['bookingID'] .  "<br>" . $row['firstname']. " " . $row['lastName'] . 
+            " - Departure Date: " . $row['startDate'] . "<br>" . "From: " . $row['initialCollectionPoint'] . " -> " .
+             "</a>" . "</td>";
         }
         echo "</table>";
       ?>
