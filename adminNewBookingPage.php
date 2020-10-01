@@ -82,15 +82,15 @@
    //displaying data
    while($row=mysqli_fetch_array($result))
    {
-     echo "<tr>";
-      echo "<td>" . $row['clientID'] . "</td>";
-     echo "<td>" . $row['firstname'] . "</td>";
-      echo "<td>" . $row['lastName'] .  "</td>";
-     echo "<td>" . $row['emailAddress'] . "</td>";
-      echo "<td>" . $row['contactNumber'] . "</td>";
-     echo "<td>" . $row['initialCollectionPoint'] . "</td>";
-      echo "<td>" . $row['startDate'] . "</td>";
-     echo "<td>" . $row['numberPassengers'] . "</td>";
+    echo "<tr>";
+    echo "<td>" . $row['clientID'] . "</td>";
+    echo "<td>" . $row['firstname'] . "</td>";
+    echo "<td>" . $row['lastName'] .  "</td>";
+    echo "<td>" . $row['emailAddress'] . "</td>";
+    echo "<td>" . $row['contactNumber'] . "</td>";
+    echo "<td>" . $row['initialCollectionPoint'] . "</td>";
+    echo "<td>" . $row['startDate'] . "</td>";
+    echo "<td>" . $row['numberPassengers'] . "</td>";
     echo "</tr>";
     }
 

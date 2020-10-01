@@ -28,8 +28,8 @@
 <table>
             <tr>
                 <td><img src="images/logoo.png" height="50px"></td>
-                <td><a href="homepage.php"><i class="fas fa-home"></i>Home</a></td>
-                <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
+                <td><a href="adminhomepage.php"><i class="fas fa-home"></i>Home</a></td>
+                <td><a href="adminclients.php"><i class="fas fa-user"></i> Clients</a></td>
                 <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td><a href="reports.php"><i class="fas fa-list"></i> Reports</a></td>    
                 <td>
@@ -41,8 +41,12 @@
     <br>
 <div class="about-section">
 <fieldset>
-  <h1>About Us </h1>
+  <h2>About Us </h2>
   <p>Raiders is an information systems development team established in 2020.</p>
+  <p> Our companys main objective is to 
+   assist organizations with all their computer system needs. For Hamba Kahle Transport that means implementing
+   a computer based management services that is able to perform various tasks to help Hamba Kahle be the very best 
+   that they can be.  </p>
 
 
 <h2 style="text-align:center">Our Team</h2>
@@ -96,9 +100,6 @@
 </fieldset>
 </div>
     
-
-
-
  <!-- general footer code  -->
  <div class="footer"> 
   <nav>

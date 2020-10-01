@@ -43,13 +43,12 @@
   </table> 
   </div> 
 
-<?php $msg="Good Day Please recheck your booking details and then resubmit your request. Kind regards, The Hamba Kahle Team."; ?>
  
 
  <!-- search the client databases using clientID -->
 <form action="adminClientSearch.php" method="POST">
 <h2 id="clientHeader">Client ID:
-<input type="search" name="txtSearch" id="clientID">
+<input type="text" name="search" id="clientID">
 <input type="submit" name="submit" value="Search">
 </h2>
 </form>

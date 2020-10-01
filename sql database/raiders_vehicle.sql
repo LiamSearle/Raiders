@@ -16,34 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `daytrip`
+-- Table structure for table `vehicle`
 --
 
-DROP TABLE IF EXISTS `daytrip`;
+DROP TABLE IF EXISTS `vehicle`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `daytrip` (
-  `tripNumber` varchar(10) NOT NULL,
-  `date` date DEFAULT NULL,
-  `distance` float DEFAULT NULL,
-  `bedRequest` binary(10) DEFAULT NULL,
-  `destinationDepot` tinytext,
-  `startDepot` tinytext,
-  `depotID` varchar(10) NOT NULL,
-  PRIMARY KEY (`tripNumber`),
-  UNIQUE KEY `tripNumber_UNIQUE` (`tripNumber`),
-  UNIQUE KEY `depotID_UNIQUE` (`depotID`),
-  CONSTRAINT `depotID` FOREIGN KEY (`depotID`) REFERENCES `depot` (`depotID`)
+CREATE TABLE `vehicle` (
+  `registrationNumber` varchar(45) NOT NULL,
+  `dateOfPurchase` varchar(45) DEFAULT NULL,
+  `model` varchar(45) DEFAULT NULL,
+  `make` varchar(45) DEFAULT NULL,
+  `year` varchar(45) DEFAULT NULL,
+  `numberOfSeats` varchar(45) DEFAULT NULL,
+  `licenceCode` varchar(45) NOT NULL,
+  PRIMARY KEY (`registrationNumber`),
+  UNIQUE KEY `registrationNumber_UNIQUE` (`registrationNumber`),
+  UNIQUE KEY `licenceCode_UNIQUE` (`licenceCode`),
+  CONSTRAINT `licenceCode` FOREIGN KEY (`licenceCode`) REFERENCES `licence` (`licenceCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `daytrip`
+-- Dumping data for table `vehicle`
 --
 
-LOCK TABLES `daytrip` WRITE;
-/*!40000 ALTER TABLE `daytrip` DISABLE KEYS */;
-/*!40000 ALTER TABLE `daytrip` ENABLE KEYS */;
+LOCK TABLES `vehicle` WRITE;
+/*!40000 ALTER TABLE `vehicle` DISABLE KEYS */;
+/*!40000 ALTER TABLE `vehicle` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,9 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-19 12:14:40
-© 2020 GitHub, Inc.
-
-
-
-
+-- Dump completed on 2020-10-01 14:37:42

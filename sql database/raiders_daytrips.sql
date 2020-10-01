@@ -16,33 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `client`
+-- Table structure for table `daytrips`
 --
 
-DROP TABLE IF EXISTS `client`;
+DROP TABLE IF EXISTS `daytrips`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `client` (
-  `clientID` varchar(10) NOT NULL,
-  `firstname` tinytext,
-  `lastName` tinytext,
-  `emailAddress` tinytext,
-  `contactNumber` varchar(10) DEFAULT NULL,
-  `passwords` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`clientID`),
-  UNIQUE KEY `clientID_UNIQUE` (`clientID`),
-  UNIQUE KEY `password_UNIQUE` (`passwords`)
+CREATE TABLE `daytrips` (
+  `tripNumber` int NOT NULL AUTO_INCREMENT,
+  `date` date DEFAULT NULL,
+  `distance` float DEFAULT NULL,
+  `bedRequest` binary(10) DEFAULT NULL,
+  `destinationDepot` tinytext,
+  `startDepot` tinytext,
+  `depotID` varchar(10) NOT NULL,
+  PRIMARY KEY (`tripNumber`),
+  UNIQUE KEY `tripNumber_UNIQUE` (`tripNumber`),
+  UNIQUE KEY `depotID_UNIQUE` (`depotID`),
+  CONSTRAINT `depotID` FOREIGN KEY (`depotID`) REFERENCES `depot` (`depotID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `client`
+-- Dumping data for table `daytrips`
 --
 
-LOCK TABLES `client` WRITE;
-/*!40000 ALTER TABLE `client` DISABLE KEYS */;
-INSERT INTO `client` VALUES ('C0001','James','Bond','jb@gmail.com','0729323821','raiders001');
-/*!40000 ALTER TABLE `client` ENABLE KEYS */;
+LOCK TABLES `daytrips` WRITE;
+/*!40000 ALTER TABLE `daytrips` DISABLE KEYS */;
+/*!40000 ALTER TABLE `daytrips` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-09-19 12:14:39
+-- Dump completed on 2020-10-01 14:37:40

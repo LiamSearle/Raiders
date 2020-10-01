@@ -16,32 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `daytripdepot`
+-- Table structure for table `vehiclebooking`
 --
 
-DROP TABLE IF EXISTS `daytripdepot`;
+DROP TABLE IF EXISTS `vehiclebooking`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `daytripdepot` (
-  `depotID` int NOT NULL AUTO_INCREMENT,
-  `tripNumber` varchar(10) NOT NULL,
-  `startDepot` varchar(10) NOT NULL,
-  `destinationDepot` varchar(10) NOT NULL,
-  PRIMARY KEY (`depotID`,`tripNumber`),
-  UNIQUE KEY `depotID_UNIQUE` (`depotID`),
-  UNIQUE KEY `tripNumber_UNIQUE` (`tripNumber`),
-  UNIQUE KEY `startDepot_UNIQUE` (`startDepot`),
-  UNIQUE KEY `destinationDepot_UNIQUE` (`destinationDepot`)
+CREATE TABLE `vehiclebooking` (
+  `vehicleBookingID` varchar(45) NOT NULL,
+  `bookingNumber` varchar(45) NOT NULL,
+  `registrationNumber` varchar(45) NOT NULL,
+  PRIMARY KEY (`vehicleBookingID`),
+  UNIQUE KEY `vehicleBookingID_UNIQUE` (`vehicleBookingID`),
+  UNIQUE KEY `bookingNumber_UNIQUE` (`bookingNumber`),
+  UNIQUE KEY `registrationNumber_UNIQUE` (`registrationNumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `daytripdepot`
+-- Dumping data for table `vehiclebooking`
 --
 
-LOCK TABLES `daytripdepot` WRITE;
-/*!40000 ALTER TABLE `daytripdepot` DISABLE KEYS */;
-/*!40000 ALTER TABLE `daytripdepot` ENABLE KEYS */;
+LOCK TABLES `vehiclebooking` WRITE;
+/*!40000 ALTER TABLE `vehiclebooking` DISABLE KEYS */;
+/*!40000 ALTER TABLE `vehiclebooking` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-01 14:37:41
+-- Dump completed on 2020-10-01 14:37:40
