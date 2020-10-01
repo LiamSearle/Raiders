@@ -16,32 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `daytripdepot`
+-- Table structure for table `clients`
 --
 
-DROP TABLE IF EXISTS `daytripdepot`;
+DROP TABLE IF EXISTS `clients`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `daytripdepot` (
-  `depotID` int NOT NULL AUTO_INCREMENT,
-  `tripNumber` varchar(10) NOT NULL,
-  `startDepot` varchar(10) NOT NULL,
-  `destinationDepot` varchar(10) NOT NULL,
-  PRIMARY KEY (`depotID`,`tripNumber`),
-  UNIQUE KEY `depotID_UNIQUE` (`depotID`),
-  UNIQUE KEY `tripNumber_UNIQUE` (`tripNumber`),
-  UNIQUE KEY `startDepot_UNIQUE` (`startDepot`),
-  UNIQUE KEY `destinationDepot_UNIQUE` (`destinationDepot`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `clients` (
+  `clientID` int NOT NULL AUTO_INCREMENT,
+  `firstName` tinytext,
+  `lastName` tinytext,
+  `emailAddress` tinytext,
+  `contactNumber` varchar(10) DEFAULT NULL,
+  `passwords` varchar(30) NOT NULL,
+  PRIMARY KEY (`clientID`),
+  UNIQUE KEY `clientID_UNIQUE` (`clientID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `daytripdepot`
+-- Dumping data for table `clients`
 --
 
-LOCK TABLES `daytripdepot` WRITE;
-/*!40000 ALTER TABLE `daytripdepot` DISABLE KEYS */;
-/*!40000 ALTER TABLE `daytripdepot` ENABLE KEYS */;
+LOCK TABLES `clients` WRITE;
+/*!40000 ALTER TABLE `clients` DISABLE KEYS */;
+INSERT INTO `clients` VALUES (1,'James','Bond','jb@gmail.com','0729323821','james'),(2,'Mercilove','Xerinda','mercilove.j.xerinda@gmail.com','0619323821','merci'),(3,'Mpho','Saba','abc@gmail.com','0711580057','mpho'),(4,'Mercilove','Xerinda','mercilove.j.shirindza@gmail.com','45645','joseph');
+/*!40000 ALTER TABLE `clients` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
