@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clients</title>
+  <title>Admin Clients</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
 
@@ -43,14 +43,17 @@
   </table> 
   </div> 
 
-
+<?php $msg="Good Day Please recheck your booking details and then resubmit your request. Kind regards, The Hamba Kahle Team."; ?>
  
 
  <!-- search the client databases using clientID -->
+<form action="adminClientSearch.php" method="POST">
 <h2 id="clientHeader">Client ID:
 <input type="search" name="txtSearch" id="clientID">
 <input type="submit" name="submit" value="Search">
 </h2>
+</form>
+
 <fieldset style="margin: auto; width: 50%;">
 <!-- populating the client fields -->
 <?php
@@ -65,10 +68,8 @@
      
      
       //want it to be ordered by client ID asc
-      $query = "SELECT * FROM bookings LEFT JOIN client ON bookings.clientID = client.clientID 
-                UNION SELECT * FROM bookings RIGHT JOIN client ON bookings.clientID = client.clientID 
-                WHERE bookingID=" . $_REQUEST['id'] . ";";
-     
+      $query ="SELECT * FROM bookings INNER JOIN client ON client.clientID=bookings.clientID 
+              WHERE bookings.bookingID=" . $_REQUEST['id'] . ";";
 
       /* get the results of the query and put them into a variable */
       $result = mysqli_query($conn, $query)
@@ -112,10 +113,10 @@
       </table>
       
       <a href="adminNewBookingPage.php?id=<?php echo $_REQUEST['id']; ?>" > Confirm Details</a>
-    </form>
+    <p></p>
     <form action="" method="POST">
       <!-- Sends a message to the client informing them the details they have entered are incorrect. -->
-      <button type="submit" style="margin: auto; width: 15%; padding: 10px;">Reject Details</button>
+      <a href=""> Reject Details</a>
     </form>
     
 </fieldset>
