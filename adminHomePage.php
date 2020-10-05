@@ -74,7 +74,8 @@
             echo "<tr>";
             echo "<td>" . "Booking ID: " . "<a href=\"adminclients.php?id=" . $row['bookingID'] . "\">" . 
             $row['bookingID'] .  "<br>" . $row['firstname']. " " . $row['lastName'] . 
-            " - Departure Date: " . $row['startDate'] . "<br>" . "From: " . $row['initialCollectionPoint'] . " -> " .
+            " - Departure Date: " . $row['startDate'] . "<br>" .
+             "From: " . $row['initialCollectionPoint'] . " -> " .  $row['finalCollectionPoint'] .
              "</a>" . "</td>";
         }
         echo "</table>";
