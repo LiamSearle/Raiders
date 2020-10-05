@@ -29,6 +29,7 @@
 
 <!-- general navigation bar code   -->
 <div class="nav"> 
+
  <table>
       <tr>
           <td><img src="images/logoo.png" height="50px"></td>
@@ -46,7 +47,8 @@
  
 
  <!-- search the client databases using clientID -->
-<form action="adminClientSearch.php" method="POST">
+
+<form action="adminclients.php" method="POST">
 <h2 id="clientHeader">Client ID:
 <input type="text" name="search" id="clientID">
 <input type="submit" name="submit" value="Search">
@@ -54,19 +56,53 @@
 </form>
 
 <fieldset style="margin: auto; width: 50%;">
+
 <!-- populating the client fields -->
 <?php
         /* import the config for the database */
       require_once("config.php");
+  
+      if(isset($_REQUEST['submit'])){
+        /* establish the connection to the database */
+        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+            or die("there was an error connecting to the database.");
+      
+        /* define the query */
+          $search=$_REQUEST['search'];
+        //want it to be ordered by client ID asc
+        $query = "SELECT * FROM bookings INNER JOIN client ON client.clientID=bookings.clientID
+         WHERE client.clientID LIKE '%$search%'";
+       
+      
+        /* get the results of the query and put them into a variable */
+        $result = mysqli_query($conn, $query)
+                or die("There was an error executing the query.");
+      
+      
+        while($row = mysqli_fetch_array($result)) {
+          $bookingID=$row['bookingID'];
+          $firstName=$row['firstname'];
+          $lastName=$row['lastName'];
+          $email=$row['emailAddress'];
+          $contactNumber=$row['contactNumber'];
+          $startDepot=$row['initialCollectionPoint'];
+          $endDepot=$row['finalCollectionPoint'];
+          $numberPassengers=$row['numberPassengers'];
+          $departureDate=$row['endDate'];
+        }
+      
+        /* close the connection */
+        mysqli_close($conn);
+      
+      }
+       
 
-      /* establish the connection to the database */
+  else{   
+    /* establish the connection to the database */
       $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
           or die("there was an error connecting to the database.");
 
       /* define the query */
-     
-     
-      //want it to be ordered by client ID asc
       $query ="SELECT * FROM bookings INNER JOIN client ON client.clientID=bookings.clientID 
               WHERE bookings.bookingID=" . $_REQUEST['id'] . ";";
 
@@ -81,16 +117,18 @@
         $email=$row['emailAddress'];
         $contactNumber=$row['contactNumber'];
         $startDepot=$row['initialCollectionPoint'];
+        $endDepot=$row['finalCollectionPoint'];
         $numberPassengers=$row['numberPassengers'];
         $departureDate=$row['endDate'];
       }
 
       /* close the connection */
       mysqli_close($conn);
+    }
      ?>
 
-<legend>Booking ID: <?php echo $_REQUEST['id']; ?></legend>
-
+<!-- creating the area client data will populate into -->
+<legend>Booking ID: <?php echo $bookingID; ?></legend>
 <form action="adminNewBookingPage.php" method="POST">
   <table id="clientTable" style="margin: auto; width: 50%;">
       <tr><td><label for="firstName">First Name:</label></td>
@@ -103,8 +141,8 @@
           <td><input type="text" id="contactNumber" name="contactNumber" value="<?php echo $contactNumber; ?>" readonly></td></tr>
           <tr><td><label for="startDepot">Start Location:</label></td>
           <td><input type="text" id="startDepot" name="startDepot" value="<?php echo $startDepot; ?>" readonly></td></tr>
-          <tr><td><label for="destinationDepot">Destination:</label></td>
-          <td><input type="text" id="destinationDepot" name="destinationDepot" placeholder="Destination"></td></tr>
+          <tr><td><label for="destinationDepot">End Location:</label></td>
+          <td><input type="text" id="destinationDepot" name="destinationDepot" value ="<?php echo $endDepot; ?>" read only></td></tr>
           <tr><td><label for="numberPassengers">Number of Passengers:</label></td>
           <td><input type="text" id="numberPassengers" name="numberPassengers" value="<?php echo $numberPassengers; ?>" readonly></td></tr>
           <tr><td><label for="date">Departure Date:</label></td>
