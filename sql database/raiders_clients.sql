@@ -31,7 +31,7 @@ CREATE TABLE `clients` (
   `passwords` varchar(30) NOT NULL,
   PRIMARY KEY (`clientID`),
   UNIQUE KEY `clientID_UNIQUE` (`clientID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `clients` (
 
 LOCK TABLES `clients` WRITE;
 /*!40000 ALTER TABLE `clients` DISABLE KEYS */;
-INSERT INTO `clients` VALUES (1,'James','Bond','jb@gmail.com','0729323821','james'),(2,'Mercilove','Xerinda','mercilove.j.xerinda@gmail.com','0619323821','merci'),(3,'Mpho','Saba','abc@gmail.com','0711580057','mpho'),(4,'Mercilove','Xerinda','mercilove.j.shirindza@gmail.com','45645','joseph');
+INSERT INTO `clients` VALUES (1,'James','Bond','jb@gmail.com','0729323821','james'),(5,'Mercilove','Xerinda','mx@gmail.com','0619323821','merci'),(6,'Tom ','Cruise','tc@gmail.com','0732481151','mission');
 /*!40000 ALTER TABLE `clients` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-06  9:23:41
+-- Dump completed on 2020-10-06 14:40:54

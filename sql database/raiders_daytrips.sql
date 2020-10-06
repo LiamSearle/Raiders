@@ -29,9 +29,11 @@ CREATE TABLE `daytrips` (
   `bedRequest` binary(10) DEFAULT NULL,
   `destinationDepot` tinytext,
   `startDepot` tinytext,
-  `depotID` varchar(10) NOT NULL,
+  `depotID` int NOT NULL,
   PRIMARY KEY (`tripNumber`),
-  UNIQUE KEY `tripNumber_UNIQUE` (`tripNumber`)
+  UNIQUE KEY `tripNumber_UNIQUE` (`tripNumber`),
+  KEY `depotID_idx` (`depotID`),
+  CONSTRAINT `depotID` FOREIGN KEY (`depotID`) REFERENCES `depot` (`depotID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -53,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-06  9:23:40
+-- Dump completed on 2020-10-06 14:40:53

@@ -52,7 +52,8 @@
         <tr><td><label for="collection">Initial Collection Point:</label></td>
         <td><input type="text" id="collection" name="collection" placeholder="Initial Collection Point"></td></tr>
         <tr><td> </td> 
-        <td><input type="submit" name="submit" value="Add"></td></tr>  
+        <td><input type="submit" name="submit" value="Add"></td></tr> 
+        <td><a href="http://"></a></td> 
     </table>
     </form>
   </fieldset>
@@ -64,25 +65,27 @@
   if (isset($_REQUEST['submit'])) {
       //get the value from the form
 
-      $name = $_REQUEST['firstName'];
-      $surname = $_REQUEST['lastName'];
-      $email =$_REQUEST['email'];
-      $contact = $_REQUEST['contactNumber'];
+      $startdate = $_REQUEST['startdate'];
+      $enddate = $_REQUEST['enddate'];
+      $passengers =$_REQUEST['numberPassengers'];
+      $collection = $_REQUEST['collection'];
 
       // Create connection
   $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
     or die("Error connecting to the database");
 
   //issue the query to insert details to the database
-  $query = "INSERT INTO bookings  (firstName, lastName, emailAddress, contactNumber) VALUES ('$name', '$surname', '$email', '$contact')";
+  $query = "INSERT INTO bookings (startDate, endDate, numberPassengers, initialCollectionPoint)
+   VALUES ('$startdate', '$enddate', '$passengers', '$collection')";
 
   //execute the query 
   $result = mysqli_query($conn, $query)
   or die ("Error adding booking details");
   header("Location:clientcreatebooking.php");
   mysqli_close($conn);
+  echo "<strong style= \"color:Red\">New booking was created</strong>";
 }
-echo "<strong style= \"color:Red\">New booking was created</strong>";
+
   ?>
 
  <!-- general footer code  -->

@@ -36,13 +36,14 @@
                 $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
                 or die("could not connect");
                     //issue query instruction 
-                $query = "SELECT passwords FROM clients WHERE contactNumber = $user";
+                $query = "SELECT passwords,clientID FROM clients WHERE contactNumber = $user";
                 $results = mysqli_query($conn, $query)
                     or die("<strong style=\"color:red;\">Invalid username</strong>");
                 $row = mysqli_fetch_array($results);
                 $pass = $row['passwords'];
+                $id = $row['clientID'];
                 if($pass == $password){
-                    header("Location:clienthome.php");
+                    header("Location:clienthome.php?id=".$id);
                 }
                 else{
                     echo "<strong style=\"color:red;\">Wrong password!</strong>";

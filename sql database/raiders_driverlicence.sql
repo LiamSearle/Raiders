@@ -16,28 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `licence`
+-- Table structure for table `driverlicence`
 --
 
-DROP TABLE IF EXISTS `licence`;
+DROP TABLE IF EXISTS `driverlicence`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `licence` (
+CREATE TABLE `driverlicence` (
+  `driverLicenceID` int NOT NULL,
+  `driverID` int NOT NULL,
   `licenceCode` int NOT NULL,
-  `licenceDescription` int DEFAULT NULL,
-  `licenceClassification` int DEFAULT NULL,
-  PRIMARY KEY (`licenceCode`),
-  UNIQUE KEY `licenceCode_UNIQUE` (`licenceCode`)
+  PRIMARY KEY (`driverLicenceID`),
+  KEY `driverlicence_ibfk_1` (`driverID`),
+  KEY `driverlicence_ibfk_2` (`licenceCode`),
+  CONSTRAINT `driverlicence_ibfk_1` FOREIGN KEY (`driverID`) REFERENCES `driver` (`driverID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `driverlicence_ibfk_2` FOREIGN KEY (`licenceCode`) REFERENCES `licence` (`licenceCode`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `licence`
+-- Dumping data for table `driverlicence`
 --
 
-LOCK TABLES `licence` WRITE;
-/*!40000 ALTER TABLE `licence` DISABLE KEYS */;
-/*!40000 ALTER TABLE `licence` ENABLE KEYS */;
+LOCK TABLES `driverlicence` WRITE;
+/*!40000 ALTER TABLE `driverlicence` DISABLE KEYS */;
+/*!40000 ALTER TABLE `driverlicence` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-06 14:40:55
+-- Dump completed on 2020-10-06 14:40:53

@@ -29,11 +29,11 @@ CREATE TABLE `bookings` (
   `numberPassengers` int DEFAULT NULL,
   `initialCollectionPoint` tinytext,
   `clientID` int NOT NULL,
-  `driverID` int NOT NULL,
+  `driverID` int DEFAULT NULL,
   PRIMARY KEY (`bookingID`),
   UNIQUE KEY `bookingID_UNIQUE` (`bookingID`),
-  UNIQUE KEY `driverID_UNIQUE` (`driverID`),
   UNIQUE KEY `clientID_UNIQUE` (`clientID`),
+  UNIQUE KEY `driverID_UNIQUE` (`driverID`),
   KEY `driverID_idx` (`driverID`,`clientID`),
   CONSTRAINT `clientID` FOREIGN KEY (`clientID`) REFERENCES `clients` (`clientID`),
   CONSTRAINT `driverID` FOREIGN KEY (`driverID`) REFERENCES `driver` (`driverID`)
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-06  9:23:42
+-- Dump completed on 2020-10-06 14:40:55
