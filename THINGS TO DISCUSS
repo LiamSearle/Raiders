@@ -5,17 +5,22 @@ Minali
 - index.html maybe two buttons client or admin??
 - raiders.php not centered
 
-- doesn't make sense the table on returning and new client page because the driver wont be assigned and stuff 
-- after you logged out and redirected to the raiders.php page maybe something at the top saying sucessfully logged out?
-- why doesn't the id code for the clienttable same thing with the logout button 
-(see navigation.html for further explanation) not want to be called from the external style sheet??
-- right align copyright
-- returningandnewclients.php booking id would be passed into the legend of the fieldset
 - move things in aboutus into center
 - help at bottom of page take out t@cs
 - LogOut button issues? cant move it more to the left, not displaying
 -in adminnewbooking clientID should be ordered in ascending
 
+-adminnewbookingpage query for assign drivers and assign vehicles 
+-driver homepage should only show the specific schedule for the driver not for all of them 
+-maybe have one employees table that stores all the data about each employee and their password for the logging in pages
+ with a system like:
+  A01-administrators
+  DR01 - DR10 for drivers
+  DA01 - depot admin
+  HR01 - hr manager???
+- flow from driver login page, driver homepage, driver depot page should all contain an id
+-driver should click check availability and that should send to depotadmins who confirm and then send back confirmation msg to drivers
+- maybe notification tab in drivers? 
 
 Liam
 - The global navigation buttons go to admin/client pages depending on which page you click them on,
@@ -25,20 +30,9 @@ Liam
 
 ----------DATABASE------------
 
-- firstName needs to be fixed
-- "client" needs to be "clients"
-- daytrip needs to be "daytrips"
-- need to add the remaining databases
-  - vehicleBooking
-  - vehicle
-  - license
-  - driverLicense
-- confirm with ERD that all collumns are there
+-in vehicles licensecode musn't be unique, must allow for duplicate values
+-shouldnt be a tripnumber column in depot database
+-add end location/multiple locations to bookings
+-still need driverlicense class
 
-DONE
-- maybe calling the bookingreq.php page homepage would make more sense
-- why have a search bar what will it do - deleted
-- when you click bookings now takes you too the adminNewBookingPage that Liam created
-- why client.php task bar different
-- maybe a reports tab?
 
