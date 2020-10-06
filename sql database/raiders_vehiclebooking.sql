@@ -23,13 +23,15 @@ DROP TABLE IF EXISTS `vehiclebooking`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `vehiclebooking` (
-  `vehicleBookingID` varchar(45) NOT NULL,
-  `bookingNumber` varchar(45) NOT NULL,
-  `registrationNumber` varchar(45) NOT NULL,
+  `vehicleBookingID` int NOT NULL,
+  `bookingID` int NOT NULL,
+  `registrationNumber` int NOT NULL,
   PRIMARY KEY (`vehicleBookingID`),
   UNIQUE KEY `vehicleBookingID_UNIQUE` (`vehicleBookingID`),
-  UNIQUE KEY `bookingNumber_UNIQUE` (`bookingNumber`),
-  UNIQUE KEY `registrationNumber_UNIQUE` (`registrationNumber`)
+  UNIQUE KEY `bookingNumber_UNIQUE` (`bookingID`),
+  UNIQUE KEY `registrationNumber_UNIQUE` (`registrationNumber`),
+  CONSTRAINT `bookingID` FOREIGN KEY (`bookingID`) REFERENCES `bookings` (`bookingID`),
+  CONSTRAINT `registrationNumber` FOREIGN KEY (`registrationNumber`) REFERENCES `vehicle` (`registrationNumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -51,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-01 14:37:40
+-- Dump completed on 2020-10-06  9:23:40

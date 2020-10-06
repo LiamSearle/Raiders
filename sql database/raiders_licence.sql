@@ -23,9 +23,9 @@ DROP TABLE IF EXISTS `licence`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `licence` (
-  `licenceCode` varchar(45) NOT NULL,
-  `licenceDescription` varchar(45) DEFAULT NULL,
-  `licenceClassification` varchar(45) DEFAULT NULL,
+  `licenceCode` int NOT NULL,
+  `licenceDescription` int DEFAULT NULL,
+  `licenceClassification` int DEFAULT NULL,
   PRIMARY KEY (`licenceCode`),
   UNIQUE KEY `licenceCode_UNIQUE` (`licenceCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-01 14:37:42
+-- Dump completed on 2020-10-06  9:23:42

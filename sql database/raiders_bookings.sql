@@ -34,7 +34,9 @@ CREATE TABLE `bookings` (
   UNIQUE KEY `bookingID_UNIQUE` (`bookingID`),
   UNIQUE KEY `driverID_UNIQUE` (`driverID`),
   UNIQUE KEY `clientID_UNIQUE` (`clientID`),
-  KEY `driverID_idx` (`driverID`,`clientID`)
+  KEY `driverID_idx` (`driverID`,`clientID`),
+  CONSTRAINT `clientID` FOREIGN KEY (`clientID`) REFERENCES `clients` (`clientID`),
+  CONSTRAINT `driverID` FOREIGN KEY (`driverID`) REFERENCES `driver` (`driverID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -56,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-01 14:37:41
+-- Dump completed on 2020-10-06  9:23:42

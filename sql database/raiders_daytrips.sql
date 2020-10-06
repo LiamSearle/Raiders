@@ -31,9 +31,7 @@ CREATE TABLE `daytrips` (
   `startDepot` tinytext,
   `depotID` varchar(10) NOT NULL,
   PRIMARY KEY (`tripNumber`),
-  UNIQUE KEY `tripNumber_UNIQUE` (`tripNumber`),
-  UNIQUE KEY `depotID_UNIQUE` (`depotID`),
-  CONSTRAINT `depotID` FOREIGN KEY (`depotID`) REFERENCES `depot` (`depotID`)
+  UNIQUE KEY `tripNumber_UNIQUE` (`tripNumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -55,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-01 14:37:40
+-- Dump completed on 2020-10-06  9:23:40

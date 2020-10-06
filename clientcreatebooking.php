@@ -30,9 +30,8 @@
             <tr>
                 <td><img src="images/logoo.png" height="50px"></td>
                 <td><a href="homepage.php"><i class="fas fa-home"></i>Home</a></td>
-                <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
-                <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
-                <td><a href="reports.php"><i class="fas fa-list"></i> Reports</a></td>
+                <td><a href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
+                <td><a href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td>
             <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
           </td>      

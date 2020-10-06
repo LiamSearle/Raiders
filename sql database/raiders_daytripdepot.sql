@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `daytripdepot`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `daytripdepot` (
   `depotID` int NOT NULL AUTO_INCREMENT,
-  `tripNumber` varchar(10) NOT NULL,
+  `tripNumber` int NOT NULL,
   `startDepot` varchar(10) NOT NULL,
   `destinationDepot` varchar(10) NOT NULL,
   PRIMARY KEY (`depotID`,`tripNumber`),
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-01 14:37:41
+-- Dump completed on 2020-10-06  9:23:41
