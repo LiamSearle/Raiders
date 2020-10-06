@@ -43,22 +43,14 @@
     <form action="clientcreatebooking.php" method="POST">
   
    <table>
-     <tr><td><label for="firstName">First Name:</label></td>
-    <td><input type="text" id="firstName" name="firstName" placeholder= "First Name"></td></tr>
-        <tr><td><label for="lastName">Last Name:</label></td>
-        <td><input type="text" id="lastName" name="lastName" placeholder="Last Name"></td></tr>
-        <tr><td><label for="email">Email:</label></td>
-        <td><input type="email" id="email" name="email" placeholder="Email"></td></tr>
-        <tr><td><label for="contactNumber">Contact Number:</label></td>
-        <td><input type="text" id="contactNumber" name="contactNumber" placeholder="Contact Number"></td></tr>
-        <tr><td><label for="startDepot">Start Location:</label></td>
-        <td><input type="text" id="startDepot" name="startDepot" placeholder="Start Location"></td></tr>
-        <tr><td><label for="destinationDepot">Destination:</label></td>
-        <td><input type="text" id="destinationDepot" name="destinationDepot" placeholder="Destination"></td></tr>
+     <tr><td><label for="startdate">Start Date:</label></td>
+    <td><input type="date" id="start" name="startdate" placeholder= "Start Date"></td></tr>
+        <tr><td><label for="enddate">End Date:</label></td>
+        <td><input type="date" id="enddate" name="enddate" placeholder="End Date"></td></tr>
         <tr><td><label for="numberPassengers">Number of Passengers:</label></td>
         <td><input type="text" id="numberPassengers" name="numberPassengers" placeholder="Number of Passengers"></td></tr>
-        <tr><td><label for="ddate">Departure Date:</label></td>
-        <td><input type="date" id="ddate" name="ddate" placeholder="Departure Date"></td></tr>
+        <tr><td><label for="collection">Initial Collection Point:</label></td>
+        <td><input type="text" id="collection" name="collection" placeholder="Initial Collection Point"></td></tr>
         <tr><td> </td> 
         <td><input type="submit" name="submit" value="Add"></td></tr>  
     </table>
@@ -82,8 +74,7 @@
     or die("Error connecting to the database");
 
   //issue the query to insert details to the database
-  $query = "INSERT INTO clients (firstName, lastName, emailAddress, contactNumber) VALUES ('$name', '$surname', '$email', '$contact')";
-
+  $query = "INSERT INTO bookings  (firstName, lastName, emailAddress, contactNumber) VALUES ('$name', '$surname', '$email', '$contact')";
 
   //execute the query 
   $result = mysqli_query($conn, $query)
