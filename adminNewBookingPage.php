@@ -186,7 +186,7 @@ else{
                   or die("there was an error connecting to the database.");
 
               /* define the query */
-              $query = "SELECT model,numberOfSeats,registrationNumber FROM vehicle ORDER BY numberOfSeats ASC";
+              $query = "SELECT model,numberOfSeats,registrationNumber, licenceCode FROM vehicle ORDER BY numberOfSeats ASC";
 
               /* get the results of the query and put them into a variable */
               $result = mysqli_query($conn, $query)
@@ -199,6 +199,7 @@ else{
                 "</option>");
                 }
                 $registrationNo=$row['registrationNumber'];
+                $vehicleLicenseCode=$row['licenceCode'];
               }
 
               /* close the connection */
@@ -260,7 +261,9 @@ mysqli_close($conn);
                   or die("there was an error connecting to the database.");
 
               /* define the query */
-              $query ="SELECT driverID,firstName,lastName FROM `driver`";
+              $query = "SELECT firstName, lastName, driver.driverID, driverlicence.licenceCode 
+                       FROM `driver` INNER JOIN driverlicence ON driverlicence.driverID = driver.driverID
+                       ORDER BY driverID ASC;";
 
               /* get the results of the query and put them into a variable */
               $result = mysqli_query($conn, $query)
@@ -268,11 +271,14 @@ mysqli_close($conn);
 
               while($row = mysqli_fetch_array($result)) {
                 //use driverlicense table to filter which vehicles the drivers can drive according to their license codes
-                //if()
-                echo("<option value='".$row['id']."'>" . 
-                $row['driverID'] 
-                 . " " . $row['firstName'] . " " . $row['lastName'] .
-                 "</option>");
+                echo "xxx" . $vehicleLicenseCode;
+                if ($vehicleLicenseCode == $row['licenceCode']) {
+                   echo("<option value='".$row['id']."'>" . 
+                   $row['driverID'] 
+                   . " " . $row['firstName'] . " " . $row['lastName'] .
+                   "</option>");
+                }
+                
               }
               
               /* close the connection */
