@@ -25,6 +25,7 @@ Minali
 Liam
 - The logout button only works on 1 size of screen, need to align it to the right side of the screen
   on all pages.
+- Add a limit to the booking request page to limit the max number of passengers
 
 ----------DATABASE------------
 
