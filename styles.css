@@ -197,7 +197,11 @@ legend {
      {
         border: 1px solid black;
       }
-  
-
-
+  /* to be able to center the content from the from the page*/ 
+      .first {
+        max-width: 500px;
+        margin: auto;
+        background: white;
+        padding: 10px;
+      }
         

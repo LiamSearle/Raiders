@@ -12,7 +12,7 @@
     <form action="message.php" method="post">
     <label for="email">Email</label>
     <input type="text" id= "email" name= "email" placeholder="Enter you email" required>
-    <input type="button" value="Reset" name = "reset">
+    <input type="submit" value="Reset" name = "reset">
     </form>
 </body>
 </html>

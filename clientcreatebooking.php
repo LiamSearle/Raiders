@@ -44,7 +44,7 @@
   
    <table>
      <tr><td><label for="startdate">Start Date:</label></td>
-    <td><input type="date" id="start" name="startdate" placeholder= "Start Date"></td></tr>
+    <td><input type="date" id="startdate" name="startdate" placeholder= "Start Date"></td></tr>
         <tr><td><label for="enddate">End Date:</label></td>
         <td><input type="date" id="enddate" name="enddate" placeholder="End Date"></td></tr>
         <tr><td><label for="numberPassengers">Number of Passengers:</label></td>
@@ -60,15 +60,15 @@
 
   <?php
 
-  require_once("config.php");
+ 
   //checking if the searching form has been submitted 
   if (isset($_REQUEST['submit'])) {
       //get the value from the form
-
+      require_once("config.php");
       $startdate = $_REQUEST['startdate'];
       $enddate = $_REQUEST['enddate'];
       $passengers =$_REQUEST['numberPassengers'];
-      $collection = $_REQUEST['collection'];
+      $collectionpoint = $_REQUEST['collection'];
 
       // Create connection
   $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
@@ -76,14 +76,17 @@
 
   //issue the query to insert details to the database
   $query = "INSERT INTO bookings (startDate, endDate, numberPassengers, initialCollectionPoint)
-   VALUES ('$startdate', '$enddate', '$passengers', '$collection')";
+   values ('$startdate', '$enddate', '$passengers', '$collectionpoint')";
 
   //execute the query 
   $result = mysqli_query($conn, $query)
   or die ("Error adding booking details");
-  header("Location:clientcreatebooking.php");
-  mysqli_close($conn);
+  //let the user know the result of the action
   echo "<strong style= \"color:Red\">New booking was created</strong>";
+  //close the database
+  mysqli_close($conn);
+  header("Location:clientcreatebooking.php");
+  
 }
 
   ?>

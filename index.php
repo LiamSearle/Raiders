@@ -10,14 +10,15 @@
 </head>
 
 <body>
-  
-<h2 style="text-align:center">Our Team</h2>
-
-
+<img src="images/logoo.png" height="100px">
+<h2 style="text-align:center">Raiders</h2>
+<div class="first">
+  <fieldset>
 <div class="row">
   <div class="column">
     <div class="card">
       <div class="container">
+      <img src="images/admin.jpg" height="100px">
         <h2>Administration</h2>
         <a href = raiders.php>Click Here</a>
       </div>
@@ -28,6 +29,7 @@
   <div class="column">
     <div class="card">
       <div class="container">
+      <img src="images/icon.png" height="100px">
         <h2>Client</h2>
         <a href = clientlogin.php >Click Here</a>
       </div>
@@ -38,6 +40,7 @@
   <div class="column">
     <div class="card">
       <div class="container">
+      <img src="images/driver.png" height="100px">
         <h2>Driver</h2>
         <a href = driverlogin.php >Click Here</a>
       </div>
@@ -48,6 +51,7 @@
   <div class="column">
     <div class="card">
       <div class="container">
+      <img src="images/hr.png" height="100px">
         <h2>HR/Management</h2>
         <a href = hrlogin.php>Click Here</a>
       </div>
@@ -56,6 +60,7 @@
   </div>
 
 </fieldset>
+</div>
 </div>
     
 </body>

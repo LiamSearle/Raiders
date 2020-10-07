@@ -113,6 +113,7 @@
             <td><a href="clientfaq.php">FAQs</a></td>
             <td><a href="clientlegal">Legal</a></td>
             <td><a href="clientterms.php">Terms & Conditions</a></td>
+            <td>&copy; Copyright 2020 Raiders</td>
         </tr>
     </table>
   </nav>
