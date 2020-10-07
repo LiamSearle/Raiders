@@ -93,7 +93,24 @@
 
       /* get the results of the query and put them into a variable */
       $result = mysqli_query($conn, $query)
-              or die("There was an error executing the query.");
+              or die("There was an error executing the query to assign the vehicle.");
+
+       /* close the connection */
+       mysqli_close($conn);
+
+       require_once("config.php");
+   /* establish the connection to the database */
+      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+          or die("there was an error connecting to the database.");
+
+      $driverID = $_POST['driver'];
+
+      echo "This is the driver: " . $driverID;
+      $query = "UPDATE `bookings` SET `driverID`= '$driverID' WHERE `bookingID` = '$bookingID'";
+
+      /* get the results of the query and put them into a variable */
+      $result = mysqli_query($conn, $query)
+              or die("There was an error executing the query to assign the driver.");
 
       /* close the connection */
       mysqli_close($conn);

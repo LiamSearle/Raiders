@@ -275,7 +275,7 @@ else{
                 //use driverlicense table to filter which vehicles the drivers can drive according to their license codes
                 
                 if ($vehicleLicenseCode == $row['licenceCode']) {
-                   echo("<option value='".$row['id']."'>" . 
+                   echo("<option value='". $row['driverID'] ."'>" . 
                    $row['driverID'] 
                    . " " . $row['firstName'] . " " . $row['lastName'] .
                    "</option>");
