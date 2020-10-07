@@ -69,6 +69,38 @@
     </table>
 </div>
 
+<?php
+      require_once("config.php");
+   /* establish the connection to the database */
+      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+          or die("there was an error connecting to the database.");
+
+      $bookingID = $_REQUEST['id'];
+      $length = strlen($_POST['vehicle']);
+      $registrationNo = substr($_POST['vehicle'], ($length - 10));
+      
+      echo "XXXXXX" . $bookingID . "<br>";
+      echo "YYYYYY" . $registrationNo . "<br>";
+      echo "ZZZZZZ" . $_POST['vehicle'] . "<br><br>";
+
+      $vehicleBookingID= $bookingID . $registrationNo;
+      
+      echo "lmao" . $vehicleBookingID;
+
+      /* define the query */
+      $query = "INSERT INTO vehiclebooking(`vehicleBookingID`, `bookingNumber`, `registrationNumber`)
+                VALUES ('$vehicleBookingID', '$bookingID', '$registrationNo')";
+
+      /* get the results of the query and put them into a variable */
+      $result = mysqli_query($conn, $query)
+              or die("There was an error executing the query.");
+
+      /* close the connection */
+      mysqli_close($conn);
+
+?>
+
+
 <!-- populating the bookings table with php -->
 <form action="reports.php" method="POST">
 <?php

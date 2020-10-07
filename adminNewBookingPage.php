@@ -175,6 +175,43 @@ else{
 
 <!--  retrieving vehicles from the database for drop down -->
 <div class="inputLabel">
+
+<?php
+
+/* import the config for the database */
+// require_once("config.php");
+
+//  if(array_key_exists('assignedVehicle',$_POST)){
+//      /* establish the connection to the database */
+//      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE )
+//          or die("there was an error connecting to the database.");
+
+//      $vehicleBookingID= $bookingID . $registrationNo ;
+//      echo "<h3>" . $registrationNo . "</h3>";
+
+//      /* define the query */
+//      $query = "INSERT INTO vehiclebooking(`vehicleBookingID`, `bookingNumber`, `registrationNumber`)
+//                VALUES ('$vehicleBookingID', '$bookingID', '$registrationNo')";
+
+//      /* get the results of the query and put them into a variable */
+//      $result = mysqli_query($conn, $query)
+//              or die("There was an error executing the query.");
+
+//      echo "Vehicle Assigned";
+
+//      /* close the connection */
+//      mysqli_close($conn);
+
+//   }
+?>
+
+</div>
+
+<br><br>
+
+<!-- retrieving drivers from the database to create drop down -->
+
+<form action="reports.php?id=<?php echo $bookingID ?>" method="POST">
 <label for="vehicle">Assign Vehicle: </label>
     <select id="vehicle" name="vehicle">
     <?php
@@ -194,12 +231,15 @@ else{
 
               while($row = mysqli_fetch_array($result)) {
                 if($numberofpassengers<=$row['numberOfSeats']){
-                echo("<option value='".$row['id']."'>" . 
-                $row['model'] . " - " . $row['numberOfSeats'] . " seats " .
-                "</option>");
+                echo("<option value='" .  $row['model'] . " - " . 
+                                          $row['numberOfSeats'] . " seats - " .
+                                          $row['registrationNumber'] . "'>" . 
+                                          $row['model'] . " - " . 
+                                          $row['numberOfSeats'] . " seats - " .
+                                          $row['registrationNumber'] . "</option>");
                 }
-                $registrationNo= $row['registrationNumber'];
-                $vehicleLicenseCode= $row['licenceCode'];
+                $registrationNo = $row['registrationNumber'];
+                $vehicleLicenseCode = $row['licenceCode'];
                 
               }
 
@@ -207,54 +247,13 @@ else{
               mysqli_close($conn);
 
               ?> 
-<label for="vehicle"> Select </label>
-</select>
+      <label for="vehicle"> Select </label>
+    </select>
+    
+    <br><br> 
 
-<!-- adding the assigned vehicle to the database -->
-
-<form action="adminNewBookingPage.php?id=<?php echo $_REQUEST['id']; ?>" method="POST">
-    <input type="submit" name="assignedVehicle" value="Assign Vehicle">
-</form>
-
-
-<?php
-
-/* import the config for the database */
-require_once("config.php");
-
- if(array_key_exists('assignedVehicle',$_POST)){
-     /* establish the connection to the database */
-     $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-         or die("there was an error connecting to the database.");
-
-     $vehicleBookingID= $bookingID . $registrationNo ;
-     echo "<h3>" . $registrationNo . "</h3>";
-
-     /* define the query */
-     $query = "INSERT INTO vehiclebooking(`vehicleBookingID`, `bookingNumber`, `registrationNumber`)
-               VALUES ('$vehicleBookingID', '$bookingID', '$registrationNo')";
-
-     /* get the results of the query and put them into a variable */
-     $result = mysqli_query($conn, $query)
-             or die("There was an error executing the query.");
-
-     echo "Vehicle Assigned";
-
-     /* close the connection */
-     mysqli_close($conn);
-
-  }
-?>
-
-</div>
-
-<br><br>
-
-<!-- retrieving drivers from the database to create drop down -->
-<form action="" method="POST">
-<div class="inputLabel">
-<label for="driver">Assign Driver: </label>
-<select id="driver" name="driver"> 
+    <label for="driver">Assign Driver: </label>
+    <select id="driver" name="driver"> 
             <?php
             /* import the config for the database */
               require_once("config.php");
@@ -287,46 +286,11 @@ require_once("config.php");
               /* close the connection */
               mysqli_close($conn);
               ?> 
-<label for="driver">Select</label>
-</select>
+       <label for="driver">Select</label>
+    </select>
 
-<!-- adding the assigned driver to the database -->
-<input type="submit" value="Assign Driver">
-<?php
-         /* import the config for the database */
-        //  require_once("config.php");
-
-        // if(isset($_POST['submit'])){
-        //  /* establish the connection to the database */
-        
-
-        //  $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-        //      or die("there was an error connecting to the database.");
+    <br><br>
          
-        // /*retrieving selected value and adding to the database*/     
-
-        //   /* define the query */
-        //   // $query = "UPDATE bookings SET driverID ="$selected" WHERE bookingID =" . $_REQUEST['id']. ";";
-        //   echo "Driver Assigned!";
-
-        //  /* get the results of the query and put them into a variable */
-        //  $result = mysqli_query($conn, $query)
-        //          or die("There was an error executing the query.");
-
-        //  /* close the connection */
-        //  mysqli_close($conn);
-        // }
-
-
-
-        ?>
-</form>
-</div>
-         
-<br><br>   
-
-
-<form action="reports.php" method="POST">
 <input type="submit" value="Create Booking">
 </form>
 
