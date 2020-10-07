@@ -19,3 +19,13 @@ Tshego
 * table would help HR keep track of employee details
 * it must assign an employee with an employeeID
 * still busy with adminHR page- must create report page
+
+7 Oct Tshego
+* adminHR changes
+*CREATE TABLE `markers` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  `lat` FLOAT( 10, 6 ) NOT NULL ,
+  `lng` FLOAT( 10, 6 ) NOT NULL ,
+) 
+* the php in the adminHr doesnt work
+*please ask Kristin how to save the a location marker to the DB

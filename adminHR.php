@@ -8,59 +8,64 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
-<!--create map -->
-const createMap = ({ lat, lng }) => {
-  return new google.maps.Map(document.getElementById('map'), {
-    center: { lat, lng },
-    zoom: 15
-  });
-};
-<!--create marker placed on map -->
-const createMarker = ({ map, position }) => {
-  return new google.maps.Marker({ map, position });
-};
-<!--get admin current location on the map -->
-const getCurrentPosition = ({ onSuccess, onError = () => { } }) => {
-  if ('geolocation' in navigator === false) {
-    return onError(new Error('Geolocation is not supported by your browser.'));
+<?php
 
-  }
-  return navigator.geolocation.watchPosition(onSuccess, onError, {
-    enableHighAccuracy: true,
-    timeout: 5000,
-    maximumAge: 0
-  });
-};
-
-const getPositionErrorMessage = code => {
-  switch (code) {
-    case 1:
-      return 'Permission denied.';
-    case 2:
-      return 'Position unavailable.';
-    case 3:
-      return 'Timeout reached.';
-    default:
-      return null;
-  }
-}
-<!--initialise map using south african coordinate map -->
-
-function init() 
+// Check for the existence of longitude and latitude in our POST request
+if (isset($_POST['longitude']) && isset($_POST['latitude'])) 
 {
-  const initialPosition = { lat: 30.5595, lng: 22.9375 };
-  const map = createMap(initialPosition);
-  const marker = createMarker({ map, position: initialPosition });
+	require_once('config.php');
+  // Cast variables to float 
+  $longitude = (float) $_POST['longitudes'];
+  $latitude = (float) $_POST['latitudes'];
+  // Set the timestamp from the current system time
+  $time = time();
+   $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+                or die("could not connect");
+  // Insert query into DB
+  $query = "INSERT INTO markers SET
+  'longitude' = {$longitude}, 
+  'latitude' = {$latitude},
+  'time' = {$time}";
+//execute the query 
+$result = mysqli_query($conn, $query)
+or die ("Error submitting location details");
+//let the user know the result of the action
+echo "<strong style= \"color:Red\">Location created successfully</strong>";
+//close the database
+mysqli_close($conn);
+header("Location:driver.php");
+?>
+<body>
+<a href="#" id = "get_location">Get Location</a>
+<div id = "map"> 
+    <iframe id = "google_map" width = "425" height = "350" frameborder = "0" scrolling = "no" marginwidth = "0" 
+			src = "https://maps.google.co.za?output=embed"> 
+	</iframe>
+</div>
 
-  getCurrentPosition({
-    onSuccess: ({ coords: { latitude: lat, longitude: lng } }) => {
-      marker.setPosition({ lat, lng });
-      map.panTo({ lat, lng });
-    },
-    onError: err =>
-      alert(`Error: ${getPositionErrorMessage(err.code) || err.message}`)
-  });
+
+<script>
+//function to get dynamic user coordinates
+var location = function(position)
+{
+	var latitudes = position.coords.latitude,
+		longitudes = position.coords.longitude,
+		coordinatess = latitudes + ',' + longitudes;
+		document.getElementById('google_map').setAttribute('src', 'https://maps.google.co.za/?q=' + coordinatess + '&z=60&output=embed');
+}
+var errors = function(error)
+{
+	if(error.code === 1)
+	alert('location not found');
+}
+document.getElementById('get_location').onclick = function()
+{
+	navigator.geolocation.getCurrentPosition(location, errors,
+	{enableHighAccuracy: true,
+	timeout: 15});
+	
+	return false;
 }
 </script>  
 </body>
+</html>
