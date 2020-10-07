@@ -198,8 +198,9 @@ else{
                 $row['model'] . " - " . $row['numberOfSeats'] . " seats " .
                 "</option>");
                 }
-                $registrationNo=$row['registrationNumber'];
-                $vehicleLicenseCode=$row['licenceCode'];
+                $registrationNo= $row['registrationNumber'];
+                $vehicleLicenseCode= $row['licenceCode'];
+                
               }
 
               /* close the connection */
@@ -212,35 +213,37 @@ else{
 <!-- adding the assigned vehicle to the database -->
 
 <form action="adminNewBookingPage.php?id=<?php echo $_REQUEST['id']; ?>" method="POST">
-<input type="submit" name="assignedVehicle" value="Assign Vehicle">   
+    <input type="submit" name="assignedVehicle" value="Assign Vehicle">
 </form>
+
 
 <?php
 
 /* import the config for the database */
 require_once("config.php");
 
-if(array_key_exists('assignedVehicle',$_POST)){
-/* establish the connection to the database */
-$conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-    or die("there was an error connecting to the database.");
+ if(array_key_exists('assignedVehicle',$_POST)){
+     /* establish the connection to the database */
+     $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+         or die("there was an error connecting to the database.");
 
-$vehicleBookingID=$bookingID . $registrationNo;
+     $vehicleBookingID= $bookingID . $registrationNo ;
+     echo "<h3>" . $registrationNo . "</h3>";
 
-/* define the query */
-$query = "INSERT INTO vehiclebooking(vehicleBookingID,bookingNumber, registrationNumber)
- VALUES ($vehicleBookingID,$bookingID,$registrationNo)";
+     /* define the query */
+     $query = "INSERT INTO vehiclebooking(`vehicleBookingID`, `bookingNumber`, `registrationNumber`)
+               VALUES ('$vehicleBookingID', '$bookingID', '$registrationNo')";
 
-/* get the results of the query and put them into a variable */
-$result = mysqli_query($conn, $query)
-        or die("There was an error executing the query.");
+     /* get the results of the query and put them into a variable */
+     $result = mysqli_query($conn, $query)
+             or die("There was an error executing the query.");
 
-echo "Vehicle Assigned";
+     echo "Vehicle Assigned";
 
-/* close the connection */
-mysqli_close($conn);
+     /* close the connection */
+     mysqli_close($conn);
 
-}
+  }
 ?>
 
 </div>
@@ -271,7 +274,7 @@ mysqli_close($conn);
 
               while($row = mysqli_fetch_array($result)) {
                 //use driverlicense table to filter which vehicles the drivers can drive according to their license codes
-                echo "xxx" . $vehicleLicenseCode;
+                
                 if ($vehicleLicenseCode == $row['licenceCode']) {
                    echo("<option value='".$row['id']."'>" . 
                    $row['driverID'] 
