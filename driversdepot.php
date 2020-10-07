@@ -12,7 +12,7 @@
      function logOut() {
         var retVal = confirm("Are you sure you'd like to log out?");
         if( retVal == true ) {
-          window.location=("raiders.php"); 
+          window.location=("driverlogin.php"); 
            return true;
         } 
         else {

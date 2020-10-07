@@ -12,7 +12,7 @@
      function logOut() {
         var retVal = confirm("Are you sure you'd like to log out?");
         if( retVal == true ) {
-          window.location=("raiders.php"); 
+          window.location=("employees.php"); 
            return true;
         } 
         else {
@@ -38,7 +38,7 @@
             </table>
 </div>
 
-<h2>Schedule</h2>
+<h2>Driver Schedule</h2>
 <?php
         /* import the config for the database */
       require_once("config.php");
@@ -54,7 +54,6 @@
       $result = mysqli_query($conn, $query)
               or die("There was an error executing the query.");
 
-      /* close the connection */
 
      ?>
 <fieldset>
@@ -69,8 +68,10 @@
             echo "<td>" . "Trip Number: "  . $row['bookingID'] .  "<br>".
             "Driver ID: " . $row['driverID'] . "<br>" .
             "Driver: " . $row['firstName']. " " . $row['lastName'] . "<br>" .
-            "Departure Date: " . $row['startDate'] . "<br> " . "From: " . $row['initialCollectionPoint'] . " -> " .
+            "Departure Date: " . $row['startDate'] . "<br> " 
+            . "From: " . $row['initialCollectionPoint'] . " -> " . $row['finalCollectionPoint'] .
              "</a>" . "</td>";
+             $bookingID=$row['bookingID'];
         }
         echo "</table>";
         mysqli_close($conn);
@@ -78,8 +79,7 @@
 
 ?>
 </fieldset>
-
-<h2><a href="driversdepot.php?id=">Book a Depot Room</a></h2>
+<h2><a href="driversdepot.php?id=" <?php echo $bookingID ?>  >Book a Depot Room</a></h2>
 
  <!-- general footer code  -->
  <div class="footer"> 
