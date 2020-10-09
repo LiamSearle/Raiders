@@ -45,6 +45,35 @@
     <h2>Details</h2>
 
 
+    <?php
+    $id= $_REQUEST['id'];
+    //add database credentials
+    require_once("config.php");
+    //connection to the database
+    $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+    or die("Could not connect to the database");
+    //issue instructions to query 
+    $query = "SELECT * FROM clients where clientID= '$id'";
+    $result = mysqli_query($conn, $query)
+     or die ("Could not retrieve data!");
+     //create table 
+     echo "<table style = \"width:80%;\">
+     <tr style = \"background-color: orange; font-weight: bold;\">
+     <td>First Name</td>
+     <td>Last Name</td>
+     <td>Email Address</td>
+     <td>Contact Number</td>
+     </tr>";
+     //execute table rows with the data from the database
+    while($row = mysqli_fetch_array($result)){
+        echo "<tr>";
+        echo "<td>".$row['firstName']."</td>";
+        echo "<td>".$row['lastName']."</td>";
+        echo "<td>".$row['emailAddress']."</td>";
+        echo "<td>".$row['contactNumber']."</td>";
+        echo"</tr>";
+    }
+?>
 
  <!-- general footer code  -->
  <div class="footer"> 

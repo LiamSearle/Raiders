@@ -33,10 +33,6 @@
                 <td><a href="clienthome.php"><i class="fas fa-home"></i>Home</a></td>
                 <td><a href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
                 <td><a class="active" href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
-                <td><form action="search.php" method="post">
-                <i class="fas fa-search"></i>
-                <input type="search" name="txtSearch">
-                <input type="submit" name="submit" value="Go">
                 </form>
                 <td><div>                 
                 <form action = "clientlogin.php" class = "Logout">
@@ -50,58 +46,37 @@
 
     <br>
     <fieldset>
-   <table>
-       <tr>
-           <td>Client ID</td>
-           <td><input type="text" name="client_fname"></td>
-       </tr>
-       <tr>
-           <td>Driver</td>
-           <td><select name="driver" id="driver" style="width:173px;">
-               <option> A</option>
-               <option> B</option>
-               <option> C</option>
-               <option> D</option>
-           </select></td>
-       </tr>
-       <tr>
-           <td>Vehicles</td>
-           <td><select name="vehicles" id="vehicles" style="width:173px;">
-               <option> A</option>
-               <option> B</option>
-               <option> C</option>
-               <option> D</option>
-           </select></td>
-       </tr>
-   </table>
-</fieldset>
-<?php
-    //add database credentials 
+    <?php
+    $id= $_REQUEST['id'];
+    //add database credentials
     require_once("config.php");
-    //checking if the searching form has been submitted 
-    if (isset($_REQUEST['submit'])) {
-        //get the value from the form
-        $search = $_REQUEST['txtSearch'];
-        //make the connection to database
-        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-        or die("Could not connect to the database!");
-        //issue out the query instructions
-        $query = "SELECT * FROM bookings WHERE bookingID LIKE '%$search%'
-        ORDER BY bookingID ASC";
-        $results = mysqli_query($conn, $query)
-        or die("Could not retrieve the data!");
-        //extract the data 
-        echo "<ol>";
-        while ($row = mysqli_fetch_array($results)){
-            echo "<li>";
-            echo $row['bookingID'];
-            echo "</li>";
-        }
-        echo "</ol>";
-        //close the connection to the database
-        mysqli_close($conn);
+    //connection to the database
+    $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+    or die("Could not connect to the database");
+    //issue instructions to query 
+    $query = "SELECT * FROM bookings where bookingID= '$id'";
+    $result = mysqli_query($conn, $query)
+     or die ("Could not retrieve data!");
+     //create table 
+     echo "<table style = \"width:80%;\">
+     <tr style = \"background-color: orange; font-weight: bold;\">
+     <td>Start Date</td>
+     <td>End Date</td>
+     <td>Number of Passengers</td>
+     <td>Initial Collection Point</td>
+     </tr>";
+     //execute table rows with the data from the database
+    while($row = mysqli_fetch_array($result)){
+        echo "<tr>";
+        echo "<td>".$row['startDate']."</td>";
+        echo "<td>".$row['endDate']."</td>";
+        echo "<td>".$row['numberPassengers']."</td>";
+        echo "<td>".$row['intialCollectionPoint']."</td>";
+        echo"</tr>";
     }
-    ?>
+?>
+</fieldset>
+
      
  <!-- general footer code  -->
  <div class="footer"> 
