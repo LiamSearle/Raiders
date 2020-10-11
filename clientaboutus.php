@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="images/logoo.png" type="image" sizes="100x100">
     <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
     <title>About Us</title>
 <!-- logout button code -->
@@ -12,7 +13,7 @@
      function logOut() {
         var retVal = confirm("Are you sure you'd like to log out?");
         if( retVal == true ) {
-          window.location=("raiders.php"); 
+          window.location=("clientlogin.php"); 
            return true;
         } 
         else {

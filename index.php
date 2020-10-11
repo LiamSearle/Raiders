@@ -6,15 +6,16 @@
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="icon" href="images/logoo.png" type="image" sizes="100x100">
+    <title>Index</title>
 </head>
 
 <body>
 <img src="images/logoo.png" height="100px">
 <h2 style="text-align:center">Raiders</h2>
-<div class="first">
+<div>
   <fieldset>
-<div class="row">
+  <div class="row">
   <div class="column">
     <div class="card">
       <div class="container">
@@ -26,7 +27,7 @@
   </div>
 
 <div class="row">
-  <div class="column">
+<div class="column">
     <div class="card">
       <div class="container">
       <img src="images/icon.png" height="100px">
@@ -37,8 +38,8 @@
   </div>
   </div>
 
-  <div class="column">
-    <div class="card">
+<div class="column">
+<div class="card">
       <div class="container">
       <img src="images/driver.png" height="100px">
         <h2>Driver</h2>
@@ -47,9 +48,9 @@
       </div>
     </div>
   </div>
-  
+
   <div class="column">
-    <div class="card">
+  <div class="card">
       <div class="container">
       <img src="images/hr.png" height="100px">
         <h2>HR/Management</h2>
@@ -58,10 +59,10 @@
       </div>
     </div>
   </div>
-
+  
 </fieldset>
 </div>
-</div>
+
     
 </body>
 

@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +8,15 @@
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Client Booking</title>
+    <link rel="icon" href="images/logoo.png" type="image/gif" sizes="100x100">
+    <title>Create Booking</title>
 
     <!-- logout button code -->
 <script>
      function logOut() {
         var retVal = confirm("Are you sure you'd like to log out?");
         if( retVal == true ) {
-          window.location=("raiders.php"); 
+          window.location=("clientlogin.php"); 
            return true;
         } 
         else {
@@ -65,27 +69,25 @@
   if (isset($_REQUEST['submit'])) {
       //get the value from the form
       require_once("config.php");
+      $id = $_SESSION['clientID'];
       $startdate = $_REQUEST['startdate'];
       $enddate = $_REQUEST['enddate'];
       $passengers =$_REQUEST['numberPassengers'];
       $collectionpoint = $_REQUEST['collection'];
-
       // Create connection
   $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
     or die("Error connecting to the database");
 
   //issue the query to insert details to the database
-  $query = "INSERT INTO bookings (startDate, endDate, numberPassengers, initialCollectionPoint)
-   values ('$startdate', '$enddate', '$passengers', '$collectionpoint')";
+  $query = "INSERT INTO bookings (startDate, endDate, numberOfPassengers, initialCollectionPoint, clientID) 
+            VALUES ('$startdate', '$enddate', '$passengers', '$collectionpoint', '$id')";
 
   //execute the query 
   $result = mysqli_query($conn, $query)
   or die ("Error adding booking details");
-  //let the user know the result of the action
-  echo "<strong style= \"color:Red\">New booking was created</strong>";
   //close the database
   mysqli_close($conn);
-  header("Location:clientcreatebooking.php");
+  header("Location:bookingmessage.php");
   
 }
 

@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,10 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
-    <title>Home Page</title>
-
-    <!-- logout button code -->
-<script>
+    <link rel="icon" href="images/logoo.png" type="image/gif" sizes="100x100">
+    <title>Details</title>
+   <!-- logout button code -->
+   <script>
      function logOut() {
         var retVal = confirm("Are you sure you'd like to log out?");
         if( retVal == true ) {
@@ -30,12 +33,12 @@
     <table>
             <tr>
                 <td><img src="images/logoo.png" height="50px"></td>
-                <td><a class="active" href="clienthome.php"><i class="fas fa-home"></i>Home</a></td>
-                <td><a href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
+                <td><a href="clienthome.php"><i class="fas fa-home"></i>Home</a></td>
+                <td><a class="active" href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
                 <td><a href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td><div>                 
                 <form action = "clientlogin.php" class = "Logout">
-                <input type="submit" name="submit" value="Logout" onclick="logOut();">
+                <input type="button" name="submit" value="Logout" onclick="logOut();">
                  </form>
                 </div></td>
             </tr>
@@ -44,21 +47,21 @@
     <br>
     <h2>Details</h2>
 
-
+<fieldset>
     <?php
-    $id= $_REQUEST['id'];
     //add database credentials
     require_once("config.php");
     //connection to the database
     $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
     or die("Could not connect to the database");
+    $id = $_SESSION['clientID'];
     //issue instructions to query 
     $query = "SELECT * FROM clients where clientID= '$id'";
     $result = mysqli_query($conn, $query)
      or die ("Could not retrieve data!");
      //create table 
      echo "<table style = \"width:80%;\">
-     <tr style = \"background-color: orange; font-weight: bold;\">
+     <tr style = \"background-color: grey; font-weight: bold;\">
      <td>First Name</td>
      <td>Last Name</td>
      <td>Email Address</td>
@@ -73,7 +76,10 @@
         echo "<td>".$row['contactNumber']."</td>";
         echo"</tr>";
     }
+    echo "</table>";
+
 ?>
+</fieldset>
 
  <!-- general footer code  -->
  <div class="footer"> 

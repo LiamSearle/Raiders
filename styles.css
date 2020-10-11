@@ -198,10 +198,14 @@ legend {
         border: 1px solid black;
       }
   /* to be able to center the content from the from the page*/ 
-      .first {
-        max-width: 500px;
-        margin: auto;
-        background: white;
-        padding: 10px;
+      .center {
+        text-align: center;
+        border: 3px solid white
       }
-        
+      /* moving the first page link icon to the top right corner*/
+      .topright {
+        position: absolute;
+        top: 10px;
+        right: 0px;
+        font-size: 18px;
+      }

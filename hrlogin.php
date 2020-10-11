@@ -10,6 +10,9 @@
 </head>
 
 <body>
+    <div class= "topright">
+          <a href="index.php"><img src="images/firstpage.png" style="width:42px;height:42px;"></a>
+      </div>
     <div class="login">
         <img src="images/logoo.png" alt="login picture" width="160px">
         <form method="POST" action="hrlogin.php">
@@ -42,7 +45,7 @@
                 $row = mysqli_fetch_array($results);
                 $pass = $row['passwords'];
                 if($pass == $password){
-                    header("Location:hrhome.php");
+                    header("Location:hrreports.php");
                 }
                 else{
                     echo "<strong style=\"color:red;\">Wrong password!</strong>";
