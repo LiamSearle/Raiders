@@ -20,9 +20,6 @@
             <p><input type="password" placeholder="Password" name="password" required></p>
             <p><input type="checkbox" name="check"><label for="checkbox">Remember me</label></p>
             <input type="submit" name="submit" value="Login"><br>
-        </form> 
-        <form method ="post" action  = "newdriver.php"><br>
-            <a href="newhr.php"><input type="button" name="submit" value="Register"></a><br>
         </form><br>
         <form action="forgotpassword.php" method="post">
             <a href="forgotpassword.php">Forgot password</a>
@@ -39,11 +36,11 @@
                 $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
                 or die("could not connect");
                     //issue query instruction 
-                $query = "SELECT passwords FROM hr WHERE contactNumber = $user";
+                $query = "SELECT password FROM employees WHERE employeeID='$user'";
                 $results = mysqli_query($conn, $query)
                     or die("<strong style=\"color:red;\">Invalid username</strong>");
                 $row = mysqli_fetch_array($results);
-                $pass = $row['passwords'];
+                $pass = $row['password'];
                 if($pass == $password){
                     header("Location:hrreports.php");
                 }
