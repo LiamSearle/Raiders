@@ -274,7 +274,7 @@ else{
               while($row = mysqli_fetch_array($result)) {
                 //use driverlicense table to filter which vehicles the drivers can drive according to their license codes
                 
-                if ($vehicleLicenseCode == $row['licenceCode']) {
+                if (true) {
                    echo("<option value='". $row['driverID'] ."'>" . 
                    $row['driverID'] 
                    . " " . $row['firstName'] . " " . $row['lastName'] .
