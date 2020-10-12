@@ -21,10 +21,22 @@
         }
      } 
 </script>
+
+<style>
+
+.column {
+    /*controls column in aboutus page*/
+    float: left;
+    width: 50%;
+    margin-bottom: 16px;
+    padding: 0px 8px;
+    }
+</style>
+
 </head>
 <body>
   <!-- general navigation code  -->
-<div class="nav">
+<!-- <div class="nav">
 <table>
             <tr>
                 <td><img src="images/logoo.png" height="50px"></td>
@@ -37,8 +49,11 @@
                 </td>
             </tr>
         </table>
+</div> -->
+<div class="topleft">
+<a href="javascript:history.back()">  Back</a>
 </div>
-    <br>
+
 <div class="about-section">
 <fieldset>
   <h2>About Us </h2>
@@ -49,7 +64,7 @@
    that they can be.  </p>
 
 
-<h2 style="text-align:center">Our Team</h2>
+<h3 style="text-align:center">Our Team</h3>
 
 
 <div class="row">
@@ -62,6 +77,8 @@
       </div>
     </div>
   </div>
+  
+  
 
 <div class="row">
   <div class="column">
@@ -75,6 +92,7 @@
   </div>
   </div>
 
+
   <div class="column">
     <div class="card">
       <div class="container">
@@ -84,7 +102,7 @@
       </div>
       </div>
     </div>
-  </div>
+ 
   
   <div class="column">
     <div class="card">
@@ -96,6 +114,7 @@
       </div>
     </div>
   </div>
+
 
 </fieldset>
 </div>

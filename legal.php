@@ -24,7 +24,7 @@
 
 </head>
 <body>
-<div class="nav">
+<!-- <div class="nav">
 <table>
             <tr>
                 <td><img src="images/logoo.png" height="50px"></td>
@@ -37,7 +37,38 @@
                 </td>
             </tr>
         </table>
+</div> -->
+
+<div class="topleft">
+<a href="javascript:history.back()">  Back</a>
 </div>
+
+<fieldset>
+<h2>Legal</h2>
+
+<p style="text-align:left">
+<b>User Agreement</b><br></br>
+All direct consumers of Hamba Kahle's basic services are subject to the terms and conditions contained in the User Agreement.
+The User Agreement is a legal contract between Hamba Kahle Transport and the employees that contains the rights, duties and 
+obligations of Hamba Kahle and the employee.
+
+<br></br>
+
+<b>Acceptable Use Policy</b><br></br>
+Hamba Kahle's Usage Policy is designed to protect Hamba Kahle, its employees
+and others from illegal, malicious, damaging and inappropriate behavior by Users of Hamba Kahle's services. 
+All users of Hamba Kahle's services are subject to the Usage Policy. 
+The Usage Policy lists activities that are prohibited on Hamba Kahle's services, such as hacking and spamming.
+
+<br></br>
+
+<b>Privacy Notice</b><br></br>
+Hamba Kahle's Privacy Notice covers treatment of information 
+that Hamba Kahle may collect from users of its products and services and from visitors to the Hamba Kahle site.
+<br></br>
+
+</p>
+</fieldset>
 
 
 
