@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Administrator Log In</title>
 </head>
 
 <body>
@@ -17,13 +17,10 @@
         <img src="images/logoo.png" alt="login picture" width="160px">
         <form method="POST" action="raiders.php">
             <input type="text" placeholder="Username" name="username" required>
-            <p><input type="password" placeholder="Password" name="password" required></p>
+            <p><input type="password" placeholder="Password" name="passwords" required></p>
             <p><input type="checkbox" name="check"><label for="checkbox">Remember me</label></p>
             <input type="submit" name="submit" value="Login"><br>
-        </form> 
-        <form method = "post" action  = "newClient.php"><br>
-        <input type="submit" name="submit" value="Register"><br>
-            </form><br>
+        </form><br>
             <form action="forgotpassword.php" method="post">
             <a href="forgotpassword.php">Forgot password</a>
             </form>
@@ -33,19 +30,19 @@
          <?php   
             if(isset($_REQUEST['submit'])){
                 require_once("config.php");
-                $password = $_REQUEST['password'];
+                $passwords = $_REQUEST['passwords'];
                 $user = $_REQUEST['username'];
                     //connection to the database 
                 $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
                 or die("could not connect");
                     //issue query instruction 
-                $query = "SELECT passwords FROM client WHERE contactNumber = $user";
+                $query = "SELECT password FROM employees WHERE employeeID = '$user'";
                 $results = mysqli_query($conn, $query)
                 or die("Invalid password or username");
                 $row = mysqli_fetch_array($results);
-                $pass = $row['passwords'];
-                if($pass == $password){
-                    header("Location:homepage.php");
+                $pass = $row['password'];
+                if($pass == $passwords){
+                    header("Location:adminhomepage.php");
                 }
                 else{
                     echo "<strong style=\"color:red;\">password wrong!</strong>";
