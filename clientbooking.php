@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,19 +8,20 @@
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="images/logoo.png" type="image/gif" sizes="100x100">
     <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
-    <title>Booking-should delete</title>
+    <title>Booking</title>
 
     <!-- logout button code -->
-<script>
+   <script>
      function logOut() {
         var retVal = confirm("Are you sure you'd like to log out?");
         if( retVal == true ) {
-          window.location=("raiders.php"); 
+          window.location=("clientlogin.php"); 
            return true;
         } 
         else {
-          //stays on the same page
+           //stays on the same page
            return false;
         }
      } 
@@ -36,30 +40,30 @@
                 </form>
                 <td><div>                 
                 <form action = "clientlogin.php" class = "Logout">
-                <input type="submit" name="submit" value="Logout" onclick="logOut();">
+                <input type="button" name="submit" value="Logout" onclick="logOut();">
                  </form>
                 </div></td>
             </tr>
         </table>
 </div>
-
+<h2>Booking details</h2>
 
     <br>
     <fieldset>
     <?php
-    $id= $_REQUEST['id'];
+    $id = $_SESSION['clientID'];
     //add database credentials
     require_once("config.php");
     //connection to the database
     $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
     or die("Could not connect to the database");
     //issue instructions to query 
-    $query = "SELECT * FROM bookings where bookingID= '$id'";
+    $query = "SELECT * FROM bookings where clientID= '$id'";
     $result = mysqli_query($conn, $query)
      or die ("Could not retrieve data!");
      //create table 
      echo "<table style = \"width:80%;\">
-     <tr style = \"background-color: orange; font-weight: bold;\">
+     <tr style = \"background-color: grey; font-weight: bold;\">
      <td>Start Date</td>
      <td>End Date</td>
      <td>Number of Passengers</td>
@@ -70,10 +74,11 @@
         echo "<tr>";
         echo "<td>".$row['startDate']."</td>";
         echo "<td>".$row['endDate']."</td>";
-        echo "<td>".$row['numberPassengers']."</td>";
-        echo "<td>".$row['intialCollectionPoint']."</td>";
+        echo "<td>".$row['numberOfPassengers']."</td>";
+        echo "<td>".$row['initialCollectionPoint']."</td>";
         echo"</tr>";
     }
+    echo "</table>"
 ?>
 </fieldset>
 
@@ -86,7 +91,7 @@
             <td><a href="clientaboutus.php">About Us</a></td>
             <td><a href="clienthelp.php">Help</a> | </td>
             <td><a href="clientfaq.php">FAQs</a></td>
-            <td><a href="clientlegal">Legal</a></td>
+            <td><a href="clientlegal.php">Legal</a></td>
             <td><a href="clientterms.php">Terms & Conditions</a></td>
             <td>&copy; Copyright 2020 Raiders</td>
         </tr>

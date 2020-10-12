@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +8,8 @@
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
+    <script src="images/logoo.png" crossorigin="anonymous"></script>
+    <link rel="icon" href="images/logoo.png" type="image/gif" sizes="100x100">
     <title>Home Page</title>
 
     <!-- logout button code -->

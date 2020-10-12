@@ -6,10 +6,16 @@
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="images/logoo.png" type="image" sizes="100x100">
     <title>Document</title>
 </head>
 
 <body>
+      <div class= "topright">
+          <a href="navigationbar.html"><img src="images/firstpage.png" style="width:42px;height:42px;"></a>
+      </div>
+   
+        
     <div class="login">
         <img src="images/logoo.png" alt="login picture" width="160px">
         <form method="POST" action="clientlogin.php">
@@ -43,7 +49,9 @@
                 $pass = $row['passwords'];
                 $id = $row['clientID'];
                 if($pass == $password){
-                    header("Location:clienthome.php?id=".$id);
+                    session_start();
+                    $_SESSION['clientID'] = $id;
+                    header("Location:clienthome.php");
                 }
                 else{
                     echo "<strong style=\"color:red;\">Wrong password!</strong>";

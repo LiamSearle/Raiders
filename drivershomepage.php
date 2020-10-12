@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drivers</title>
+  <title>Driver Home Page</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
 
@@ -12,7 +12,7 @@
      function logOut() {
         var retVal = confirm("Are you sure you'd like to log out?");
         if( retVal == true ) {
-          window.location=("employees.php"); 
+          window.location=("driverlogin.php"); 
            return true;
         } 
         else {
@@ -43,12 +43,15 @@
         /* import the config for the database */
       require_once("config.php");
 
+      $driverID=$_REQUEST['id'];
+
       /* establish the connection to the database */
       $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
           or die("there was an error connecting to the database.");
 
       /* define the query */
-      $query = "SELECT * FROM bookings INNER JOIN driver ON driver.driverID=bookings.driverID";
+      $query = "SELECT * FROM bookings 
+                INNER JOIN driver ON driver.driverID=bookings.driverID WHERE driver.driverID='$driverID'";
 
       /* get the results of the query and put them into a variable */
       $result = mysqli_query($conn, $query)
@@ -63,6 +66,7 @@
             <td></td>
         </tr>";
         
+        
         while($row = mysqli_fetch_array($result)) {
             echo "<tr>";
             echo "<td>" . "Trip Number: "  . $row['bookingID'] .  "<br>".
@@ -72,6 +76,7 @@
             . "From: " . $row['initialCollectionPoint'] . " -> " . $row['finalCollectionPoint'] .
              "</a>" . "</td>";
              $bookingID=$row['bookingID'];
+
         }
         echo "</table>";
         mysqli_close($conn);
@@ -79,7 +84,7 @@
 
 ?>
 </fieldset>
-<h2><a href="driversdepot.php?id=" <?php echo $bookingID ?>  >Book a Depot Room</a></h2>
+<h2><a href="driversdepot.php?id=<?php echo $driverID; ?>"  >Book a Depot Room</a></h2>
 
  <!-- general footer code  -->
  <div class="footer"> 

@@ -25,7 +25,7 @@
 </head>
 <body>
      <!-- general navigation code  -->
-<div class="nav">
+<!-- <div class="nav">
 <table>
             <tr>
                 <td><img src="images/logoo.png" height="50px"></td>
@@ -37,16 +37,25 @@
                 </td>
             </tr>
         </table>
+</div> -->
+
+<div class="topleft">
+<a href="javascript:history.back()">  Back</a>
 </div>
 
 <!-- populating the help section with information -->
 <fieldset>
 <h2>Help</h2>
-<h3>How does the system work for the different users? </h3>
+<p style="text-align:left">
+<br><b><u> Do I need to Register?</u></b></br>
+No, all employees once employed by the company will have their details automatically entered into the database. 
+You will receive log-in credentials that can then be used to log-in to the system. 
+
 <p style="text-align:left"><u>Administrators</u></p>
 <p style="text-align:left"> Administrators receive their log-in credentials once employed by the company. After logging in, they are able to 
 view, confirm or reject and assign all relevant information that is required for a booking to be created. Administrators also have access to view
 all outgoing bookings, the status of drivers and vehicles. 
+<a href="faq.php"> Further information can be found here </a>
 </p>
 <p style="text-align:left"><u>Drivers</u></p>
 <p style="text-align:left"> Drivers receive their log-in credentials once employed by the company. Drivers are able to use the system to see 
@@ -55,6 +64,11 @@ what booking they are attached to as well as being able to check and then book a
 <p style="text-align:left"><u>Depot Admin</u></p>
 <p style="text-align:left"> Depot Admin receive their log-in credentials once employed by the company. They are able to check and report on depot details including
 how many depot rooms are available. Depot Admin also ensure that rooms are ready for occupation by drivers. 
+</p>
+<p style="text-align:left"><u>HR Manager</u></p>
+<p style="text-align:left">
+
+
 </p>
 
 
