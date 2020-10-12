@@ -22,6 +22,17 @@
         }
      } 
 </script>
+
+<style>
+.column {
+    /*controls column in aboutus page*/
+    float: left;
+    width: 50%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+    }
+</style>
+
 </head>
 <body>
   <!-- general navigation code  -->
@@ -80,7 +91,7 @@
       </div>
       </div>
     </div>
-  </div>
+
   
   <div class="column">
     <div class="card">
