@@ -83,9 +83,9 @@
       echo "YYYYYY" . $registrationNo . "<br>";
       echo "ZZZZZZ" . $_POST['vehicle'] . "<br><br>";
 
-      $vehicleBookingID= $bookingID . $registrationNo;
+      $vehicleBookingID = $bookingID . $registrationNo;
       
-      echo "lmao" . $vehicleBookingID;
+      echo "lmao" . $vehicleBookingID . "<br>";
 
       /* define the query */
       $query = "INSERT INTO vehiclebooking(`vehicleBookingID`, `bookingNumber`, `registrationNumber`)
