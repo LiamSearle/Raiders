@@ -43,6 +43,7 @@
 <div class="tab">
   <button class="tablinks" onclick="openReport(event, 'Drivers')" id="defaultOpen">Drivers</button>
   <button class="tablinks" onclick="openReport(event, 'Vehicles')">Vehicles</button>
+  <button class="tablinks" onclick="openReport(event, 'Location')">Location</button>
 </div>
 
 <!-- drivers tab -->
@@ -64,7 +65,7 @@
 </div>
 
 <!-- populating the drivers table with php -->
-<form action="reports.php" method="POST">
+<form action="hrreports.php" method="POST">
 <?php
 
 require_once("config.php");
@@ -111,19 +112,24 @@ else{
      or die("there was an error connecting to the database.");
 
  /* define the query */
- $query = "SELECT * FROM driver";
+ $query = "SELECT driver.driverID, driver.firstName, driver.lastName, driver.contactNumber, driverlicence.licenceCode
+  FROM driver
+  INNER JOIN driverlicence
+  ON driverlicence.driverID = driver.driverID";
+ 
 
  /* get the results of the query and put them into a variable */
  $result = mysqli_query($conn, $query)
          or die("There was an error executing the query.");
 
-  //creating bookings table
+  //creating drivers table
   echo "<table style=\" border: 1px solid black; width: 100%;\">
   <tr>
   <th> DriverID </th>
   <th> First Name </th>
   <th> Last Name </th>
   <th> Contact Number </th>
+  <th> Licence Code </th>
   </tr>";
   
    //displaying data
@@ -133,7 +139,8 @@ else{
      echo "<td>" . $row['driverID'] . "</td>";
      echo "<td>" . $row['firstName'] . "</td>";
      echo "<td>" . $row['lastName'] .  "</td>";
-     echo "<td>" . $row['contactNumber'] . "</td>"; 
+     echo "<td>" . $row['contactNumber'] . "</td>";
+     echo "<td>" . $row['licenceCode'] ."</td>";
      echo "</tr>";
    }
 
@@ -164,7 +171,7 @@ else{
 </div>
 
 <!-- write code for vehicle table -->
-<form action="reports.php" method="POST">
+<form action="hrreports.php" method="POST">
 <?php
 
  /* import the config for the database */
@@ -185,7 +192,7 @@ else{
 
 
 
-  //creating bookings table
+  //creating vehicles table
   echo "<table style=\" border: 1px solid black; width: 100%;\">
   <tr>
   <th> Registration No </th>
@@ -207,6 +214,48 @@ else{
      echo "</tr>";
    }
 
+   echo "</table>";
+
+      //close the connection
+  mysqli_close($conn);
+
+  ?>
+
+  <!-- write code for vehicle table -->
+<form action="hrreports.php" method="POST">
+<?php
+
+ /* import the config for the database */
+ require_once("config.php");
+
+ /* establish the connection to the database */
+ $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+     or die("there was an error connecting to the database.");
+
+ /* define the query */
+ $query = "SELECT daytripdepot.startDepot,daytripdepot.destinationDepot
+            FROM daytripdepot";
+
+ /* get the results of the query and put them into a variable */
+ $result = mysqli_query($conn, $query)
+         or die("There was an error executing the query.");
+
+
+  //creating location table
+  echo "<table style=\" border: 1px solid black; width: 100%;\">
+  <tr>
+  <th> Initial Destination </th>
+  <th> Final Destination </th>
+  </tr>";
+  
+   //displaying data
+   while($row=mysqli_fetch_array($result))
+   {
+     echo "<tr>";
+     echo "<td>" . $row['startDepot'] . "</td>";
+     echo "<td>" . $row['destinationDepot'] . "</td>";
+     echo "</tr>";
+   }
    echo "</table>";
 
       //close the connection
