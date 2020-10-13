@@ -36,7 +36,7 @@
                 $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
                 or die("could not connect");
                     //issue query instruction 
-                $query = "SELECT password FROM employees WHERE employeeID='$user'";
+                $query = "SELECT password FROM employees WHERE emp_ID='$user'";
                 $results = mysqli_query($conn, $query)
                     or die("<strong style=\"color:red;\">Invalid username</strong>");
                 $row = mysqli_fetch_array($results);

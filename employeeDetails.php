@@ -57,7 +57,8 @@
        </tr>
      <tr>
       <td></td>
-      <td><input type="submit" class="signupbtn" name="submit" value="Sign Up"><button type="button" class="cancelbtn">Cancel</button></td>
+      <td><input type="submit" class="signupbtn" name="submit" value="Sign Up">
+      <button type="button" class="cancelbtn">Cancel</button></td>
     </tr>  
   
    </table>
@@ -90,6 +91,7 @@
         echo "New employee created successfully";
         //close the connection to the database
         mysqli_close($conn);
+        header("Location:navigationbar.html");
   
     }
     ?></p>

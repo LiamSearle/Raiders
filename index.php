@@ -27,6 +27,17 @@
 <img src="images/logoo.png" height="110px">
 <div>
   <fieldset>
+
+  <div class="row">
+<div class="column">
+    <div class="card">
+      <div class="container">
+      <img src="newuser.jpg" height="100px">
+        <a href = employeeDetails.php ><h2>New User</h2></a>
+      </div>
+    </div>
+</div>
+</div>
   <div class="row">
   <div class="column">
     <div class="card">
@@ -62,12 +73,13 @@
   <div class="card">
       <div class="container">
       <img src="images/hr.png" height="100px">
-        
-        <a href = hrlogin.php><h2>HR/Management</h2></a>
+        <a href = hrlogin.php><h2>Human Resources</h2></a>
       </div>
       </div>
     </div>
   </div>
+
+  
   
 </fieldset>
 </div>
