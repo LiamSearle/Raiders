@@ -19,37 +19,37 @@
     </table>
 </div><br>
 <!-- admin employee form -->
-<form action="adminEmployeeDetails.php" method="post">     
+<form action="employeeDetails.php" method="post">     
  <h1> Register</h1>  
    <fieldset><p>Please fill in this form to create an account
    <table>
        <tr>
            <td>First Name</td>
-           <td><input type="text" name="admin_fname" placeholder = "Enter name" required></td>
+           <td><input type="text" name="emp_fname" placeholder = "Enter name" required></td>
        </tr>
        <tr>
            <td>Last Name</td>
-           <td><input type="text" name="admin_lname" placeholder = "Enter surname" required></td>
+           <td><input type="text" name="emp_lname" placeholder = "Enter surname" required></td>
        </tr>
        <tr>
            <td>Date of Birth</td>
-           <td><input type="date" name="admin_dob" placeholder = "Enter date" required></td>
+           <td><input type="date" name="emp_dob" placeholder = "Enter date" required></td>
        </tr>
        <tr>
            <td>ID number</td>
-           <td><input type="number" name="admin_IDnum" placeholder = "Enter ID" required></td>
+           <td><input type="number" name="emp_IDnum" placeholder = "Enter ID" required></td>
        </tr>
        <tr>
            <td>E-mail</td>
-           <td><input type="text" name="admin_email" placeholder = "Enter email" required></td>
+           <td><input type="text" name="emp_email" placeholder = "Enter email" required></td>
        </tr>
        <tr>
            <td>Contact Number</td>
-           <td><input type="text" name="admin_contact" placeholder = "Contact Number" required></td>
+           <td><input type="text" name="emp_contact" placeholder = "Contact Number" required></td>
        </tr>
        <tr>
            <td>Password</td>
-           <td><input type="password" name="admin_password" placeholder = "Enter Password" required></td>
+           <td><input type="password" name="emp_password" placeholder = "Enter Password" required></td>
        </tr>
        <tr>
            <td>Remember me</td>
@@ -69,25 +69,25 @@
     if (isset($_REQUEST['submit'])) {
         require_once("config.php");
         //get the value from the form
-        $name = $_REQUEST['admin_fname'];
-        $lname= $_REQUEST['admin_lname'];
-        $dob= $_REQUEST['admin_dob'];
-        $idnum= $_REQUEST['admin_IDnum'];
-        $email = $_REQUEST['admin_email'];
-        $contact= $_REQUEST['admin_contact'];
-        $password= $_REQUEST['admin_password'];
+        $name = $_REQUEST['emp_fname'];
+        $lname= $_REQUEST['emp_lname'];
+        $dob= $_REQUEST['emp_dob'];
+        $idnum= $_REQUEST['emp_IDnum'];
+        $email = $_REQUEST['emp_email'];
+        $contact= $_REQUEST['emp_contact'];
+        $password= $_REQUEST['emp_password'];
         //$repeat= $_REQUEST['client_repeat'];
         //make the connection to database
         $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
         or die("Could not connect to the database!");
         //issue out the query instructions
         //have to create an admin details table
-        $query = "INSERT INTO adminDetails (firstName, lastName, dateofbirth, ID, emailAddress, contactNumber, passwords) 
+        $query = "INSERT INTO employees (firstName, lastName, dateofbirth, ID, emailAddress, contactNumber, passwords) 
                     values ('$name', '$lname', '$dob', '$idnum', '$email', '$contact', '$password') ";
         $results = mysqli_query($conn, $query)
             or die("Could not retrieve the data!");
         //extract the data 
-        echo "New admin created successfully";
+        echo "New employee created successfully";
         //close the connection to the database
         mysqli_close($conn);
   
