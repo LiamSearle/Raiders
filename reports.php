@@ -88,7 +88,7 @@
       echo "lmao" . $vehicleBookingID . "<br>";
 
       /* define the query */
-      $query = "INSERT INTO vehiclebooking(`vehicleBookingID`, `bookingNumber`, `registrationNumber`)
+      $query = "INSERT INTO vehiclebooking(`vehicleBookingID`, `bookingID`, `registrationNumber`)
                 VALUES ('$vehicleBookingID', '$bookingID', '$registrationNo')";
 
       /* get the results of the query and put them into a variable */
@@ -131,7 +131,7 @@
 
     $search=$_REQUEST['search'];
     //query instructions
-    $query = "SELECT * FROM bookings INNER JOIN client ON client.clientID=bookings.clientID
+    $query = "SELECT * FROM bookings INNER JOIN clients ON clients.clientID=bookings.clientID
     WHERE bookings.bookingID LIKE '%$search%'";
   
     $result=mysqli_query($conn,$query) 
@@ -159,7 +159,7 @@
        echo "<tr>";
        echo "<td>" . $row['bookingID'] . "</td>";
        echo "<td>" . $row['clientID'] . "</td>";
-       echo "<td>" . $row['firstname'] . "</td>";
+       echo "<td>" . $row['firstName'] . "</td>";
        echo "<td>" . $row['lastName'] .  "</td>";
        echo "<td>" . $row['emailAddress'] . "</td>";
        echo "<td>" . $row['contactNumber'] . "</td>";
@@ -183,13 +183,13 @@
 
 
   //query instructions
-  $query="SELECT client.firstname,client.lastName,client.clientID,client.emailAddress,client.contactNumber,
+  $query="SELECT clients.firstName,clients.lastName,clients.clientID,clients.emailAddress,clients.contactNumber,
   bookings.bookingID, bookings.startDate,bookings.endDate,bookings.numberPassengers,bookings.initialCollectionPoint, 
   bookings.finalCollectionPoint,vehiclebooking.registrationNumber, driver.driverID 
-  FROM client 
-  INNER JOIN bookings ON bookings.clientID=client.clientID 
+  FROM clients 
+  INNER JOIN bookings ON bookings.clientID=clients.clientID 
   INNER JOIN driver ON driver.driverID=bookings.driverID 
-  INNER JOIN vehiclebooking ON vehiclebooking.bookingNumber=bookings.bookingID";
+  INNER JOIN vehiclebooking ON vehiclebooking.bookingID=bookings.bookingID";
 
   $result=mysqli_query($conn,$query) 
   or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
@@ -216,7 +216,7 @@
      echo "<tr>";
      echo "<td>" . $row['bookingID'] . "</td>";
      echo "<td>" . $row['clientID'] . "</td>";
-     echo "<td>" . $row['firstname'] . " " . $row['lastName'] .  "</td>";
+     echo "<td>" . $row['firstName'] . " " . $row['lastName'] .  "</td>";
      echo "<td>" . $row['emailAddress'] . "</td>";
      echo "<td>" . $row['contactNumber'] . "</td>";
      echo "<td>" . $row['initialCollectionPoint'] . "</td>";
