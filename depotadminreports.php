@@ -51,71 +51,68 @@
 
 <fieldset style="margin: auto; width: 90%;">
 
-
-
 <form action="reports.php" method="POST">
-<?php
+     <?php
 
-  //database credentials
-  require_once("config.php");
-  
-    // making connection
-    $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-    or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
+       //database credentials
+       require_once("config.php");
+      
+         // making connection
+         $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+         or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
 
-    
-    //query instructions
-    $query = "SELECT * FROM depot 
-    INNER JOIN daytripdepot ON daytripdepot.depotID=depot.depotID 
-    INNER JOIN daytrip ON daytrip.tripNumber=daytripdepot.tripNumber";
-  
-    $result=mysqli_query($conn,$query) 
-    or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
-  
-    //creating bookings table
-     echo "<table style=\" border: 1px solid black;  width: 100%;\">
-    <tr>
-    <th> Depot ID </th>
-    <th> Trip Number </th>
-    <th> Depot Name </th>
-    <th> Date </th>
-    <th> Number of Beds Available </th>
-    </tr>";
-    
-     //displaying data
-     while($row=mysqli_fetch_array($result))
-     {
-       echo "<tr>";
-       echo "<td>" . $row['depotID'] . "</td>";
-       echo "<td>" . $row['tripNumber'] . "</td>";
-       echo "<td>" . $row['depotName'] . "</td>";
-       echo "<td>" . $row['date'] .  "</td>";
-       echo "<td>" . $row['numberBedsAvailable'] . "</td>";
-       echo "</tr>";
-     }
-     echo "</table>";
-  
-     //close the connection
-    mysqli_close($conn);
-  
-  ?>
+        
+         //query instructions
+         $query = "SELECT * FROM daytrip 
+         INNER JOIN daytripdepot ON daytripdepot.tripNumber=daytrip.tripNumber 
+         INNER JOIN depot ON depot.depotName=daytripdepot.endDepotID";
+      
+         $result=mysqli_query($conn,$query) 
+         or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
+      
+         //creating bookings table
+         echo "<table style=\" border: 1px solid black;  width: 100%;\">
+         <tr>
+         <th> Depot ID </th>
+         <th> Trip Number </th>
+         <th> Depot Name </th>
+         <th> Date </th>
+         <th> Number of Beds Available </th>
+         </tr>";
+        
+         //displaying data
+         while($row=mysqli_fetch_array($result))
+         {
+           echo "<tr>";
+           echo "<td>" . $row['depotID'] . "</td>";
+           echo "<td>" . $row['tripNumber'] . "</td>";
+           echo "<td>" . $row['depotName'] . "</td>";
+           echo "<td>" . $row['date'] .  "</td>";
+           echo "<td>" . $row['numberBedsAvailable'] . "</td>";
+           echo "</tr>";
+         }
+         echo "</table>";
+      
+         //close the connection
+         mysqli_close($conn);
+      
+      ?> 
 </form>
 </fieldset>
 
- <!-- general footer code  -->
- <div class="footer"> 
+<!-- general footer code  -->
+<div class="footer"> 
   <nav>
     <table>
         <tr>
         <td><a href="aboutus.php">About Us</a> | </td>
-            <td><a href="help.php">Help</a> | </td>
             <td><a href="faq.php">FAQs</a> | </td>
             <td><a href="legal.php">Legal</a> | </td>
             <td>&copy; Copyright 2020 Raiders</td>
         </tr>
     </table>
   </nav>
-</div>   
+</div>  
     
     
 </body>

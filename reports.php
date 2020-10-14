@@ -153,6 +153,7 @@
       $length = strlen($_POST['vehicle']);
       $registrationNo = substr($_POST['vehicle'], ($length - 10));
       
+<<<<<<< Updated upstream
       // echo  $bookingID . "<br>";
       // echo  $registrationNo . "<br>";
       // echo  $_POST['vehicle'] . "<br><br>";
@@ -160,6 +161,10 @@
       $vehicleBookingID = $bookingID . $registrationNo;
       
       // echo  $vehicleBookingID;
+=======
+      $vehicleBookingID = $bookingID . $registrationNo;
+      
+>>>>>>> Stashed changes
 
       /* define the query */
       $query = "INSERT INTO vehiclebooking (`vehicleBookingID`, `bookingID`, `registrationNumber`)
@@ -179,7 +184,7 @@
 
       $driverID = $_POST['driver'];
 
-      echo "This is the driver: " . $driverID;
+      
       $query = "UPDATE `bookings` SET `driverID`= '$driverID' WHERE `bookingID` = '$bookingID'";
 
       /* get the results of the query and put them into a variable */
@@ -380,24 +385,6 @@
 </fieldset>
 </div>    <!--end of drivers tab code -->
 
-<!-- depot tab -->
-<div id="Vehicles" class="tabcontent">
-<fieldset style="margin: auto; width: 100%;">
-<!-- navigation bar on drivers tab -->
-  <div class="nav">
-    <table>
-                <tr>
-                 <td><i class="fas fa-search"></i><input type="text" id="search" name="search" placeholder="Vehicle Registration No">
-                  <input type="submit" name="search" value="Search"></td>
-
-                </tr>
-    </table>
-</div>
-
-<!-- write code for vehicle table -->
-
-</fieldset>
-</div> <!-- end of vehicle tab code -->
 
 <!-- javascript code to control the tabs  -->
 <script>
@@ -426,7 +413,6 @@ document.getElementById("defaultOpen").click();
     <table>
         <tr>
         <td><a href="aboutus.php">About Us</a> | </td>
-            <td><a href="help.php">Help</a> | </td>
             <td><a href="faq.php">FAQs</a> | </td>
             <td><a href="legal.php">Legal</a> | </td>
             <td>&copy; Copyright 2020 Raiders</td>

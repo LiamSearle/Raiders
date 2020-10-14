@@ -80,7 +80,6 @@ that Hamba Kahle may collect from users of its products and services and from vi
     <table>
         <tr>
         <td><a href="aboutus.php">About Us</a> | </td>
-            <td><a href="help.php">Help</a> | </td>
             <td><a href="faq.php">FAQs</a> | </td>
             <td><a href="legal.php">Legal</a> | </td>
             <td>&copy; Copyright 2020 Raiders</td>
