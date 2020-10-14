@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bookings</title>
+  <title>Admin Bookings</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
 
@@ -61,7 +61,7 @@ if(isset($_REQUEST['submit'])){
   /* define the query */
     $search=$_REQUEST['bookingID'];
   //want it to be ordered by client ID asc
-  $query = "SELECT * FROM bookings INNER JOIN client ON client.clientID=bookings.clientID
+  $query = "SELECT * FROM bookings INNER JOIN client ON clients.clientID=bookings.clientID
    WHERE bookings.bookingID LIKE '%$search%'";
  
 
@@ -72,7 +72,7 @@ if(isset($_REQUEST['submit'])){
 
    //took out destination/end depot in          
    echo "<table style=\" border: 1px solid black; width: 100%;\">
-   <tr>
+   <tr style = \"background-color: grey; font-weight: bold;\">
    <th> BookingID </th>
    <th> ClientID </th>
    <th> First Name </th>
@@ -91,7 +91,7 @@ if(isset($_REQUEST['submit'])){
     echo "<tr>";
     echo "<td>" . $row['bookingID'] . "</td>";
     echo "<td>" . $row['clientID'] . "</td>";
-    echo "<td>" . $row['firstname'] . "</td>";
+    echo "<td>" . $row['firstName'] . "</td>";
     echo "<td>" . $row['lastName'] .  "</td>";
     echo "<td>" . $row['emailAddress'] . "</td>";
     echo "<td>" . $row['contactNumber'] . "</td>";
@@ -120,7 +120,7 @@ else{
         or die("there was an error connecting to the database.");
 
     /* define the query */
-    $query ="SELECT * FROM bookings INNER JOIN client ON client.clientID=bookings.clientID 
+    $query ="SELECT * FROM bookings INNER JOIN clients ON clients.clientID=bookings.clientID 
              WHERE bookings.bookingID=" . $_REQUEST['id'] . ";";
  
     /* get the results of the query and put them into a variable */
@@ -148,7 +148,7 @@ else{
     echo "<tr>";
     echo "<td>" . $row['bookingID'] . "</td>";
     echo "<td>" . $row['clientID'] . "</td>";
-    echo "<td>" . $row['firstname'] . "</td>";
+    echo "<td>" . $row['firstName'] . "</td>";
     echo "<td>" . $row['lastName'] .  "</td>";
     echo "<td>" . $row['emailAddress'] . "</td>";
     echo "<td>" . $row['contactNumber'] . "</td>";
@@ -175,35 +175,6 @@ else{
 
 <!--  retrieving vehicles from the database for drop down -->
 <div class="inputLabel">
-
-<?php
-
-/* import the config for the database */
-// require_once("config.php");
-
-//  if(array_key_exists('assignedVehicle',$_POST)){
-//      /* establish the connection to the database */
-//      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE )
-//          or die("there was an error connecting to the database.");
-
-//      $vehicleBookingID= $bookingID . $registrationNo ;
-//      echo "<h3>" . $registrationNo . "</h3>";
-
-//      /* define the query */
-//      $query = "INSERT INTO vehiclebooking(`vehicleBookingID`, `bookingNumber`, `registrationNumber`)
-//                VALUES ('$vehicleBookingID', '$bookingID', '$registrationNo')";
-
-//      /* get the results of the query and put them into a variable */
-//      $result = mysqli_query($conn, $query)
-//              or die("There was an error executing the query.");
-
-//      echo "Vehicle Assigned";
-
-//      /* close the connection */
-//      mysqli_close($conn);
-
-//   }
-?>
 
 </div>
 
@@ -237,10 +208,10 @@ else{
                                           $row['model'] . " - " . 
                                           $row['numberOfSeats'] . " seats - " .
                                           $row['registrationNumber'] . "</option>");
-                }
+                
                 $registrationNo = $row['registrationNumber'];
                 $vehicleLicenseCode = $row['licenceCode'];
-                
+                }
               }
 
               /* close the connection */
@@ -266,6 +237,7 @@ else{
               $query = "SELECT firstName, lastName, driver.driverID, driverlicence.licenceCode 
                        FROM `driver` INNER JOIN driverlicence ON driverlicence.driverID = driver.driverID
                        ORDER BY driverID ASC;";
+              
 
               /* get the results of the query and put them into a variable */
               $result = mysqli_query($conn, $query)
@@ -274,12 +246,12 @@ else{
               while($row = mysqli_fetch_array($result)) {
                 //use driverlicense table to filter which vehicles the drivers can drive according to their license codes
                 
-                if (true) {
+                if ($vehicleLicenseCode==$row['licenceCode']) {
                    echo("<option value='". $row['driverID'] ."'>" . 
                    $row['driverID'] 
                    . " " . $row['firstName'] . " " . $row['lastName'] .
                    "</option>");
-                }
+                 }
                 
               }
               

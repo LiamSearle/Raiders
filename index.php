@@ -28,7 +28,7 @@
 <div>
   <fieldset>
 
-  <div class="row">
+  <!-- <div class="row">
 <div class="column">
     <div class="card">
       <div class="container">
@@ -37,7 +37,7 @@
       </div>
     </div>
 </div>
-</div>
+</div> -->
   <div class="row">
   <div class="column">
     <div class="card">

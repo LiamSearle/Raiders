@@ -47,7 +47,7 @@
     <br>
     <h2>Details</h2>
 
-<fieldset>
+<fieldset style="margin: auto; width: 70%;">
     <?php
     //add database credentials
     require_once("config.php");
@@ -60,13 +60,14 @@
     $result = mysqli_query($conn, $query)
      or die ("Could not retrieve data!");
      //create table 
-     echo "<table style = \"width:80%;\">
+     echo "<table style=\" border: 1px solid black; width: 100%;\">
      <tr style = \"background-color: grey; font-weight: bold;\">
      <td>First Name</td>
      <td>Last Name</td>
      <td>Email Address</td>
      <td>Contact Number</td>
      </tr>";
+
      //execute table rows with the data from the database
     while($row = mysqli_fetch_array($result)){
         echo "<tr>";
@@ -74,9 +75,10 @@
         echo "<td>".$row['lastName']."</td>";
         echo "<td>".$row['emailAddress']."</td>";
         echo "<td>".$row['contactNumber']."</td>";
-        echo"</tr>";
+        echo "</tr>";
     }
     echo "</table>";
+
 
 ?>
 </fieldset>

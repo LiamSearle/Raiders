@@ -53,8 +53,10 @@
         <td><input type="date" id="enddate" name="enddate" placeholder="End Date"></td></tr>
         <tr><td><label for="numberPassengers">Number of Passengers:</label></td>
         <td><input type="text" id="numberPassengers" name="numberPassengers" placeholder="Number of Passengers"></td></tr>
-        <tr><td><label for="collection">Initial Collection Point:</label></td>
-        <td><input type="text" id="collection" name="collection" placeholder="Initial Collection Point"></td></tr>
+        <tr><td><label for="collection">Start Location:</label></td>
+        <td><input type="text" id="startcollection" name="startcollection" placeholder="Start Location"></td></tr>
+        <tr><td><label for="collection">End Location:</label></td>
+        <td><input type="text" id="endcollection" name="endcollection" placeholder="End Location"></td></tr>
         <tr><td> </td> 
         <td><input type="submit" name="submit" value="Add"></td></tr> 
         <td><a href="http://"></a></td> 
@@ -73,14 +75,16 @@
       $startdate = $_REQUEST['startdate'];
       $enddate = $_REQUEST['enddate'];
       $passengers =$_REQUEST['numberPassengers'];
-      $collectionpoint = $_REQUEST['collection'];
+      $initialcollectionpoint = $_REQUEST['startcollection'];
+      $finalcollectionpoint = $_REQUEST['endcollection'];
+
       // Create connection
   $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
     or die("Error connecting to the database");
 
   //issue the query to insert details to the database
-  $query = "INSERT INTO bookings (startDate, endDate, numberOfPassengers, initialCollectionPoint, clientID) 
-            VALUES ('$startdate', '$enddate', '$passengers', '$collectionpoint', '$id')";
+  $query = "INSERT INTO bookings (startDate, endDate, numberPassengers, initialCollectionPoint, finalCollectionPoint, clientID) 
+            VALUES ('$startdate', '$enddate', '$passengers', '$initialcollectionpoint','$finalcollectionpoint', '$id')";
 
   //execute the query 
   $result = mysqli_query($conn, $query)

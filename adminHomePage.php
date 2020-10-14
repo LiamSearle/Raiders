@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
-    <title>Home Page</title>
+    <title>Admin Home Page</title>
 
     <!-- logout button code -->
 <script>
@@ -48,7 +48,7 @@
           or die("there was an error connecting to the database.");
 
       /* define the query */
-      $query = "SELECT * FROM bookings LEFT JOIN client ON bookings.clientID = client.clientID UNION SELECT * FROM bookings RIGHT JOIN client ON bookings.clientID = client.clientID";
+      $query = "SELECT * FROM bookings INNER JOIN clients ON clients.clientID = bookings.clientID ORDER BY `bookingID` DESC";
 
       /* get the results of the query and put them into a variable */
       $result = mysqli_query($conn, $query)
@@ -63,7 +63,7 @@
     <h2>Booking Requests</h2>
 
 
-     <fieldset>
+     <fieldset style="margin: auto; width: 30%;">
     <?php
         echo "<table>
         <tr>
@@ -73,7 +73,7 @@
         while($row = mysqli_fetch_array($result)) {
             echo "<tr>";
             echo "<td>" . "Booking ID: " . "<a href=\"adminclients.php?id=" . $row['bookingID'] . "\">" . 
-            $row['bookingID'] .  "<br>" . $row['firstname']. " " . $row['lastName'] . 
+            $row['bookingID'] .  "<br>" . $row['firstName']. " " . $row['lastName'] . 
             " - Departure Date: " . $row['startDate'] . "<br>" .
              "From: " . $row['initialCollectionPoint'] . " -> " .  $row['finalCollectionPoint'] .
              "</a>" . "</td>";

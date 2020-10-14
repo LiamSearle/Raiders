@@ -61,7 +61,8 @@
         $firstName=$row['firstName'];
         $lastName=$row['lastName'];
         $contactNumber=$row['contactNumber'];
-
+        $bookingID=$row['bookingID'];
+        $date=$row['startDate'];
       }
 
       /* close the connection */
@@ -110,10 +111,40 @@
             <label for="depotRoom">Select</label>
               </select>
 
-        <tr><td><input style="margin-left: 50%" type="submit" name="checkAvailability" value="Check Room Availiability"></td></tr>
-
+        <tr><td>
+        <form action="driversdepot.php" method="post">
+        <input style="margin-left: 50%" type="submit" name="checkAvailability" value="Check Room Availiability">
+        </form>
+        </td></tr>
       </table>
 </fieldset>
+
+<?php
+
+                  /* import the config for the database */
+                  require_once("config.php");
+                  
+                  if(isset($_REQUEST['submit'])){
+                  /* establish the connection to the database */
+                  $startdate = $_REQUEST['startdate'];
+
+                  $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+                      or die("there was an error connecting to the database.");
+
+                  /* define the query */
+                  $query ="INSERT INTO `daytrip`(`date`, `bedRequest`, `bookingID`) VALUES ('$date','1','$bookingID')";
+
+                  /* get the results of the query and put them into a variable */
+                  $result = mysqli_query($conn, $query)
+                          or die("There was an error executing the query.");
+
+                  /* close the connection */
+                  mysqli_close($conn);
+                }
+
+
+
+?>
 
 
  <!-- general footer code  -->

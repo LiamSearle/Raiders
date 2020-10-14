@@ -1,26 +1,24 @@
 Minali
-- i dont think the clients booking (where the client enters their info) page needs a navigation bar
-- there is a little gap between to the left of the navigation bar and its annoying me so so much
-- navigationalbar.html like our demo file to check things
-- index.html maybe two buttons client or admin??
-- raiders.php not centered
 
 - move things in aboutus into center
 - help at bottom of page take out t@cs
 - LogOut button issues? cant move it more to the left, not displaying
--in adminnewbooking clientID should be ordered in ascending
 
+-in adminnewbooking clientID should be ordered in ascending
 -adminnewbookingpage query for assign drivers and assign vehicles 
+
 -driver homepage should only show the specific schedule for the driver not for all of them 
 -maybe have one employees table that stores all the data about each employee and their password for the logging in pages
  with a system like:
-  A01-administrators
+  A01 - administrators
   DR01 - DR10 for drivers
   DA01 - depot admin
   HR01 - hr manager???
 - flow from driver login page, driver homepage, driver depot page should all contain an id
 -driver should click check availability and that should send to depotadmins who confirm and then send back confirmation msg to drivers
 - maybe notification tab in drivers? 
+-all logout buttons should go back to where you choose what kind of employee one is
+-all drivers not showing up in adminnewbooking
 
 Liam
 - The logout button only works on 1 size of screen, need to align it to the right side of the screen

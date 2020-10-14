@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reports</title>
+  <title>Admin Reports</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
 
@@ -79,16 +79,16 @@
       $length = strlen($_POST['vehicle']);
       $registrationNo = substr($_POST['vehicle'], ($length - 10));
       
-      echo "XXXXXX" . $bookingID . "<br>";
-      echo "YYYYYY" . $registrationNo . "<br>";
-      echo "ZZZZZZ" . $_POST['vehicle'] . "<br><br>";
+      echo  $bookingID . "<br>";
+      echo  $registrationNo . "<br>";
+      echo $_POST['vehicle'] . "<br><br>";
 
       $vehicleBookingID = $bookingID . $registrationNo;
       
-      echo "lmao" . $vehicleBookingID . "<br>";
+      echo  $vehicleBookingID;
 
       /* define the query */
-      $query = "INSERT INTO vehiclebooking(`vehicleBookingID`, `bookingID`, `registrationNumber`)
+      $query = "INSERT INTO vehiclebooking (`vehicleBookingID`, `bookingID`, `registrationNumber`)
                 VALUES ('$vehicleBookingID', '$bookingID', '$registrationNo')";
 
       /* get the results of the query and put them into a variable */
@@ -139,7 +139,7 @@
   
     //creating bookings table
      echo "<table style=\" border: 1px solid black;  width: 100%;\">
-    <tr>
+    <tr style = \"background-color: grey; font-weight: bold;\">
     <th> BookingID </th>
     <th> ClientID </th>
     <th> First Name </th>
@@ -183,7 +183,7 @@
 
 
   //query instructions
-  $query="SELECT clients.firstName,clients.lastName,clients.clientID,clients.emailAddress,clients.contactNumber,
+  $query="SELECT clients.firstname,clients.lastName,clients.clientID,clients.emailAddress,clients.contactNumber,
   bookings.bookingID, bookings.startDate,bookings.endDate,bookings.numberPassengers,bookings.initialCollectionPoint, 
   bookings.finalCollectionPoint,vehiclebooking.registrationNumber, driver.driverID 
   FROM clients 
@@ -196,7 +196,7 @@
 
   //creating bookings table
    echo "<table style=\" border: 1px solid black;  width: 100%;\">
-  <tr>
+  <tr style = \"background-color: grey; font-weight: bold;\">
   <th> BookingID </th>
   <th> ClientID </th>
   <th> Name </th>
@@ -273,7 +273,7 @@
 
   //creating bookings table
   echo "<table style=\" border: 1px solid black; width: 100%;\">
-  <tr>
+  <tr style = \"background-color: grey; font-weight: bold;\">
   <th> DriverID </th>
   <th> First Name </th>
   <th> Last Name </th>

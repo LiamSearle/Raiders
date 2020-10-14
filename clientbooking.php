@@ -62,20 +62,22 @@
     $result = mysqli_query($conn, $query)
      or die ("Could not retrieve data!");
      //create table 
-     echo "<table style = \"width:80%;\">
+     echo "<table style=\" border: 1px solid black; width: 100%;\">
      <tr style = \"background-color: grey; font-weight: bold;\">
      <td>Start Date</td>
      <td>End Date</td>
      <td>Number of Passengers</td>
-     <td>Initial Collection Point</td>
+     <td>Start Location</td>
+     <td>End Location</td>
      </tr>";
      //execute table rows with the data from the database
     while($row = mysqli_fetch_array($result)){
         echo "<tr>";
         echo "<td>".$row['startDate']."</td>";
         echo "<td>".$row['endDate']."</td>";
-        echo "<td>".$row['numberOfPassengers']."</td>";
+        echo "<td>".$row['numberPassengers']."</td>";
         echo "<td>".$row['initialCollectionPoint']."</td>";
+        echo "<td>".$row['finalCollectionPoint']."</td>";
         echo"</tr>";
     }
     echo "</table>"

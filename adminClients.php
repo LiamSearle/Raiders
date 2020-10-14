@@ -59,6 +59,8 @@
 
 <!-- populating the client fields -->
 <?php
+
+
         /* import the config for the database */
       require_once("config.php");
   
@@ -70,8 +72,8 @@
         /* define the query */
           $search=$_REQUEST['search'];
         //want it to be ordered by client ID asc
-        $query = "SELECT * FROM bookings INNER JOIN client ON client.clientID=bookings.clientID
-         WHERE client.clientID LIKE '%$search%'";
+        $query = "SELECT * FROM bookings INNER JOIN clients ON clients.clientID=bookings.clientID
+         WHERE clients.clientID LIKE '%$search%'";
        
       
         /* get the results of the query and put them into a variable */
@@ -81,7 +83,7 @@
       
         while($row = mysqli_fetch_array($result)) {
           $bookingID=$row['bookingID'];
-          $firstName=$row['firstname'];
+          $firstName=$row['firstName'];
           $lastName=$row['lastName'];
           $email=$row['emailAddress'];
           $contactNumber=$row['contactNumber'];
@@ -103,7 +105,7 @@
           or die("there was an error connecting to the database.");
 
       /* define the query */
-      $query ="SELECT * FROM bookings INNER JOIN client ON client.clientID=bookings.clientID 
+      $query ="SELECT * FROM bookings INNER JOIN clients ON clients.clientID=bookings.clientID 
               WHERE bookings.bookingID=" . $_REQUEST['id'] . ";";
 
       /* get the results of the query and put them into a variable */
@@ -112,14 +114,15 @@
     
       while($row = mysqli_fetch_array($result)) {
         $bookingID=$row['bookingID'];
-        $firstName=$row['firstname'];
+        $firstName=$row['firstName'];
         $lastName=$row['lastName'];
         $email=$row['emailAddress'];
         $contactNumber=$row['contactNumber'];
         $startDepot=$row['initialCollectionPoint'];
         $endDepot=$row['finalCollectionPoint'];
         $numberPassengers=$row['numberPassengers'];
-        $departureDate=$row['endDate'];
+        $startDate=$row['startDate'];
+        $endDate=$row['endDate'];
       }
 
       /* close the connection */
@@ -145,15 +148,19 @@
           <td><input type="text" id="destinationDepot" name="destinationDepot" value ="<?php echo $endDepot; ?>" read only></td></tr>
           <tr><td><label for="numberPassengers">Number of Passengers:</label></td>
           <td><input type="text" id="numberPassengers" name="numberPassengers" value="<?php echo $numberPassengers; ?>" readonly></td></tr>
-          <tr><td><label for="date">Departure Date:</label></td>
-          <td><input type="text" id="date" name="date" value="<?php echo $departureDate; ?>" readonly></td></tr>
+          <tr><td><label for="date">Start Date:</label></td>
+          <td><input type="text" id="date" name="date" value="<?php echo $startDate; ?>" readonly></td></tr>
+          <tr><td><label for="date">End Date:</label></td>
+          <td><input type="text" id="date" name="date" value="<?php echo $endDate; ?>" readonly></td></tr>
       </table>
       
       <a href="adminNewBookingPage.php?id=<?php echo $_REQUEST['id']; ?>" > Confirm Details</a>
     <p></p>
     <form action="" method="POST">
+      
       <!-- Sends a message to the client informing them the details they have entered are incorrect. -->
-      <a href=""> Reject Details</a>
+      <a href="rejectdetails.php?id=<?php echo $bookingID; ?>&email=<?php echo $email; ?>" > Reject Details</a>
+
     </form>
     
 </fieldset>
