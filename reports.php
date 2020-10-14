@@ -56,20 +56,94 @@
 <div class="nav">
     <table>
                 <tr>
-                <form action="reports.php" method="POST">
-                 <td><i class="fas fa-search"></i><input type="text" id="search" name="search" placeholder="Booking ID">
-                  <input type="submit" name="search" value="Search"></td></form>
-                  <td><label for="groupBy"> Group By: </label>
-                  <select id="selections" name="Select">
-                    <option value="Departure Date" >Departure Date</option>
-                    <option value="Start Date" >Start Depot</option>
-                    <option value="End Date" >End Depot</option>
-                </select></td>
+                  <form action="reports.php" method="POST">
+                  <!-- <td><i class="fas fa-search"></i><input type="text" id="search" name="search" placeholder="Booking ID">
+                    <input type="submit" name="search" value="Search"></td></form> -->
+                    <td><label for="orderby"> Order By: </label>
+                      <select id="selections" name="Select">
+                        <option value="startDate" >Start Date</option>
+                        <option value="endDate" >End Date</option>
+                        <option value="initialCollectionPoint" >Start Location</option>
+                        <option value="finalCollectionPoint" >End Location</option>
+                        
+                      </select>
+                  </td>
+                  <td>
+                    <input type="submit" name="go" value="Go">
+                  </td>
                 </tr>
     </table>
 </div>
 
+  <?php
+    if(isset($_POST['go'])){
+
+      require_once("config.php");
+      /* establish the connection to the database */
+      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+          or die("there was an error connecting to the database.");
+      
+      // echo "<h3>" . $_POST['Select'] . "</h3>";
+
+      $query="SELECT clients.firstName,clients.lastName,clients.clientID,clients.emailAddress,clients.contactNumber,
+      bookings.bookingID, bookings.startDate,bookings.endDate,bookings.numberPassengers,bookings.initialCollectionPoint, 
+      bookings.finalCollectionPoint,vehiclebooking.registrationNumber, driver.driverID 
+      FROM clients 
+      INNER JOIN bookings ON bookings.clientID=clients.clientID 
+      INNER JOIN driver ON driver.driverID=bookings.driverID 
+      INNER JOIN vehiclebooking ON vehiclebooking.bookingID=bookings.bookingID
+      ORDER BY " . $_POST['Select'] .  " ASC";
+    
+      $result=mysqli_query($conn,$query) 
+      or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
+    
+      //creating bookings table
+       echo "<table style=\" border: 1px solid black;  width: 100%;\">
+      <tr style = \"background-color: grey; font-weight: bold;\">
+      <th> BookingID </th>
+      <th> ClientID </th>
+      <th> Name </th>
+      <th> Email </th>
+      <th> Contact Number </th>
+      <th> Start Location </th>
+      <th> End Location </th>
+      <th> Start Date </th>
+      <th> End Date </th>
+      <th> No of Passengers </th>
+      <th> DriverID </th>
+      <th> Vehicle Registration No </th>
+      </tr>";
+      
+       //displaying data
+       while($row=mysqli_fetch_array($result))
+       {
+         echo "<tr>";
+         echo "<td>" . $row['bookingID'] . "</td>";
+         echo "<td>" . $row['clientID'] . "</td>";
+         echo "<td>" . $row['firstName'] . " " . $row['lastName'] .  "</td>";
+         echo "<td>" . $row['emailAddress'] . "</td>";
+         echo "<td>" . $row['contactNumber'] . "</td>";
+         echo "<td>" . $row['initialCollectionPoint'] . "</td>";
+         echo "<td>" . $row['finalCollectionPoint'] . "</td>"; 
+         echo "<td>" . $row['startDate'] . "</td>";
+         echo "<td>" . $row['endDate'] . "</td>";
+         echo "<td>" . $row['numberPassengers'] . "</td>";
+         echo "<td>" . $row['driverID'] . "</td>";
+         echo "<td>" . $row['registrationNumber'] . "</td>";
+         echo "</tr>";
+       }
+       echo "</table>";
+    
+       //close the connection
+      mysqli_close($conn);
+      }
+    
+  ?>
+
 <?php
+  if (isset($_REQUEST['id']) != null) {
+              
+ 
       require_once("config.php");
    /* establish the connection to the database */
       $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
@@ -79,13 +153,13 @@
       $length = strlen($_POST['vehicle']);
       $registrationNo = substr($_POST['vehicle'], ($length - 10));
       
-      echo  $bookingID . "<br>";
-      echo  $registrationNo . "<br>";
-      echo $_POST['vehicle'] . "<br><br>";
+      // echo  $bookingID . "<br>";
+      // echo  $registrationNo . "<br>";
+      // echo  $_POST['vehicle'] . "<br><br>";
 
       $vehicleBookingID = $bookingID . $registrationNo;
       
-      echo  $vehicleBookingID;
+      // echo  $vehicleBookingID;
 
       /* define the query */
       $query = "INSERT INTO vehiclebooking (`vehicleBookingID`, `bookingID`, `registrationNumber`)
@@ -114,82 +188,85 @@
 
       /* close the connection */
       mysqli_close($conn);
-
+    }
 ?>
 
 
 <!-- populating the bookings table with php -->
 <form action="reports.php" method="POST">
 <?php
+  if(!(isset($_POST['go']))){
 
-  //database credentials
+  
+  // //database credentials
   require_once("config.php");
-  if(isset($_REQUEST['submit'])){
-    // making connection
-    $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-    or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
+  // if(isset($_REQUEST['submit'])){
+  //   // making connection
+  //   $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+  //   or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
 
-    $search=$_REQUEST['search'];
-    //query instructions
-    $query = "SELECT * FROM bookings INNER JOIN clients ON clients.clientID=bookings.clientID
-    WHERE bookings.bookingID LIKE '%$search%'";
+  //   $search=$_REQUEST['search'];
+  //   //query instructions
+  //   $query = "SELECT * FROM bookings INNER JOIN clients ON clients.clientID=bookings.clientID
+  //   WHERE bookings.bookingID LIKE '%$search%'";
   
-    $result=mysqli_query($conn,$query) 
-    or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
+  //   $result=mysqli_query($conn,$query) 
+  // //   or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
   
-    //creating bookings table
-     echo "<table style=\" border: 1px solid black;  width: 100%;\">
-    <tr style = \"background-color: grey; font-weight: bold;\">
-    <th> BookingID </th>
-    <th> ClientID </th>
-    <th> First Name </th>
-    <th> Last Name </th>
-    <th> Email </th>
-    <th> Contact Number </th>
-    <th> Start Depot </th>
-    <th> Start Date </th>
-    <th> No of Passengers </th>
-    <th> Driver ID </th>
-    <th> Vehicle Registration No </th>
-    </tr>";
+  //   //creating bookings table
+  //    echo "<table style=\" border: 1px solid black;  width: 100%;\">
+  //   <tr style = \"background-color: grey; font-weight: bold;\">
+  //   <th> BookingID </th>
+  //   <th> ClientID </th>
+  //   <th> First Name </th>
+  //   <th> Last Name </th>
+  //   <th> Email </th>
+  //   <th> Contact Number </th>
+  //   <th> Start Depot </th>
+  //   <th> Start Date </th>
+  //   <th> No of Passengers </th>
+  //   <th> Driver ID </th>
+  //   <th> Vehicle Registration No </th>
+  //   </tr>";
     
-     //displaying data
-     while($row=mysqli_fetch_array($result))
-     {
-       echo "<tr>";
-       echo "<td>" . $row['bookingID'] . "</td>";
-       echo "<td>" . $row['clientID'] . "</td>";
-       echo "<td>" . $row['firstName'] . "</td>";
-       echo "<td>" . $row['lastName'] .  "</td>";
-       echo "<td>" . $row['emailAddress'] . "</td>";
-       echo "<td>" . $row['contactNumber'] . "</td>";
-       echo "<td>" . $row['initialCollectionPoint'] . "</td>";
-       echo "<td>" . $row['startDate'] . "</td>";
-       echo "<td>" . $row['numberPassengers'] . "</td>";
-       echo "<td>" . $row['driverID'] . "</td>";
-       echo "<td>" . $row['vehicleRegistration'] . "</td>";
-       echo "</tr>";
-     }
-     echo "</table>";
+  //    //displaying data
+  //    while($row=mysqli_fetch_array($result))
+  //    {
+  //      echo "<tr>";
+  //      echo "<td>" . $row['bookingID'] . "</td>";
+  //      echo "<td>" . $row['clientID'] . "</td>";
+  //      echo "<td>" . $row['firstName'] . "</td>";
+  //      echo "<td>" . $row['lastName'] .  "</td>";
+  //      echo "<td>" . $row['emailAddress'] . "</td>";
+  //      echo "<td>" . $row['contactNumber'] . "</td>";
+  //      echo "<td>" . $row['initialCollectionPoint'] . "</td>";
+  //      echo "<td>" . $row['startDate'] . "</td>";
+  //      echo "<td>" . $row['numberPassengers'] . "</td>";
+  //      echo "<td>" . $row['driverID'] . "</td>";
+  //      echo "<td>" . $row['vehicleRegistration'] . "</td>";
+  //      echo "</tr>";
+  //    }
+  //    echo "</table>";
   
-     //close the connection
-    mysqli_close($conn);
-  }
+  //    //close the connection
+  //   mysqli_close($conn);
+  // }
 
-  // making connection
-  else{
+  // // making connection
+  
   $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
   or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
 
 
   //query instructions
-  $query="SELECT clients.firstname,clients.lastName,clients.clientID,clients.emailAddress,clients.contactNumber,
+  $query="SELECT clients.firstName,clients.lastName,clients.clientID,clients.emailAddress,clients.contactNumber,
   bookings.bookingID, bookings.startDate,bookings.endDate,bookings.numberPassengers,bookings.initialCollectionPoint, 
   bookings.finalCollectionPoint,vehiclebooking.registrationNumber, driver.driverID 
   FROM clients 
   INNER JOIN bookings ON bookings.clientID=clients.clientID 
   INNER JOIN driver ON driver.driverID=bookings.driverID 
-  INNER JOIN vehiclebooking ON vehiclebooking.bookingID=bookings.bookingID";
+  INNER JOIN vehiclebooking ON vehiclebooking.bookingID=bookings.bookingID
+  ORDER BY bookings.bookingID ASC";
 
   $result=mysqli_query($conn,$query) 
   or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
@@ -205,6 +282,7 @@
   <th> Start Location </th>
   <th> End Location </th>
   <th> Start Date </th>
+  <th> End Date </th>
   <th> No of Passengers </th>
   <th> DriverID </th>
   <th> Vehicle Registration No </th>
@@ -222,6 +300,7 @@
      echo "<td>" . $row['initialCollectionPoint'] . "</td>";
      echo "<td>" . $row['finalCollectionPoint'] . "</td>"; 
      echo "<td>" . $row['startDate'] . "</td>";
+     echo "<td>" . $row['endDate'] . "</td>";
      echo "<td>" . $row['numberPassengers'] . "</td>";
      echo "<td>" . $row['driverID'] . "</td>";
      echo "<td>" . $row['registrationNumber'] . "</td>";
@@ -231,7 +310,7 @@
 
    //close the connection
   mysqli_close($conn);
-  }
+}
   ?>
 
 </fieldset>

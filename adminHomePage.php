@@ -30,7 +30,7 @@
     <table>
             <tr>
                 <td><img src="images/logoo.png" height="50px"></td>
-                <td><a class="active" href="bookingreq.php"><i class="fas fa-home"></i>Home</a></td>
+                <td><a class="active" href="adminhomepage.php"><i class="fas fa-home"></i>Home</a></td>
                 <td><a href="adminClients.php"><i class="fas fa-user"></i> Clients</a></td>
                 <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td><a href="reports.php"><i class="fas fa-list"></i> Reports</a></td>

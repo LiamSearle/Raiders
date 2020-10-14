@@ -34,7 +34,7 @@
       <tr>
           <td><img src="images/logoo.png" height="50px"></td>
           <td><a href="adminhomepage.php"><i class="fas fa-home"></i>Home</a></td>
-          <td><a class="active" href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
+          <td><a class="active" href="adminClients.php"><i class="fas fa-user"></i> Clients</a></td>
           <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
           <td><a href="reports.php"><i class="fas fa-list"></i> Reports</a></td>
           <td>
@@ -90,7 +90,8 @@
           $startDepot=$row['initialCollectionPoint'];
           $endDepot=$row['finalCollectionPoint'];
           $numberPassengers=$row['numberPassengers'];
-          $departureDate=$row['endDate'];
+          $startDate=$row['startDate'];
+          $endDate=$row['endDate'];
         }
       
         /* close the connection */
@@ -99,7 +100,7 @@
       }
        
 
-  else{   
+  else if( isset($_REQUEST['id']) != null ){   
     /* establish the connection to the database */
       $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
           or die("there was an error connecting to the database.");

@@ -69,14 +69,14 @@
     <p><?php
     //add database credentials 
     //checking if the searching form has been submitted 
-    if (isset($_REQUEST['submit'])) {
+    if (isset($_POST['submit'])) {
         require_once("config.php");
         //get the value from the form
-        $name = $_REQUEST['client_fname'];
-        $lname= $_REQUEST['client_lname'];
-        $email = $_REQUEST['client_email'];
-        $contact= $_REQUEST['client_contact'];
-        $password= $_REQUEST['client_password'];
+        $name = $_POST['client_fname'];
+        $lname= $_POST['client_lname'];
+        $email = $_POST['client_email'];
+        $contact= $_POST['client_contact'];
+        $password= $_POST['client_password'];
         //$repeat= $_REQUEST['client_repeat'];
         //make the connection to database
         $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)

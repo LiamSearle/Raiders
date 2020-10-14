@@ -28,17 +28,17 @@
 <!-- general navigation bar code   -->
 <div class="nav">
     <table>
-                <tr>
-                    <td><img src="images/logoo.png" height="50px"></td>
-                    <td><a href="adminhomepage.php"><i class="fas fa-home"></i>Home</a></td>
-                    <td><a href="adminclients.php"><i class="fas fa-user"></i> Clients</a></td>
-                    <td><a class="active" href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
-                    <td><a href="reports.php"><i class="fas fa-list"></i> Reports</a></td>
-                    <td>
-                        <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
-                    </td>
-                </tr>
-            </table>
+      <tr>
+          <td><img src="images/logoo.png" height="50px"></td>
+          <td><a href="adminhomepage.php"><i class="fas fa-home"></i>Home</a></td>
+          <td><a href="adminClients.php"><i class="fas fa-user"></i> Clients</a></td>
+          <td><a class="active" href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
+          <td><a href="reports.php"><i class="fas fa-list"></i> Reports</a></td>
+          <td>
+              <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
+          </td>
+      </tr>
+    </table>
 </div>
 
 <form action="adminNewBookingPage.php" method="POST">
@@ -61,13 +61,13 @@ if(isset($_REQUEST['submit'])){
   /* define the query */
     $search=$_REQUEST['bookingID'];
   //want it to be ordered by client ID asc
-  $query = "SELECT * FROM bookings INNER JOIN client ON clients.clientID=bookings.clientID
+  $query = "SELECT * FROM bookings INNER JOIN clients ON clients.clientID=bookings.clientID
    WHERE bookings.bookingID LIKE '%$search%'";
  
 
   /* get the results of the query and put them into a variable */
   $result = mysqli_query($conn, $query)
-          or die("There was an error executing the query.");
+          or die("There was an error executing the query to search.");
 
 
    //took out destination/end depot in          
@@ -111,7 +111,7 @@ if(isset($_REQUEST['submit'])){
 
 }
 
-else{
+else if (isset($_REQUEST['id']) != null){
   /* import the config for the database */
     require_once("config.php");
 
@@ -185,7 +185,9 @@ else{
 <form action="reports.php?id=<?php echo $bookingID ?>" method="POST">
 <label for="vehicle">Assign Vehicle: </label>
     <select id="vehicle" name="vehicle">
+
     <?php
+          
             /* import the config for the database */
               require_once("config.php");
 
@@ -246,7 +248,7 @@ else{
               while($row = mysqli_fetch_array($result)) {
                 //use driverlicense table to filter which vehicles the drivers can drive according to their license codes
                 
-                if ($vehicleLicenseCode==$row['licenceCode']) {
+                if (true) {
                    echo("<option value='". $row['driverID'] ."'>" . 
                    $row['driverID'] 
                    . " " . $row['firstName'] . " " . $row['lastName'] .
