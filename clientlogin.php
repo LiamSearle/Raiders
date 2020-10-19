@@ -42,7 +42,7 @@
                 $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
                 or die("could not connect");
                     //issue query instruction 
-                $query = "SELECT passwords,clientID FROM clients WHERE contactNumber = $user";
+                $query = "SELECT passwords,clientID FROM clients WHERE contactNumber = '$user'";
                 $results = mysqli_query($conn, $query)
                     or die("<strong style=\"color:red;\">Invalid username</strong>");
                 $row = mysqli_fetch_array($results);
