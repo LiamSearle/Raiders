@@ -51,7 +51,7 @@
                 if($pass == $password){
                     session_start();
                     $_SESSION['clientID'] = $id;
-                    header("Location:clienthome.php");
+                    header("Location:clientcreatebooking.php");
                 }
                 else{
                     echo "<strong style=\"color:red;\">Wrong password!</strong>";

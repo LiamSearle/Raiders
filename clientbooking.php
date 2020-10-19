@@ -34,7 +34,7 @@
        <table>
             <tr>
                 <td><img src="images/logoo.png" height="50px"></td>
-                <td><a href="clienthome.php"><i class="fas fa-home"></i>Home</a></td>
+                <td><a href="clientcreatebooking.php"><i class="fas fa-home"></i>Home</a></td>
                 <td><a href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
                 <td><a class="active" href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 </form>
@@ -76,8 +76,8 @@
         echo "<td>".$row['startDate']."</td>";
         echo "<td>".$row['endDate']."</td>";
         echo "<td>".$row['numberPassengers']."</td>";
-        echo "<td>".$row['initialCollectionPoint']."</td>";
-        echo "<td>".$row['finalCollectionPoint']."</td>";
+        echo "<td>".$row['initialAddress'] . ", " . $row['initialCollectionPoint']."</td>";
+        echo "<td>".$row['finalAddress'] . ", " .  $row['finalCollectionPoint']."</td>";
         echo"</tr>";
     }
     echo "</table>"
