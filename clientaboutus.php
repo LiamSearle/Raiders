@@ -51,13 +51,21 @@
 </div>
     <br>
 <div class="about-section">
-<fieldset>
-  <h1>About Us </h1>
-  <p>Raiders is an information systems development team established in 2020.</p>
 
+  <h1>About Us </h1>
+  <fieldset>
+  <p>Raiders is an information systems development team established in 2020.</p>
+  <p>We are the shuttle  provider in South Africa with full online booking capability, 
+  providing you with real time e-mail and SMS confirmations of your booking which ensures 
+  that your booking experience does not have to be difficult, unreliable and complicated.
+  It is the road at your fingertips.</p>
+  </fieldset>
+
+ 
 
 <h2 style="text-align:center">Our Team</h2>
 
+<fieldset>
 
 <div class="row">
   <div class="column">
