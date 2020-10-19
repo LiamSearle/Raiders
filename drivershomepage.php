@@ -59,7 +59,7 @@
 
 
      ?>
-<fieldset>
+<fieldset style="margin: auto; width: 30%;">
 <?php
         echo "<table>
         <tr>
@@ -69,7 +69,7 @@
         
         while($row = mysqli_fetch_array($result)) {
             echo "<tr>";
-            echo "<td>" . "Trip Number: "  . $row['bookingID'] .  "<br>".
+            echo "<td>" . "Booking ID: "  . $row['bookingID'] .  "<br>".
             "Driver ID: " . $row['driverID'] . "<br>" .
             "Driver: " . $row['firstName']. " " . $row['lastName'] . "<br>" .
             "Departure Date: " . $row['startDate'] . "<br> " 

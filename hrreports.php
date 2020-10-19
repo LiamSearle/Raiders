@@ -233,7 +233,7 @@ else{
      or die("there was an error connecting to the database.");
 
  /* define the query */
- $query = "SELECT daytripdepot.startDepot,daytripdepot.destinationDepot
+ $query = "SELECT daytripdepot.startDepotID,daytripdepot.endDepotID
             FROM daytripdepot";
 
  /* get the results of the query and put them into a variable */
@@ -252,8 +252,8 @@ else{
    while($row=mysqli_fetch_array($result))
    {
      echo "<tr>";
-     echo "<td>" . $row['startDepot'] . "</td>";
-     echo "<td>" . $row['destinationDepot'] . "</td>";
+     echo "<td>" . $row['startDepotID'] . "</td>";
+     echo "<td>" . $row['endDepotID'] . "</td>";
      echo "</tr>";
    }
    echo "</table>";

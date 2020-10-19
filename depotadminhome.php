@@ -31,6 +31,7 @@
             <tr>
                 <td><img src="images/logoo.png" height="50px"></td>
                 <td><a class="active" href="depotadminhome.php"><i class="fas fa-home"></i>Home</a></td>
+                <td><a href="bedrequests.php"><i class="fas fa-bed"></i> Bed Requests</a></td>
                 <td><a href="depotadminreports.php"><i class="fas fa-list"></i> Reports</a></td>
                 <td>
             <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
@@ -53,7 +54,8 @@
       driver.firstName,driver.lastName 
       FROM daytrip 
       INNER JOIN bookings ON bookings.bookingID=daytrip.bookingID 
-      INNER JOIN driver ON driver.driverID=bookings.driverID";
+      INNER JOIN driver ON driver.driverID=bookings.driverID
+      ORDER BY daytrip.tripNumber DESC";
 
       /* get the results of the query and put them into a variable */
       $result = mysqli_query($conn, $query)
@@ -63,7 +65,7 @@
       mysqli_close($conn);
      ?>
 
-<h2>Bed Requests</h2>
+<h2>Incoming Bed Requests</h2>
 <fieldset>
 <?php
    echo "<table>
@@ -73,7 +75,7 @@
    
    while($row = mysqli_fetch_array($result)) {
        echo "<tr>";
-       echo "<td>" . "Trip Number: " . "<a href=\"depotadminreports.php?id=" . $row['tripNumber'] . "\">" . 
+       echo "<td>" . "Trip Number: " . "<a href=\"bedrequests.php?id=" . $row['tripNumber'] . "\">" . 
        $row['tripNumber'] .  "<br>" .
        "Driver: " . $row['firstName'] . " " . $row['lastName'] . "<br>" .
        "Departure Date: " . $row['startDate'] . "<br>" .

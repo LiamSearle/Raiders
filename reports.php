@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,97 +9,93 @@
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
 
   <!-- logout button code -->
-<script>
-     function logOut() {
-        var retVal = confirm("Are you sure you'd like to log out?");
-        if( retVal == true ) {
-          window.location=("raiders.php"); 
-           return true;
-        } 
-        else {
-           return false;
-        }
-     } 
-
-</script>
+  <script>
+    function logOut() {
+      var retVal = confirm("Are you sure you'd like to log out?");
+      if (retVal == true) {
+        window.location = ("raiders.php");
+        return true;
+      } else {
+        return false;
+      }
+    }
+  </script>
 </head>
 
 <body>
 
-<!-- general navigation bar code   -->
-<div class="nav">
- <table>
-      <tr>
-          <td><img src="images/logoo.png" height="50px"></td>
-          <td><a href="adminhomepage.php"><i class="fas fa-home"></i>Home</a></td>
-          <td><a href="adminclients.php"><i class="fas fa-user"></i> Clients</a></td>
-          <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
-          <td><a class="active" href="reports.php"><i class="fas fa-list"></i> Reports</a></td>
-          <td>
-            <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
-          </td>      
-      </tr>
-  </table> 
-</div> 
-
-<!-- creating the tab section  -->
-<div class="tab">
-  <button class="tablinks" onclick="openReport(event, 'Bookings')" id="defaultOpen">Bookings</button>
-  <button class="tablinks" onclick="openReport(event, 'Drivers')">Drivers</button>
-  <button class="tablinks" onclick="openReport(event, 'Vehicles')">Vehicles</button>
-</div>
-
-<!-- bookings tab -->
-<div id="Bookings" class="tabcontent">
-  <fieldset style="margin: auto; width: 100%;">
-
-<!-- navigation bar on the bookings tab -->
-<div class="nav">
+  <!-- general navigation bar code   -->
+  <div class="nav">
     <table>
-                <tr>
-                  <form action="reports.php" method="POST">
-                  <!-- <td><i class="fas fa-search"></i><input type="text" id="search" name="search" placeholder="Booking ID">
-                    <input type="submit" name="search" value="Search"></td></form> -->
-                    <td><label for="orderby"> Order By: </label>
-                      <select id="selections" name="Select">
-                        <option value="startDate" >Start Date</option>
-                        <option value="endDate" >End Date</option>
-                        <option value="initialCollectionPoint" >Start Location</option>
-                        <option value="finalCollectionPoint" >End Location</option>
-                        
-                      </select>
-                  </td>
-                  <td>
-                    <input type="submit" name="go" value="Go">
-                  </td>
-                </tr>
+      <tr>
+        <td><img src="images/logoo.png" height="50px"></td>
+        <td><a href="adminhomepage.php"><i class="fas fa-home"></i>Home</a></td>
+        <td><a href="adminclients.php"><i class="fas fa-user"></i> Clients</a></td>
+        <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
+        <td><a class="active" href="reports.php"><i class="fas fa-list"></i> Reports</a></td>
+        <td>
+          <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
+        </td>
+      </tr>
     </table>
-</div>
+  </div>
 
-  <?php
-    if(isset($_POST['go'])){
+  <!-- creating the tab section  -->
+  <div class="tab">
+    <button class="tablinks" onclick="openReport(event, 'Bookings')" id="defaultOpen">Bookings</button>
+    <button class="tablinks" onclick="openReport(event, 'Drivers')">Drivers</button>
+    <button class="tablinks" onclick="openReport(event, 'Vehicles')">Vehicles</button>
+  </div>
 
-      require_once("config.php");
-      /* establish the connection to the database */
-      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+  <!-- bookings tab -->
+  <div id="Bookings" class="tabcontent">
+    <fieldset style="margin: auto; width: 100%;">
+
+      <!-- navigation bar on the bookings tab -->
+      <div class="nav">
+        <table>
+          <tr>
+            <form action="reports.php" method="POST">
+              <td><label for="orderby"> Order By: </label>
+                <select id="selections" name="Select">
+                  <option value="startDate">Start Date</option>
+                  <option value="endDate">End Date</option>
+                  <option value="initialCollectionPoint">Start City</option>
+                  <option value="finalCollectionPoint">End City</option>
+
+                </select>
+              </td>
+              <td>
+                <input type="submit" name="go" value="Go">
+              </td>
+          </tr>
+        </table>
+      </div>
+
+      <?php
+      if (isset($_POST['go'])) {
+
+        require_once("config.php");
+        /* establish the connection to the database */
+        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
           or die("there was an error connecting to the database.");
-      
-      // echo "<h3>" . $_POST['Select'] . "</h3>";
 
-      $query="SELECT clients.firstName,clients.lastName,clients.clientID,clients.emailAddress,clients.contactNumber,
+        //echo "<h3>" . $_POST['Select'] . "</h3>";
+
+        $query = "SELECT clients.firstName,clients.lastName,clients.clientID,clients.emailAddress,clients.contactNumber,
       bookings.bookingID, bookings.startDate,bookings.endDate,bookings.numberPassengers,bookings.initialCollectionPoint, 
-      bookings.finalCollectionPoint,vehiclebooking.registrationNumber, driver.driverID 
+      bookings.finalCollectionPoint, bookings.initialAddress, bookings.finalAddress, vehiclebooking.registrationNumber, driver.driverID 
       FROM clients 
       INNER JOIN bookings ON bookings.clientID=clients.clientID 
       INNER JOIN driver ON driver.driverID=bookings.driverID 
       INNER JOIN vehiclebooking ON vehiclebooking.bookingID=bookings.bookingID
-      ORDER BY " . $_POST['Select'] .  " ASC";
-    
-      $result=mysqli_query($conn,$query) 
-      or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
-    
-      //creating bookings table
-       echo "<table style=\" border: 1px solid black;  width: 100%;\">
+      ORDER BY " . $_POST['Select'] .  "ASC";
+
+        $result = mysqli_query($conn, $query)
+          or  die("<strong style=\"color:red;\">There's been an error with our query!!!</strong>");
+
+        //creating bookings table
+        echo "<table style=\" border: 1px solid black;  width: 100%;\">
       <tr style = \"background-color: grey; font-weight: bold;\">
       <th> BookingID </th>
       <th> ClientID </th>
@@ -113,171 +110,105 @@
       <th> DriverID </th>
       <th> Vehicle Registration No </th>
       </tr>";
-      
-       //displaying data
-       while($row=mysqli_fetch_array($result))
-       {
-         echo "<tr>";
-         echo "<td>" . $row['bookingID'] . "</td>";
-         echo "<td>" . $row['clientID'] . "</td>";
-         echo "<td>" . $row['firstName'] . " " . $row['lastName'] .  "</td>";
-         echo "<td>" . $row['emailAddress'] . "</td>";
-         echo "<td>" . $row['contactNumber'] . "</td>";
-         echo "<td>" . $row['initialCollectionPoint'] . "</td>";
-         echo "<td>" . $row['finalCollectionPoint'] . "</td>"; 
-         echo "<td>" . $row['startDate'] . "</td>";
-         echo "<td>" . $row['endDate'] . "</td>";
-         echo "<td>" . $row['numberPassengers'] . "</td>";
-         echo "<td>" . $row['driverID'] . "</td>";
-         echo "<td>" . $row['registrationNumber'] . "</td>";
-         echo "</tr>";
-       }
-       echo "</table>";
-    
-       //close the connection
-      mysqli_close($conn);
-      }
-    
-  ?>
 
-<?php
-  if (isset($_REQUEST['id']) != null) {
-              
- 
-      require_once("config.php");
-   /* establish the connection to the database */
-      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+        //displaying data
+        while ($row = mysqli_fetch_array($result)) {
+          echo "<tr>";
+          echo "<td>" . $row['bookingID'] . "</td>";
+          echo "<td>" . $row['clientID'] . "</td>";
+          echo "<td>" . $row['firstName'] . " " . $row['lastName'] .  "</td>";
+          echo "<td>" . $row['emailAddress'] . "</td>";
+          echo "<td>" . $row['contactNumber'] . "</td>";
+          echo "<td>" . $row['initialAddress'] . ", " . $row['initialCollectionPoint'] . "</td>";
+          echo "<td>" . $row['finalAddress'] . ", " . $row['finalCollectionPoint'] . "</td>";
+          echo "<td>" . $row['startDate'] . "</td>";
+          echo "<td>" . $row['endDate'] . "</td>";
+          echo "<td>" . $row['numberPassengers'] . "</td>";
+          echo "<td>" . $row['driverID'] . "</td>";
+          echo "<td>" . $row['registrationNumber'] . "</td>";
+          echo "</tr>";
+        }
+        echo "</table>";
+
+        //close the connection
+        mysqli_close($conn);
+      }
+
+      ?>
+
+      <?php
+      if (isset($_REQUEST['id']) != null) {
+
+
+        require_once("config.php");
+        /* establish the connection to the database */
+        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
           or die("there was an error connecting to the database.");
 
-      $bookingID = $_REQUEST['id'];
-      $length = strlen($_POST['vehicle']);
-      $registrationNo = substr($_POST['vehicle'], ($length - 10));
-      
-<<<<<<< Updated upstream
-      // echo  $bookingID . "<br>";
-      // echo  $registrationNo . "<br>";
-      // echo  $_POST['vehicle'] . "<br><br>";
+        $bookingID = $_REQUEST['id'];
+        $length = strlen($_POST['vehicle']);
+        $registrationNo = substr($_POST['vehicle'], ($length - 10));
 
-      $vehicleBookingID = $bookingID . $registrationNo;
-      
-      // echo  $vehicleBookingID;
-=======
-      $vehicleBookingID = $bookingID . $registrationNo;
-      
->>>>>>> Stashed changes
+        $vehicleBookingID = $bookingID . $registrationNo;
 
-      /* define the query */
-      $query = "INSERT INTO vehiclebooking (`vehicleBookingID`, `bookingID`, `registrationNumber`)
+
+        /* define the query */
+        $query = "INSERT INTO vehiclebooking (`vehicleBookingID`, `bookingID`, `registrationNumber`)
                 VALUES ('$vehicleBookingID', '$bookingID', '$registrationNo')";
 
-      /* get the results of the query and put them into a variable */
-      $result = mysqli_query($conn, $query)
-              or die("There was an error executing the query to assign the vehicle.");
+        /* get the results of the query and put them into a variable */
+        $result = mysqli_query($conn, $query)
+          or die("There was an error executing the query to assign the vehicle.");
 
-       /* close the connection */
-       mysqli_close($conn);
+        /* close the connection */
+        mysqli_close($conn);
 
-       require_once("config.php");
-   /* establish the connection to the database */
-      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+        require_once("config.php");
+        /* establish the connection to the database */
+        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
           or die("there was an error connecting to the database.");
 
-      $driverID = $_POST['driver'];
-
-      
-      $query = "UPDATE `bookings` SET `driverID`= '$driverID' WHERE `bookingID` = '$bookingID'";
-
-      /* get the results of the query and put them into a variable */
-      $result = mysqli_query($conn, $query)
-              or die("There was an error executing the query to assign the driver.");
-
-      /* close the connection */
-      mysqli_close($conn);
-    }
-?>
+        $driverID = $_POST['driver'];
 
 
-<!-- populating the bookings table with php -->
-<form action="reports.php" method="POST">
-<?php
-  if(!(isset($_POST['go']))){
+        $query = "UPDATE `bookings` SET `driverID`= '$driverID' WHERE `bookingID` = '$bookingID'";
 
-  
-  // //database credentials
-  require_once("config.php");
-  // if(isset($_REQUEST['submit'])){
-  //   // making connection
-  //   $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-  //   or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
+        /* get the results of the query and put them into a variable */
+        $result = mysqli_query($conn, $query)
+          or die("There was an error executing the query to assign the driver.");
 
-  //   $search=$_REQUEST['search'];
-  //   //query instructions
-  //   $query = "SELECT * FROM bookings INNER JOIN clients ON clients.clientID=bookings.clientID
-  //   WHERE bookings.bookingID LIKE '%$search%'";
-  
-  //   $result=mysqli_query($conn,$query) 
-  // //   or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
-  
-  //   //creating bookings table
-  //    echo "<table style=\" border: 1px solid black;  width: 100%;\">
-  //   <tr style = \"background-color: grey; font-weight: bold;\">
-  //   <th> BookingID </th>
-  //   <th> ClientID </th>
-  //   <th> First Name </th>
-  //   <th> Last Name </th>
-  //   <th> Email </th>
-  //   <th> Contact Number </th>
-  //   <th> Start Depot </th>
-  //   <th> Start Date </th>
-  //   <th> No of Passengers </th>
-  //   <th> Driver ID </th>
-  //   <th> Vehicle Registration No </th>
-  //   </tr>";
-    
-  //    //displaying data
-  //    while($row=mysqli_fetch_array($result))
-  //    {
-  //      echo "<tr>";
-  //      echo "<td>" . $row['bookingID'] . "</td>";
-  //      echo "<td>" . $row['clientID'] . "</td>";
-  //      echo "<td>" . $row['firstName'] . "</td>";
-  //      echo "<td>" . $row['lastName'] .  "</td>";
-  //      echo "<td>" . $row['emailAddress'] . "</td>";
-  //      echo "<td>" . $row['contactNumber'] . "</td>";
-  //      echo "<td>" . $row['initialCollectionPoint'] . "</td>";
-  //      echo "<td>" . $row['startDate'] . "</td>";
-  //      echo "<td>" . $row['numberPassengers'] . "</td>";
-  //      echo "<td>" . $row['driverID'] . "</td>";
-  //      echo "<td>" . $row['vehicleRegistration'] . "</td>";
-  //      echo "</tr>";
-  //    }
-  //    echo "</table>";
-  
-  //    //close the connection
-  //   mysqli_close($conn);
-  // }
-
-  // // making connection
-  
-  $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-  or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
+        /* close the connection */
+        mysqli_close($conn);
+      }
+      ?>
 
 
-  //query instructions
-  $query="SELECT clients.firstName,clients.lastName,clients.clientID,clients.emailAddress,clients.contactNumber,
+      <!-- populating the bookings table with php -->
+      <form action="reports.php" method="POST">
+        <?php
+        if (!(isset($_POST['go']))) {
+
+          require_once("config.php");
+
+          $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+            or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
+
+
+          //query instructions
+          $query = "SELECT clients.firstName,clients.lastName,clients.clientID,clients.emailAddress,clients.contactNumber,
   bookings.bookingID, bookings.startDate,bookings.endDate,bookings.numberPassengers,bookings.initialCollectionPoint, 
-  bookings.finalCollectionPoint,vehiclebooking.registrationNumber, driver.driverID 
+  bookings.finalCollectionPoint,bookings.initialAddress, bookings.finalAddress,vehiclebooking.registrationNumber, driver.driverID 
   FROM clients 
   INNER JOIN bookings ON bookings.clientID=clients.clientID 
   INNER JOIN driver ON driver.driverID=bookings.driverID 
   INNER JOIN vehiclebooking ON vehiclebooking.bookingID=bookings.bookingID
-  ORDER BY bookings.bookingID ASC";
+  ORDER BY bookings.bookingID DESC";
 
-  $result=mysqli_query($conn,$query) 
-  or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
+          $result = mysqli_query($conn, $query)
+            or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
 
-  //creating bookings table
-   echo "<table style=\" border: 1px solid black;  width: 100%;\">
+          //creating bookings table
+          echo "<table style=\" border: 1px solid black;  width: 100%;\">
   <tr style = \"background-color: grey; font-weight: bold;\">
   <th> BookingID </th>
   <th> ClientID </th>
@@ -292,135 +223,193 @@
   <th> DriverID </th>
   <th> Vehicle Registration No </th>
   </tr>";
-  
-   //displaying data
-   while($row=mysqli_fetch_array($result))
-   {
-     echo "<tr>";
-     echo "<td>" . $row['bookingID'] . "</td>";
-     echo "<td>" . $row['clientID'] . "</td>";
-     echo "<td>" . $row['firstName'] . " " . $row['lastName'] .  "</td>";
-     echo "<td>" . $row['emailAddress'] . "</td>";
-     echo "<td>" . $row['contactNumber'] . "</td>";
-     echo "<td>" . $row['initialCollectionPoint'] . "</td>";
-     echo "<td>" . $row['finalCollectionPoint'] . "</td>"; 
-     echo "<td>" . $row['startDate'] . "</td>";
-     echo "<td>" . $row['endDate'] . "</td>";
-     echo "<td>" . $row['numberPassengers'] . "</td>";
-     echo "<td>" . $row['driverID'] . "</td>";
-     echo "<td>" . $row['registrationNumber'] . "</td>";
-     echo "</tr>";
-   }
-   echo "</table>";
 
-   //close the connection
-  mysqli_close($conn);
-}
-  ?>
+          //displaying data
+          while ($row = mysqli_fetch_array($result)) {
+            echo "<tr>";
+            echo "<td>" . $row['bookingID'] . "</td>";
+            echo "<td>" . $row['clientID'] . "</td>";
+            echo "<td>" . $row['firstName'] . " " . $row['lastName'] .  "</td>";
+            echo "<td>" . $row['emailAddress'] . "</td>";
+            echo "<td>" . $row['contactNumber'] . "</td>";
+            echo "<td>" . $row['initialAddress'] . ", " . $row['initialCollectionPoint'] . "</td>";
+            echo "<td>" . $row['finalAddress'] . ", " . $row['finalCollectionPoint'] . "</td>";
+            echo "<td>" . $row['startDate'] . "</td>";
+            echo "<td>" . $row['endDate'] . "</td>";
+            echo "<td>" . $row['numberPassengers'] . "</td>";
+            echo "<td>" . $row['driverID'] . "</td>";
+            echo "<td>" . $row['registrationNumber'] . "</td>";
+            echo "</tr>";
+          }
+          echo "</table>";
 
-</fieldset>
-</div> <!-- end of booking tabs code -->
+          //close the connection
+          mysqli_close($conn);
+        }
+        ?>
 
-<!-- drivers tab -->
-<div id="Drivers" class="tabcontent">
-<fieldset style="margin: auto; width: 100%;">
+    </fieldset>
+  </div> <!-- end of booking tabs code -->
 
-<!-- navigation bar on drivers tab -->
-<div class="nav">
-    <table>
-                <tr>
-                 <td><i class="fas fa-search"></i><input type="text" id="search" name="search" placeholder="Driver ID">
-                  <input type="submit" name="search" value="Search"></td>
-                </tr>
-    </table>
-</div>
+  <!-- drivers tab -->
+  <div id="Drivers" class="tabcontent">
+    <fieldset style="margin: auto; width: 100%;">
 
-<!-- populating the drivers table with php -->
-<form action="reports.php" method="POST">
-<?php
+      <!-- navigation bar on drivers tab -->
 
- /* import the config for the database */
- require_once("config.php");
+      <!-- populating the drivers table with php -->
+      <form action="reports.php" method="POST">
+        <?php
 
- /* establish the connection to the database */
- $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-     or die("there was an error connecting to the database.");
+        /* import the config for the database */
+        require_once("config.php");
 
- /* define the query */
- $query = "SELECT * FROM driver";
+        /* establish the connection to the database */
+        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+          or die("there was an error connecting to the database.");
 
- /* get the results of the query and put them into a variable */
- $result = mysqli_query($conn, $query)
-         or die("There was an error executing the query.");
+        /* define the query */
+        $query = "SELECT driver.driverID,driver.firstName,driver.lastName,driver.contactNumber,bookings.bookingID
+  FROM driver 
+  INNER JOIN bookings ON bookings.driverID=driver.driverID";
+
+        /* get the results of the query and put them into a variable */
+        $result = mysqli_query($conn, $query)
+          or die("There was an error executing the query.");
 
 
 
-  //creating bookings table
-  echo "<table style=\" border: 1px solid black; width: 100%;\">
+        //creating bookings table
+        echo "<table style=\" border: 1px solid black; width: 100%;\">
   <tr style = \"background-color: grey; font-weight: bold;\">
   <th> DriverID </th>
   <th> First Name </th>
   <th> Last Name </th>
   <th> Contact Number </th>
+  <th> Booking ID </th>
   </tr>";
-  
-   //displaying data
-   while($row=mysqli_fetch_array($result))
-   {
-     echo "<tr>";
-     echo "<td>" . $row['driverID'] . "</td>";
-     echo "<td>" . $row['firstName'] . "</td>";
-     echo "<td>" . $row['lastName'] .  "</td>";
-     echo "<td>" . $row['contactNumber'] . "</td>"; 
-     echo "</tr>";
-   }
 
-   echo "</table>";
+        //displaying data
+        while ($row = mysqli_fetch_array($result)) {
+          echo "<tr>";
+          echo "<td>" . $row['driverID'] . "</td>";
+          echo "<td>" . $row['firstName'] . "</td>";
+          echo "<td>" . $row['lastName'] .  "</td>";
+          echo "<td>" . $row['contactNumber'] . "</td>";
+          echo "<td>" . $row['bookingID'] .  "</td>";
+          echo "</tr>";
+        }
 
-      //close the connection
-  mysqli_close($conn);
+        echo "</table>";
 
-  ?>
+        //close the connection
+        mysqli_close($conn);
 
-</fieldset>
-</div>    <!--end of drivers tab code -->
+        ?>
 
+    </fieldset>
+  </div>
+  <!--end of drivers tab code -->
 
-<!-- javascript code to control the tabs  -->
-<script>
-function openReport(evt, report) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(report).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
+  <!-- drivers tab -->
+  <div id="Vehicles" class="tabcontent">
+    <fieldset style="margin: auto; width: 100%;">
 
 
+      <!-- populating the vehicles table with php -->
+      <form action="reports.php" method="POST">
+        <?php
 
- <!-- general footer code  -->
- <div class="footer"> 
-  <nav>
-    <table>
+        /* import the config for the database */
+        require_once("config.php");
+
+        /* establish the connection to the database */
+        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+          or die("there was an error connecting to the database.");
+
+        /* define the query */
+        $query = "SELECT vehicle.registrationNumber,vehicle.model,vehicle.make,vehicle.numberOfSeats,
+ vehiclebooking.bookingID,bookings.bookingID,driver.driverID 
+ FROM vehicle 
+ INNER JOIN vehiclebooking ON vehiclebooking.registrationNumber=vehicle.registrationNumber 
+ INNER JOIN bookings ON bookings.bookingID=vehiclebooking.bookingID 
+ INNER JOIN driver ON driver.driverID=bookings.driverID";
+
+        /* get the results of the query and put them into a variable */
+        $result = mysqli_query($conn, $query)
+          or die("There was an error executing the query.");
+
+        //creating vehicles table
+        echo "<table style=\" border: 1px solid black; width: 100%;\">
+  <tr style = \"background-color: grey; font-weight: bold;\">
+  <th> Vehicle Registration No </th>
+  <th> Model </th>
+  <th> Make </th>
+  <th> No Of Seats </th>
+  <th> Booking ID </th>
+  <th> Driver ID </th>
+  </tr>";
+
+        //displaying data
+        while ($row = mysqli_fetch_array($result)) {
+          echo "<tr>";
+          echo "<td>" . $row['registrationNumber'] . "</td>";
+          echo "<td>" . $row['model'] . "</td>";
+          echo "<td>" . $row['make'] .  "</td>";
+          echo "<td>" . $row['numberOfSeats'] . "</td>";
+          echo "<td>" . $row['bookingID'] .  "</td>";
+          echo "<td>" . $row['driverID'] .  "</td>";
+          echo "</tr>";
+        }
+
+        echo "</table>";
+
+        //close the connection
+        mysqli_close($conn);
+
+        ?>
+
+    </fieldset>
+  </div>
+  <!--end of drivers tab code -->
+
+
+  <!-- javascript code to control the tabs  -->
+  <script>
+    function openReport(evt, report) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(report).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+  </script>
+
+
+
+  <!-- general footer code  -->
+  <div class="footer">
+    <nav>
+      <table>
         <tr>
-        <td><a href="aboutus.php">About Us</a> | </td>
-            <td><a href="faq.php">FAQs</a> | </td>
-            <td><a href="legal.php">Legal</a> | </td>
-            <td>&copy; Copyright 2020 Raiders</td>
+          <td><a href="aboutus.php">About Us</a> | </td>
+          <td><a href="faq.php">FAQs</a> | </td>
+          <td><a href="legal.php">Legal</a> | </td>
+          <td>&copy; Copyright 2020 Raiders</td>
 
         </tr>
-    </table>
-  </nav>
-</div>
+      </table>
+    </nav>
+  </div>
 
 </body>
+
 </html>

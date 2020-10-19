@@ -62,7 +62,9 @@
         $lastName=$row['lastName'];
         $contactNumber=$row['contactNumber'];
         $bookingID=$row['bookingID'];
-        $date=$row['startDate'];
+        $startDate=$row['startDate'];
+        $startLocation=$row['initialCollectionPoint']; //start city
+        $endLocation=$row['finalCollectionPoint'];
       }
 
       /* close the connection */
@@ -73,8 +75,9 @@
 
 
 
-<fieldset>
+<fieldset style="margin: auto; width: 50%;">
 <legend>Driver ID: <?php echo $driverID; ?></legend>
+<form  method="POST">
 <table id="driverTable" style="margin: auto; width: 50%;">
       <tr><td><label for="firstName">First Name:</label></td>
       <td><input type="text" id="firstName" name="firstName" value="<?php echo $firstName; ?>" readonly></td></tr>
@@ -82,7 +85,11 @@
         <td><input type="text" id="lastName" name="lastName" value="<?php echo $lastName; ?>" readonly></td></tr>
         <tr><td><label for="contactNumber">Contact Number:</label></td>
         <td><input type="text" id="contactNumber" name="contactNumber" value="<?php echo $contactNumber; ?>" readonly></td></tr>
-        <tr><td><label for="depotRoom">Book Room at depot:</label></td>
+        <td><label for="startDate">Start Date:</label></td>
+        <td><input type="text" id="startDate" name="startDate" value="<?php echo $startDate; ?>" readonly></td></tr>
+        <td><label for="firstName">End City:</label></td>
+        <td><input type="text" id="endLocation" name="endLocation" value="<?php echo $endLocation; ?>" readonly></td></tr>
+        <tr><td><label for="depot">Book Room at depot:</label></td>
         <td><select id="depotRoom" name="depotRoom"> 
                   <?php
                   /* import the config for the database */
@@ -100,7 +107,7 @@
                             or die("There was an error executing the query.");
 
                     while($row = mysqli_fetch_array($result)) {
-                      echo("<option value='".$row['id']."'>" . 
+                      echo("<option value='" . $row['depotID'] . "'>" . 
                       $row['depotID'] . ": " . $row['depotName'] . 
                       "</option>");
                     }
@@ -110,41 +117,89 @@
                     ?> 
             <label for="depotRoom">Select</label>
               </select>
+</table>
 
-        <tr><td>
-        <form action="driversdepot.php" method="post">
-        <input style="margin-left: 50%" type="submit" name="checkAvailability" value="Check Room Availiability">
-        </form>
-        </td></tr>
-      </table>
-</fieldset>
 
+<input type="submit" name="checkAvailability" value="Check Room Availiability">
 <?php
+    /* import the config for the database */
+    require_once("config.php");
+    
+    if(isset($_REQUEST['checkAvailability'])){
+    /* establish the connection to the database */
 
-                  /* import the config for the database */
-                  require_once("config.php");
-                  
-                  if(isset($_REQUEST['submit'])){
-                  /* establish the connection to the database */
-                  $startdate = $_REQUEST['startdate'];
+    $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+        or die("there was an error connecting to the database.");
 
-                  $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-                      or die("there was an error connecting to the database.");
+    $bedRequest=TRUE;
 
-                  /* define the query */
-                  $query ="INSERT INTO `daytrip`(`date`, `bedRequest`, `bookingID`) VALUES ('$date','1','$bookingID')";
+    /* define the query */
+    $query ="INSERT INTO `daytrip`(`date`, `bedRequest`, `bookingID`) VALUES ('$startDate','$bedRequest','$bookingID')";
 
-                  /* get the results of the query and put them into a variable */
-                  $result = mysqli_query($conn, $query)
-                          or die("There was an error executing the query.");
+    /* get the results of the query and put them into a variable */
+    $result = mysqli_query($conn, $query)
+            or die("There was an error executing the query");
 
-                  /* close the connection */
-                  mysqli_close($conn);
-                }
+    echo "<br>" . "Bed Request sent";
+
+    /* close the connection */
+    mysqli_close($conn);
+
+    
+
+    /* import the config for the database */
+    require_once("config.php");
+    
+    /* establish the connection to the database */
+
+    $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+        or die("there was an error connecting to the database.");
+    
+    /* define the query */
+    $query ="SELECT daytrip.tripNumber FROM daytrip WHERE daytrip.bookingID='$bookingID'";
+
+    /* get the results of the query and put them into a variable */
+    $result = mysqli_query($conn, $query)
+            or die("There was an error executing the query.");
+
+    $row=mysqli_fetch_array($result);
+    $tripNumber=$row['tripNumber'];
 
 
+    /* close the connection */
+    mysqli_close($conn);
+            
+    /* import the config for the database */
+    require_once("config.php");
+    
+    /* establish the connection to the database */
 
+    $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+        or die("there was an error connecting to the database.");
+    
+    $endDepotID= $_POST['depotRoom'];
+    echo " endDepotID= "  . $endDepotID . "<br>";
+    echo "tripNumber= " . $tripNumber . "<br>";
+    $tripDepotID= $tripNumber . $endDepotID;
+    echo "tripDepotID= " . $tripDepotID . "<br>";
+
+    /* define the query */
+    $query ="INSERT INTO `daytripdepot`(`tripDepotID`, `tripNumber`, `endDepotID`) 
+    VALUES ($tripDepotID,$tripNumber,$endDepotID)";
+
+    /* get the results of the query and put them into a variable */
+    $result = mysqli_query($conn, $query)
+            or die("There was an error executing the query!!!!!!!!.");
+
+    /* close the connection */
+    mysqli_close($conn);
+  }
+
+                
 ?>
+
+</form>
+</fieldset>
 
 
  <!-- general footer code  -->
