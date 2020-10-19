@@ -156,33 +156,33 @@
           <td><input type="text" id="contactNumber" name="contactNumber" value="<?php echo $contactNumber; ?>" readonly></td>
         </tr>
         <tr>
-          <td><label for="startDepot">Start Location:</label></td>
+          <td><label for="startDepot">Departure:</label></td>
           <td><input type="text" id="startDepot" name="startDepot" value="<?php echo $startAddress . ", " . $startDepot; ?>" readonly></td>
         </tr>
         <tr>
-          <td><label for="destinationDepot">End Location:</label></td>
+          <td><label for="destinationDepot">Arrival:</label></td>
           <td><input type="text" id="destinationDepot" name="destinationDepot" value="<?php echo $finalAddress . ", " . $endDepot; ?>" read only></td>
         </tr>
         <tr>
-          <td><label for="numberPassengers">Number of Passengers:</label></td>
+          <td><label for="numberPassengers">Passengers:</label></td>
           <td><input type="text" id="numberPassengers" name="numberPassengers" value="<?php echo $numberPassengers; ?>" readonly></td>
         </tr>
         <tr>
-          <td><label for="date">Start Date:</label></td>
+          <td><label for="date">Departure Date:</label></td>
           <td><input type="text" id="date" name="date" value="<?php echo $startDate; ?>" readonly></td>
         </tr>
         <tr>
-          <td><label for="date">End Date:</label></td>
+          <td><label for="date">Arrival Date:</label></td>
           <td><input type="text" id="date" name="date" value="<?php echo $endDate; ?>" readonly></td>
         </tr>
       </table>
 
-      <a href="adminNewBookingPage.php?id=<?php echo $_REQUEST['id']; ?>"> Confirm Details</a>
+      <a href="adminNewBookingPage.php?id=<?php echo $_REQUEST['id']; ?>"> Confirm</a>
       <p></p>
       <form action="" method="POST">
 
         <!-- Sends a message to the client informing them the details they have entered are incorrect. -->
-        <a href="rejectdetails.php?id=<?php echo $bookingID; ?>&email=<?php echo $email; ?>"> Reject Details</a>
+        <a href="rejectdetails.php?id=<?php echo $bookingID; ?>&email=<?php echo $email; ?>"> Reject</a>
 
       </form>
 

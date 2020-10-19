@@ -66,9 +66,9 @@
      <tr style = \"background-color: grey; font-weight: bold;\">
      <td>Start Date</td>
      <td>End Date</td>
-     <td>Number of Passengers</td>
-     <td>Start Location</td>
-     <td>End Location</td>
+     <td>Passengers</td>
+     <td>Departure</td>
+     <td>Destination</td>
      </tr>";
      //execute table rows with the data from the database
     while($row = mysqli_fetch_array($result)){

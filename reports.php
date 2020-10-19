@@ -58,8 +58,8 @@
             <form action="reports.php" method="POST">
               <td><label for="orderby"> Order By: </label>
                 <select id="selections" name="Select">
-                  <option value="startDate">Start Date</option>
-                  <option value="endDate">End Date</option>
+                  <option value="startDate">Departure Date</option>
+                  <option value="endDate">Arrival Date</option>
                   <option value="initialCollectionPoint">Start City</option>
                   <option value="finalCollectionPoint">End City</option>
 
@@ -102,11 +102,11 @@
       <th> Name </th>
       <th> Email </th>
       <th> Contact Number </th>
-      <th> Start Location </th>
-      <th> End Location </th>
-      <th> Start Date </th>
-      <th> End Date </th>
-      <th> No of Passengers </th>
+      <th> Departure </th>
+      <th> Arrival </th>
+      <th> Departure Date </th>
+      <th> Arrival Date </th>
+      <th> Passengers </th>
       <th> DriverID </th>
       <th> Vehicle Registration No </th>
       </tr>";
@@ -215,11 +215,11 @@
   <th> Name </th>
   <th> Email </th>
   <th> Contact Number </th>
-  <th> Start Location </th>
-  <th> End Location </th>
-  <th> Start Date </th>
-  <th> End Date </th>
-  <th> No of Passengers </th>
+  <th> Departure </th>
+  <th> Arrival </th>
+  <th> Departure Date </th>
+  <th> Arrival Date </th>
+  <th> Passengers </th>
   <th> DriverID </th>
   <th> Vehicle Registration No </th>
   </tr>";
@@ -345,7 +345,7 @@
   <th> Vehicle Registration No </th>
   <th> Model </th>
   <th> Make </th>
-  <th> No Of Seats </th>
+  <th> Seats </th>
   <th> Booking ID </th>
   <th> Driver ID </th>
   </tr>";

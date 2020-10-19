@@ -32,8 +32,8 @@
       <tr>
         <td><img src="images/logoo.png" height="50px"></td>
         <td><a href="depotadminhome.php"><i class="fas fa-home"></i>Home</a></td>
-        <td><a class="active" href="bedrequests.php"><i class="fas fa-bed"></i> Bed Requests</a></td>
-        <td><a href="depotadminreports.php"><i class="fas fa-list"></i> Reports</a></td>
+        <td><a class="active" href="bedrequests.php"><i class="fas fa-bed"></i>Room Request</a></td>
+        <td><a href="depotadminreports.php"><i class="fas fa-list"></i>Reports</a></td>
         <td>
           <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
         </td>
@@ -95,23 +95,23 @@
           <td><input type="text" id="lastName" name="lastName" value="<?php echo $lastName; ?>" readonly></td>
         </tr>
         <tr>
-          <td><label for="email">End Date:</label></td>
+          <td><label for="email">Departure Date:</label></td>
           <td><input type="text" id="endDate" name="endDate" value="<?php echo $endDate; ?>" readonly></td>
         </tr>
         <tr>
-          <td><label for="endLocation">End City:</label></td>
+          <td><label for="endLocation">Arrival City:</label></td>
           <td><input type="text" id="endLocation" name="endLocation" value="<?php echo $endLocation; ?>" readonly></td>
         </tr>
         <tr>
-          <td><label for="startDepot">Start Depot:</label></td>
+          <td><label for="startDepot">Departure Depot:</label></td>
           <td><input type="text" id="startDepot" name="startDepot" value="<?php echo $startDepotID; ?>" readonly></td>
         </tr>
         <tr>
-          <td><label for="endDepot">End Depot:</label></td>
+          <td><label for="endDepot">Arrival Depot:</label></td>
           <td><input type="text" id="endDepot" name="endDepot" value="<?php echo $endDepotID; ?>" readonly></td>
         </tr>
         <tr>
-          <td><b><label for="numberBeds">Number of beds currently available at the <?php echo $depotName; ?> : <?php echo $numberBedsAvailable ?></label></b></td>
+          <td><b><label for="numberBeds">Number of rooms available at <?php echo $depotName; ?> : <?php echo $numberBedsAvailable ?></label></b></td>
         </tr>
         <form action=depotadminreports.php method="POST">
           <tr>

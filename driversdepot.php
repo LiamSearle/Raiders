@@ -140,7 +140,8 @@
     $result = mysqli_query($conn, $query)
             or die("There was an error executing the query");
 
-    echo "<br>" . "Bed Request sent";
+            
+    echo "<br><br>" . "<strong style= \"color:black\"><h2>Room Request sent</h2></strong>";
 
     /* close the connection */
     mysqli_close($conn);
@@ -178,14 +179,11 @@
         or die("there was an error connecting to the database.");
     
     $endDepotID= $_POST['depotRoom'];
-    echo " endDepotID= "  . $endDepotID . "<br>";
-    echo "tripNumber= " . $tripNumber . "<br>";
     $tripDepotID= $tripNumber . $endDepotID;
-    echo "tripDepotID= " . $tripDepotID . "<br>";
-
+  
     /* define the query */
     $query ="INSERT INTO `daytripdepot`(`tripDepotID`, `tripNumber`, `endDepotID`) 
-    VALUES ($tripDepotID,$tripNumber,$endDepotID)";
+    VALUES ('$tripDepotID','$tripNumber','$endDepotID')";
 
     /* get the results of the query and put them into a variable */
     $result = mysqli_query($conn, $query)

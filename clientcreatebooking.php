@@ -51,24 +51,20 @@ session_start();
 
       <table>
         <tr>
-          <td><label for="startdate">Start Date:</label></td>
+          <td><label for="startdate"> Departure Date:</label></td>
           <td><input type="date" id="startdate" name="startdate" placeholder="Start Date" size="16"></td>
         </tr>
         <tr>
-          <td><label for="enddate">End Date:</label></td>
+          <td><label for="enddate">Arrival Date:</label></td>
           <td><input type="date" id="enddate" name="enddate" placeholder="End Date" size="16"></td>
         </tr>
         <tr>
-          <td><label for="numberPassengers">Number of Passengers:</label></td>
+          <td><label for="numberPassengers">Passengers:</label></td>
           <td><input type="text" id="numberPassengers" name="numberPassengers" placeholder="Number of Passengers" size="16"></td>
         </tr>
         <tr>
-          <td><label for="collection">Start Address:</label></td>
-          <td><input type="text" id="startcollection" name="startcollection" placeholder="Start Address" size="16"></td>
-        </tr>
-        <tr>
-          <!--populating the start city drop down menu -->
-          <td><label for="collection">Start City:</label></td>
+          <td><label for="collection">Departing From:</label></td>
+          <td><input type="text" id="startcollection" name="startcollection" placeholder="Street name" size="16"></td>
           <td><select id="startCity" name="startCity">
               <option value="">--- Select City ---</option>
               <?php
@@ -100,12 +96,11 @@ session_start();
             </select></td>
         </tr>
         <tr>
-          <td><label for="collection">End Address:</label></td>
-          <td><input type="text" id="endcollection" name="endcollection" placeholder="End Address" size="16"></td>
-        </tr>
-        <tr>
+          <td><label for="collection">Destination:</label></td>
+          <td><input type="text" id="endcollection" name="endcollection" placeholder="Street Name" size="16"></td>
+        
           <!--populating the end city drop down menu -->
-          <td><label for="collection">End City:</label></td>
+
           <td><select id="endCity" name="endCity">
               <option value="">--- Select City ---</option>
               <?php

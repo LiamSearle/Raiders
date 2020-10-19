@@ -32,7 +32,7 @@
       <tr>
         <td><img src="images/logoo.png" height="50px"></td>
         <td><a href="depotadminhome.php"><i class="fas fa-home"></i>Home</a></td>
-        <td><a href="bedrequests.php"><i class="fas fa-bed"></i> Bed Requests</a></td>
+        <td><a href="bedrequests.php"><i class="fas fa-bed"></i>Room Request</a></td>
         <td><a class="active" href="depotadminreports.php"><i class="fas fa-list"></i> Reports</a></td>
         <td>
           <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
@@ -98,7 +98,7 @@
          <th> Trip Number </th>
          <th> Depot Name </th>
          <th> Date </th>
-         <th> Number of Beds Currently Available </th>
+         <th> Number of Rooms Available </th>
          </tr>";
 
       //displaying data

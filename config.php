@@ -8,15 +8,11 @@
 </head>
 <body>
     <?php
-    // define("SERVERNAME","is3-dev.ict.ru.ac.za");
-    // define("USERNAME","G16X7984");
-    // define("PASSWORD","g16x7984");
-    // define("DATABASE", "raiders");
+     define("SERVERNAME","is3-dev.ict.ru.ac.za");
+     define("USERNAME","G16X7984");
+     define("PASSWORD","g16x7984");
+     define("DATABASE", "raiders");
 
-    define("SERVERNAME","127.0.0.1");
-    define("USERNAME","minali");
-    define("PASSWORD","test");
-    define("DATABASE", "final_raiders");
 
 
     ?>

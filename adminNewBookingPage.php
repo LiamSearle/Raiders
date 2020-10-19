@@ -79,10 +79,10 @@ if(isset($_REQUEST['submit'])){
    <th> Name </th>
    <th> Email </th>
    <th> Contact Number </th>
-   <th> Start Location </th>
-   <th> End Location </th>
-   <th> Start Date </th>
-   <th> Number of Passengers </th>
+   <th> Departure </th>
+   <th> Arrival</th>
+   <th> Departure Date </th>
+   <th> Passengers </th>
    </tr>";
   
    //displaying data
@@ -134,10 +134,10 @@ else if (isset($_REQUEST['id']) != null){
    <th> Name </th>
    <th> Email </th>
    <th> Contact Number </th>
-   <th> Start Location </th>
-   <th> End Location </th>
-   <th> Start Date </th>
-   <th> No of Passengers </th>
+   <th> Departure</th>
+   <th> Destination</th>
+   <th> Departure Date </th>
+   <th> Passengers </th>
    </tr>";
   
    //displaying data

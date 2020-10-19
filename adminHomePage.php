@@ -77,8 +77,8 @@
         while ($row = mysqli_fetch_array($result)) {
             echo "<tr>";
             echo "<td>" . "Booking ID: " . "<a href=\"adminclients.php?id=" . $row['bookingID'] . "\">" .
-                $row['bookingID'] .  "<br>" . $row['firstName'] . " " . $row['lastName'] .
-                " - Departure Date: " . $row['startDate'] . "<br>" .
+                $row['bookingID'] .  "<br>" . $row['firstName'] . " " . $row['lastName'] . "<br>" .
+                "Departure Date: " . $row['startDate'] . "<br>" .
                 "From: " . $row['initialCollectionPoint'] . " -> " .  $row['finalCollectionPoint'] .
                 "</a>" . "</td>";
         }
