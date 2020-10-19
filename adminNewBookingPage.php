@@ -41,6 +41,7 @@
     </table>
 </div>
 
+<!-- creating and populating search on bookingID -->
 <form action="adminNewBookingPage.php" method="POST">
 <h2 id="bookingHeader">Booking ID:
 <input type="text" name="bookingID" id="bookingID">
@@ -75,8 +76,7 @@ if(isset($_REQUEST['submit'])){
    <tr style = \"background-color: grey; font-weight: bold;\">
    <th> BookingID </th>
    <th> ClientID </th>
-   <th> First Name </th>
-   <th> Last Name </th>
+   <th> Name </th>
    <th> Email </th>
    <th> Contact Number </th>
    <th> Start Location </th>
@@ -91,12 +91,11 @@ if(isset($_REQUEST['submit'])){
     echo "<tr>";
     echo "<td>" . $row['bookingID'] . "</td>";
     echo "<td>" . $row['clientID'] . "</td>";
-    echo "<td>" . $row['firstName'] . "</td>";
-    echo "<td>" . $row['lastName'] .  "</td>";
+    echo "<td>" . $row['firstName'] . " " . $row['lastName'] . "</td>";
     echo "<td>" . $row['emailAddress'] . "</td>";
     echo "<td>" . $row['contactNumber'] . "</td>";
-    echo "<td>" . $row['initialCollectionPoint'] . "</td>";
-    echo "<td>" . $row['finalCollectionPoint'] . "</td>"; 
+    echo "<td>" . $row['initialAddress'] . ", " .  $row['initialCollectionPoint'] . "</td>";
+    echo "<td>" . $row['finalAddress'] . ", " . $row['finalCollectionPoint'] . "</td>"; 
     echo "<td>" . $row['startDate'] . "</td>";
     echo "<td>" . $row['numberPassengers'] . "</td>";
     $numberofpassengers=$row['numberPassengers'];
@@ -132,14 +131,13 @@ else if (isset($_REQUEST['id']) != null){
    <tr>
    <th> BookingID </th>
    <th> ClientID </th>
-   <th> First Name </th>
-   <th> Last Name </th>
+   <th> Name </th>
    <th> Email </th>
    <th> Contact Number </th>
    <th> Start Location </th>
    <th> End Location </th>
    <th> Start Date </th>
-   <th> Number of Passengers </th>
+   <th> No of Passengers </th>
    </tr>";
   
    //displaying data
@@ -148,12 +146,11 @@ else if (isset($_REQUEST['id']) != null){
     echo "<tr>";
     echo "<td>" . $row['bookingID'] . "</td>";
     echo "<td>" . $row['clientID'] . "</td>";
-    echo "<td>" . $row['firstName'] . "</td>";
-    echo "<td>" . $row['lastName'] .  "</td>";
+    echo "<td>" . $row['firstName'] . " " . $row['lastName'] .  "</td>";
     echo "<td>" . $row['emailAddress'] . "</td>";
     echo "<td>" . $row['contactNumber'] . "</td>";
-    echo "<td>" . $row['initialCollectionPoint'] . "</td>";
-    echo "<td>" . $row['finalCollectionPoint'] . "</td>"; 
+    echo "<td>" . $row['initialAddress'] . ", " . $row['initialCollectionPoint'] . "</td>";
+    echo "<td>" . $row['finalAddress'] . ", " . $row['finalCollectionPoint'] . "</td>"; 
     echo "<td>" . $row['startDate'] . "</td>";
     echo "<td>" . $row['numberPassengers'] . "</td>";
     $numberofpassengers=$row['numberPassengers'];
