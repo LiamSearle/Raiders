@@ -8,6 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
   <title>Depot Admin Reports</title>
+  <link rel="icon" href="images/small_logo.png" type="image" sizes="100x100">
 
   <!-- logout button code -->
   <script>
@@ -51,30 +52,29 @@
 
   <!-- populating and creating the depot reports table that shows which beds are occuppied -->
 
-  <fieldset style="margin: auto; width: 90%;">
-  <form action="depotadminreports.php" method="POST">
+  <fieldset style="margin: auto; width: 70%;">
+    <form action="depotadminreports.php" method="POST">
       <?php
-    if (isset($_REQUEST['id']) != null){
-      //database credentials
-      require_once("config.php");
+      if (isset($_REQUEST['id']) != null) {
+        //database credentials
+        require_once("config.php");
 
-      $depotID=$_REQUEST['id'];
+        $depotID = $_REQUEST['id'];
 
-      // making connection
-      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-        or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
+        // making connection
+        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+          or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
 
-      //query instructions
-      $query = "UPDATE `depot` SET `numberBedsAvailable`=`numberBedsAvailable`-1 WHERE depot.depotID='depot4'";
+        //query instructions
+        $query = "UPDATE `depot` SET `numberBedsAvailable`=`numberBedsAvailable`-1 WHERE depot.depotID='$depotID'";
 
-      $result = mysqli_query($conn, $query)
-        or  die("<strong style=\"color:red;\">There's been an error with our query!!!!</strong>");
+        $result = mysqli_query($conn, $query)
+          or  die("<strong style=\"color:red;\">There's been an error with our query!!!!</strong>");
 
-      //close the connection
-      mysqli_close($conn);
+        //close the connection
+        mysqli_close($conn);
+      }
 
-    }
-    
       //database credentials
       require_once("config.php");
 
@@ -86,14 +86,15 @@
       //query instructions
       $query = "SELECT * FROM daytrip 
          INNER JOIN daytripdepot ON daytripdepot.tripNumber=daytrip.tripNumber 
-         INNER JOIN depot ON depot.depotID=daytripdepot.endDepotID";
+         INNER JOIN depot ON depot.depotID=daytripdepot.endDepotID
+         ORDER BY date ASC";
 
       $result = mysqli_query($conn, $query)
         or  die("<strong style=\"color:red;\">There's been an error with our query!</strong>");
 
       //creating bookings table
       echo "<table style=\" border: 1px solid black;  width: 100%;\">
-         <tr>
+         <tr style = \"background-color: grey; font-weight: bold;\">
          <th> Depot ID </th>
          <th> Trip Number </th>
          <th> Depot Name </th>
@@ -117,7 +118,7 @@
       mysqli_close($conn);
 
       ?>
-  </form>
+    </form>
   </fieldset>
 
   <!-- general footer code  -->

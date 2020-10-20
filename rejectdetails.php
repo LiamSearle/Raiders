@@ -19,5 +19,3 @@ $result = mysqli_query($conn, $query)
 mysqli_close($conn);
 header("Location:adminhomepage.php");
 exit();
-
-?>

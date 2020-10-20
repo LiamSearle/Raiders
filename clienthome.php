@@ -10,7 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="images/logoo.png" crossorigin="anonymous"></script>
-    <link rel="icon" href="images/logoo.png" type="image/gif" sizes="100x100">
+    <link rel="icon" href="images/small_logo.png" type="image/gif" sizes="100x100">
     <title>Home Page</title>
 
     <!-- logout button code -->

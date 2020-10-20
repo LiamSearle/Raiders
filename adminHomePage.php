@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="images/small_logo.png" type="image" sizes="100x100">
     <title>Admin Home Page</title>
 
     <!-- logout button code -->
@@ -41,24 +42,24 @@
             </tr>
         </table>
         <!-- Creating the incoming booking requests to be clicked on  -->
-    <?php
-    /* import the config for the database */
-    require_once("config.php");
+        <?php
+        /* import the config for the database */
+        require_once("config.php");
 
-    /* establish the connection to the database */
-    $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-        or die("there was an error connecting to the database.");
+        /* establish the connection to the database */
+        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+            or die("there was an error connecting to the database.");
 
-    /* define the query */
-    $query = "SELECT * FROM bookings INNER JOIN clients ON clients.clientID = bookings.clientID ORDER BY `bookingID` DESC";
+        /* define the query */
+        $query = "SELECT * FROM bookings INNER JOIN clients ON clients.clientID = bookings.clientID ORDER BY `bookingID` DESC";
 
-    /* get the results of the query and put them into a variable */
-    $result = mysqli_query($conn, $query)
-        or die("There was an error executing the query.");
+        /* get the results of the query and put them into a variable */
+        $result = mysqli_query($conn, $query)
+            or die("There was an error executing the query.");
 
-    /* close the connection */
-    mysqli_close($conn);
-    ?>
+        /* close the connection */
+        mysqli_close($conn);
+        ?>
 
     </div>
     <br>
@@ -76,8 +77,8 @@
 
         while ($row = mysqli_fetch_array($result)) {
             if ($row['status'] == "Pending") {
-                
-            
+
+
                 echo "<tr>";
                 echo "<td>" . "Booking ID: " . "<a href=\"adminclients.php?id=" . $row['bookingID'] . "\">" .
                     $row['bookingID'] .  "<br>" . $row['firstName'] . " " . $row['lastName'] . "<br>" .

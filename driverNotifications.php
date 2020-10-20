@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Driver Depots</title>
+  <title>Driver Notifications</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="images/small_logo.png" type="image" sizes="100x100">
 
   <!-- logout button code -->
   <script>
@@ -43,9 +44,9 @@
 
 
 
-
+  <br></br>
   <fieldset style="margin: auto; width: 50%;">
-    
+
     <?php
     /* import the config for the database */
     require_once("config.php");
@@ -57,7 +58,9 @@
       or die("there was an error connecting to the database.");
 
     /* define the query */
-    $query = "SELECT * FROM driver WHERE driver.driverID='$driverID'";
+    $query = "SELECT driver.driverID,driver.firstName,driver.lastName,driver.requestStatus,bookings.bookingID
+     FROM driver INNER JOIN bookings ON bookings.driverID=driver.driverID
+    WHERE driver.driverID='$driverID'";
 
     /* get the results of the query and put them into a variable */
     $result = mysqli_query($conn, $query)
@@ -65,6 +68,7 @@
     echo "<table style=\" border: 1px solid black; width: 100%;\">
               <tr style = \"background-color: grey; font-weight: bold;\">
               <td>Driver ID</td>
+              <td>Booking ID</td>
               <td>First Name</td>
               <td>Last Name</td>
               <td>Status</td>
@@ -74,6 +78,7 @@
     while ($row = mysqli_fetch_array($result)) {
       echo "<tr>";
       echo "<td>" . $row['driverID'] . "</td>";
+      echo "<td>" . $row['bookingID'] . "</td>";
       echo "<td>" . $row['firstName'] . "</td>";
       echo "<td>" . $row['lastName'] . "</td>";
       echo "<td>" . $row['requestStatus'] . "</td>";

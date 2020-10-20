@@ -7,6 +7,7 @@
   <title>Admin Reports</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="images/small_logo.png" type="image" sizes="100x100">
 
   <!-- logout button code -->
   <script>
@@ -184,15 +185,15 @@
 
         /* establish the connection to the database */
         $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-        or die("there was an error connecting to the database.");
+          or die("there was an error connecting to the database.");
 
-       
+
         /* define the query */
         $query = "UPDATE `bookings` SET`status`='Confirmed' WHERE bookingID =" .  $_REQUEST['id'] . ";";
 
         /* get the results of the query and put them into a variable */
         $result = mysqli_query($conn, $query)
-            or die("There was an error executing the query.");
+          or die("There was an error executing the query.");
 
 
         /* close the connection */

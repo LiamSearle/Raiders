@@ -7,6 +7,7 @@
   <title>Admin Clients</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="images/small_logo.png" type="image" sizes="100x100">
 
   <!-- logout button code -->
   <script>

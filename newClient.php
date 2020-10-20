@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
     <title>Clients</title>
+    <link rel="icon" href="images/small_logo.png" type="image" sizes="100x100">
     <style>
         /* Set a style for all buttons */
     </style>

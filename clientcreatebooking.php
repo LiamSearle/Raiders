@@ -9,8 +9,9 @@ session_start();
   <link rel="stylesheet" href="styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="icon" href="images/logoo.png" type="image/gif" sizes="100x100">
+  <link rel="icon" href="images/small_logo.png" type="image/gif" sizes="100x100">
   <title>Create Booking</title>
+  <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
 
   <!-- logout button code -->
   <script>
@@ -26,6 +27,7 @@ session_start();
     }
   </script>
 
+
 </head>
 
 <body>
@@ -34,11 +36,15 @@ session_start();
     <table>
       <tr>
         <td><img src="images/logoo.png" height="50px"></td>
-        <td><a class="active" href="clientcreatebooking.php"><i class="fas fa-home"></i>Home</a></td>
+        <td><a class="active" href="clientcreatebooking.php"><i class="fas fa-home"></i> Home</a></td>
         <td><a href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
         <td><a href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
         <td>
-          <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
+          <div>
+            <form action="clientlogin.php" class="Logout">
+              <input type="button" name="submit" value="Logout" onclick="logOut();">
+            </form>
+          </div>
         </td>
       </tr>
     </table>
@@ -98,7 +104,7 @@ session_start();
         <tr>
           <td><label for="collection">Destination:</label></td>
           <td><input type="text" id="endcollection" name="endcollection" placeholder="Street Name" size="16"></td>
-        
+
           <!--populating the end city drop down menu -->
 
           <td><select id="endCity" name="endCity">
@@ -141,49 +147,47 @@ session_start();
     </form>
 
 
-  <?php
+    <?php
 
 
-  //checking if the searching form has been submitted 
-  if (isset($_REQUEST['submit'])) {
-    //get the value from the form
-    require_once("config.php");
-    $id = $_SESSION['clientID'];
-    $startdate = $_REQUEST['startdate'];
-    $enddate = $_REQUEST['enddate'];
-    $passengers = $_REQUEST['numberPassengers'];
-    $initialCity = $_REQUEST['startCity'];
-    $initialcollectionpoint = $_REQUEST['startcollection']; //start address
-    $finalCity = $_REQUEST['endCity'];
-    $finalcollectionpoint = $_REQUEST['endcollection']; //end address
+    //checking if the searching form has been submitted 
+    if (isset($_REQUEST['submit'])) {
+      //get the value from the form
+      require_once("config.php");
+      $id = $_SESSION['clientID'];
+      $startdate = $_REQUEST['startdate'];
+      $enddate = $_REQUEST['enddate'];
+      $passengers = $_REQUEST['numberPassengers'];
+      $initialCity = $_REQUEST['startCity'];
+      $initialcollectionpoint = $_REQUEST['startcollection']; //start address
+      $finalCity = $_REQUEST['endCity'];
+      $finalcollectionpoint = $_REQUEST['endcollection']; //end address
 
 
-    if ((int) $passengers > 50) {
-      echo "<script> alert(\"You have entered too many passengers\"); </script>";
+      if ((int) $passengers > 50) {
+        echo "<script> alert(\"You have entered too many passengers\"); </script>";
+      } else {
 
-    }
-    else{
 
-      
-      // Create connection
-      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-        or die("Error connecting to the database");
+        // Create connection
+        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+          or die("Error connecting to the database");
 
-      //issue the query to insert details to the database
-      $query = "INSERT INTO bookings (startDate, endDate, numberPassengers, initialCollectionPoint, initialAddress, finalCollectionPoint, finalAddress, clientID) 
+        //issue the query to insert details to the database
+        $query = "INSERT INTO bookings (startDate, endDate, numberPassengers, initialCollectionPoint, initialAddress, finalCollectionPoint, finalAddress, clientID) 
               VALUES ('$startdate', '$enddate', '$passengers', '$initialCity', '$initialcollectionpoint', '$finalCity', '$finalcollectionpoint', '$id')";
 
-      //execute the query 
-      $result = mysqli_query($conn, $query)
-        or die("Error adding booking details");
+        //execute the query 
+        $result = mysqli_query($conn, $query)
+          or die("Error adding booking details");
 
-      echo "<strong style= \"color:black\"><h2>Booking created sucessfully!</h2></strong>";
-      //close the database
-      mysqli_close($conn);
-      // header("Location:bookingmessage.php");
+        echo "<strong style= \"color:black\"><h2>Booking created sucessfully!</h2></strong>";
+        //close the database
+        mysqli_close($conn);
+        // header("Location:bookingmessage.php");
+      }
     }
-  }
-  ?>
+    ?>
   </fieldset>
 
   <!-- general footer code  -->

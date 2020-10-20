@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="images/logoo.png" type="image" sizes="100x100">
-  <title>Reports</title>
+  <title>Admin Reports</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="images/small_logo.png" type="image" sizes="100x100">
 
   <!-- logout button code -->
 <script>
@@ -115,7 +116,8 @@ else{
  $query = "SELECT driver.driverID, driver.firstName, driver.lastName, driver.contactNumber, driverlicence.licenceCode
   FROM driver
   INNER JOIN driverlicence
-  ON driverlicence.driverID = driver.driverID";
+  ON driverlicence.driverID = driver.driverID
+  ORDER BY driver.driverID ASC";
  
 
  /* get the results of the query and put them into a variable */
@@ -182,9 +184,9 @@ else{
      or die("there was an error connecting to the database.");
 
  /* define the query */
- $query = "SELECT vehicle.registrationNumber,vehicle.model,vehicle.make,vehicle.numberOfSeats,vehiclebooking.bookingID
+ $query = "SELECT vehicle.registrationNumber,vehicle.model,vehicle.make,vehicle.numberOfSeats
             FROM vehicle
-            INNER JOIN vehiclebooking ON vehiclebooking.registrationNumber=vehicle.registrationNumber";
+            ORDER BY vehicle.numberOfSeats ASC";
 
  /* get the results of the query and put them into a variable */
  $result = mysqli_query($conn, $query)
@@ -199,7 +201,6 @@ else{
   <th> Model </th>
   <th> Make </th>
   <th> Number of Seats </th>
-  <th> Booking ID </th>
   </tr>";
   
    //displaying data
@@ -210,7 +211,6 @@ else{
      echo "<td>" . $row['model'] . "</td>";
      echo "<td>" . $row['make'] .  "</td>";
      echo "<td>" . $row['numberOfSeats'] . "</td>"; 
-     echo "<td>" . $row['bookingID'] .  "</td>";
      echo "</tr>";
    }
 
@@ -293,7 +293,6 @@ document.getElementById("defaultOpen").click();
     <table>
         <tr>
         <td><a href="aboutus.php">About Us</a> | </td>
-            <td><a href="help.php">Help</a> | </td>
             <td><a href="faq.php">FAQs</a> | </td>
             <td><a href="legal.php">Legal</a> | </td>
             <td>&copy; Copyright 2020 Raiders</td>

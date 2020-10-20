@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="images/small_logo.png" type="image" sizes="100x100">
   <title>About Us</title>
   <!-- logout button code -->
   <script>
@@ -39,7 +40,7 @@
   <div class="topleft">
     <a href="javascript:history.back()"> Back</a>
   </div>
-<!-- populating about us section  -->
+  <!-- populating about us section  -->
   <div class="about-section">
     <fieldset>
       <h2>About Us </h2>
