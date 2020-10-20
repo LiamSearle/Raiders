@@ -157,24 +157,32 @@ session_start();
     $finalCity = $_REQUEST['endCity'];
     $finalcollectionpoint = $_REQUEST['endcollection']; //end address
 
-    // Create connection
-    $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-      or die("Error connecting to the database");
 
-    //issue the query to insert details to the database
-    $query = "INSERT INTO bookings (startDate, endDate, numberPassengers, initialCollectionPoint, initialAddress, finalCollectionPoint, finalAddress, clientID) 
-            VALUES ('$startdate', '$enddate', '$passengers', '$initialCity', '$initialcollectionpoint', '$finalCity', '$finalcollectionpoint', '$id')";
+    if ((int) $passengers > 50) {
+      echo "<script> alert(\"You have entered too many passengers\"); </script>";
 
-    //execute the query 
-    $result = mysqli_query($conn, $query)
-      or die("Error adding booking details");
+    }
+    else{
 
-    echo "<strong style= \"color:black\"><h2>Booking created sucessfully!</h2></strong>";
-    //close the database
-    mysqli_close($conn);
-    // header("Location:bookingmessage.php");
+      
+      // Create connection
+      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+        or die("Error connecting to the database");
+
+      //issue the query to insert details to the database
+      $query = "INSERT INTO bookings (startDate, endDate, numberPassengers, initialCollectionPoint, initialAddress, finalCollectionPoint, finalAddress, clientID) 
+              VALUES ('$startdate', '$enddate', '$passengers', '$initialCity', '$initialcollectionpoint', '$finalCity', '$finalcollectionpoint', '$id')";
+
+      //execute the query 
+      $result = mysqli_query($conn, $query)
+        or die("Error adding booking details");
+
+      echo "<strong style= \"color:black\"><h2>Booking created sucessfully!</h2></strong>";
+      //close the database
+      mysqli_close($conn);
+      // header("Location:bookingmessage.php");
+    }
   }
-
   ?>
   </fieldset>
 
