@@ -76,6 +76,7 @@
     $numberBedsAvailable = $row['numberBedsAvailable'];
     $tripNumber = $row['tripNumber'];
     $depotName = $row['depotName'];
+    $driverID = $row['driverID'];
   }
 
   /* close the connection */
@@ -84,7 +85,7 @@
 
   <fieldset>
     <legend>Trip Number: <?php echo $tripNumber; ?></legend>
-    <form action="depotadminreports.php?id=<?php echo $endDepotID; ?>" method="POST">
+    <form method="POST">
       <table id="bedRequestsTable" style="margin: auto; width: 50%;">
         <tr>
           <td><label for="firstName">First Name:</label></td>
@@ -122,7 +123,31 @@
       </table>
   </fieldset>
 
+  <?php
 
+    if (isset($_POST['confirmBed'])) {
+          
+      require_once("config.php");
+
+      /* establish the connection to the database */
+      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+      or die("there was an error connecting to the database.");
+
+      echo $driverID;
+      /* define the query */
+      $query = "UPDATE `driver` SET `requestStatus`='Confirmed' WHERE driverID = '$driverID'";
+
+      /* get the results of the query and put them into a variable */
+      $result = mysqli_query($conn, $query)
+          or die("There was an error executing the query.");
+
+
+      /* close the connection */
+      mysqli_close($conn);
+      header("Location:depotadminreports.php?id=<?php echo $endDepotID; ?>");
+      exit();
+    }
+  ?>
 
   <!-- general footer code  -->
   <div class="footer">

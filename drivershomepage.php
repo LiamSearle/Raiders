@@ -29,8 +29,9 @@
     <table>
                 <tr>
                     <td><img src="images/logoo.png" height="50px"></td>
-                    <td><a class="active" href="drivershomepage.php"><i class="fas fa-home"></i>Home</a></td>
-                    <td><a href="driversdepot.php"><i class="fas fa-bed"></i> Depot</a></td>
+                    <td><a class="active" href="drivershomepage.php?id=<?php echo $_REQUEST['id']; ?>"><i class="fas fa-home"></i>Home</a></td>
+                    <td><a href="driversdepot.php?id=<?php echo $_REQUEST['id']; ?>"><i class="fas fa-bed"></i> Depot</a></td>
+                    <td><a href="driverNotifications.php?id=<?php echo $_REQUEST['id']; ?>"><i class="fas fa-bell"></i> Notifications</a></td>
                     <td>
                         <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
                     </td>

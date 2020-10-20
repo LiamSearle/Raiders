@@ -29,8 +29,9 @@
     <table>
                 <tr>
                     <td><img src="images/logoo.png" height="50px"></td>
-                    <td><a  href="drivershomepage.php"><i class="fas fa-home"></i>Home</a></td>
-                    <td><a class="active" href="driversdepot.php"><i class="fas fa-bed"></i> Depot</a></td>
+                    <td><a  href="drivershomepage.php?id=<?php echo $_REQUEST['id']; ?>"><i class="fas fa-home"></i>Home</a></td>
+                    <td><a class="active" href="driversdepot.php?id=<?php echo $_REQUEST['id']; ?>"><i class="fas fa-bed"></i> Depot</a></td>
+                    <td><a href="driverNotifications.php?id=<?php echo $_REQUEST['id']; ?>"><i class="fas fa-bell"></i> Notifications</a></td>
                     <td>
                         <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
                     </td>
@@ -138,15 +139,37 @@
 
     /* get the results of the query and put them into a variable */
     $result = mysqli_query($conn, $query)
-            or die("There was an error executing the query");
+            or die("There was an error executing the query to insert.");
 
             
-    echo "<br><br>" . "<strong style= \"color:black\"><h2>Room Request sent</h2></strong>";
+    
 
     /* close the connection */
     mysqli_close($conn);
 
+    require_once("config.php");
+
+    $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+        or die("there was an error connecting to the database.");
+
+    $bedRequest=TRUE;
+
+      
+    /* define the query */
+    $query ="UPDATE `driver` SET `requestStatus`= 'Pending' WHERE driverID = '$driverID'";
+
+    /* get the results of the query and put them into a variable */
+    $result = mysqli_query($conn, $query)
+            or die("There was an error executing the query to set the status");
+
     
+    
+    echo "<br><br>" . "<strong style= \"color:black\"><h2>Room Request sent</h2></strong>";        
+    
+
+    /* close the connection */
+    mysqli_close($conn);
+
 
     /* import the config for the database */
     require_once("config.php");
