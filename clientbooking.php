@@ -69,6 +69,7 @@
      <td>Passengers</td>
      <td>Departure</td>
      <td>Destination</td>
+     <td>Status</td>
      </tr>";
      //execute table rows with the data from the database
     while($row = mysqli_fetch_array($result)){
@@ -78,6 +79,7 @@
         echo "<td>".$row['numberPassengers']."</td>";
         echo "<td>".$row['initialAddress'] . ", " . $row['initialCollectionPoint']."</td>";
         echo "<td>".$row['finalAddress'] . ", " .  $row['finalCollectionPoint']."</td>";
+        echo "<td>".$row['status'] . "</td>";
         echo"</tr>";
     }
     echo "</table>"
