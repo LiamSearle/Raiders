@@ -57,7 +57,7 @@
           <tr>
             <form action="reports.php" method="POST">
               <td><label for="orderby"> Order By: </label>
-                <select id="selections" name="Select">
+                <select id="Select" name="Select">
                   <option value="startDate">Departure Date</option>
                   <option value="endDate">Arrival Date</option>
                   <option value="initialCollectionPoint">Start City</option>
@@ -80,7 +80,7 @@
         $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
           or die("there was an error connecting to the database.");
 
-        //echo "<h3>" . $_POST['Select'] . "</h3>";
+        // echo "<h3>" . $_POST['Select'] . "</h3>";
 
         $query = "SELECT clients.firstName,clients.lastName,clients.clientID,clients.emailAddress,clients.contactNumber,
       bookings.bookingID, bookings.startDate,bookings.endDate,bookings.numberPassengers,bookings.initialCollectionPoint, 
@@ -89,7 +89,7 @@
       INNER JOIN bookings ON bookings.clientID=clients.clientID 
       INNER JOIN driver ON driver.driverID=bookings.driverID 
       INNER JOIN vehiclebooking ON vehiclebooking.bookingID=bookings.bookingID
-      ORDER BY " . $_POST['Select'] .  "ASC";
+      ORDER BY " . $_POST['Select'] .  " ASC";
 
         $result = mysqli_query($conn, $query)
           or  die("<strong style=\"color:red;\">There's been an error with our query!!!</strong>");
