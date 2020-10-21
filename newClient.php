@@ -48,7 +48,7 @@
                     <tr>
                         <td></td>
                         <td><input type="submit" class="signupbtn" name="submit" value="Sign Up">
-                        <button type="button" class="cancelbtn">Cancel</button></td>
+                        <button onclick="Cancel()">Go Back</button></td>
                     </tr>
 
                 </table>
@@ -82,13 +82,11 @@
             header("Location:clientlogin.php");
         }
         ?>
-        <?php
-
-if (isset($_POST['button'])) 
-{
-    header("Location:clientlogin.php");
+<script>
+function Cancel() {
+  window.history.back();
 }
-        ?>
+</script>
         </p>
 
 
