@@ -47,7 +47,8 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" class="signupbtn" name="submit" value="Sign Up"><button type="button" class="cancelbtn">Cancel</button></td>
+                        <td><input type="submit" class="signupbtn" name="submit" value="Sign Up">
+                        <button type="button" class="cancelbtn">Cancel</button></td>
                     </tr>
 
                 </table>
@@ -80,7 +81,15 @@
             mysqli_close($conn);
             header("Location:clientlogin.php");
         }
-        ?></p>
+        ?>
+        <?php
+
+if (isset($_POST['button'])) 
+{
+    header("Location:clientlogin.php");
+}
+        ?>
+        </p>
 
 
     <!-- general footer code  -->
