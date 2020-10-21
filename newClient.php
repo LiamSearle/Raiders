@@ -48,7 +48,7 @@
                     <tr>
                         <td></td>
                         <td><input type="submit" class="signupbtn" name="submit" value="Sign Up">
-                        <button onclick="Cancel()">Go Back</button></td>
+                        <button onclick="goBack()">Cancel</button>
                     </tr>
 
                 </table>
@@ -82,12 +82,12 @@
             header("Location:clientlogin.php");
         }
         ?>
-<script>
-function Cancel() {
-  window.history.back();
-}
-</script>
-        </p>
+        <script>
+            function goBack() {
+                window.history.go(clientlogin.php);
+            }
+        </script>
+    </p>
 
 
     <!-- general footer code  -->
