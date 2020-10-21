@@ -40,9 +40,20 @@
             </tr>
         </table>
     </div>
-
-
-
+    <h2>Terms and Conditions</h2>
+    <fieldset>
+    <h3 style="text-align:left">PASSENGERS LUGGAGE</h3>
+<p style="text-align:left">Each passenger is permitted to take free of charge, at own risk, 
+two suitcases not exceeding 80cm x 60cm x 30cm in size, of a total mass not exceeding 20kg.
+ Raiders has the right to refuse the carriage of luggage that does not comply with these conditions. 
+Excess luggage will only be accommodated subject to space availability and will be incur an additional charge per kilogram specified at the terminal offices.
+</br></p></fieldset>
+<fieldset>
+<h3 style="text-align:left">Smoking</h3>
+<p style="text-align:left">
+It is an offence to smoke on our coaches.  This includes electronic cigarettes.  
+</p>
+</fieldset>
     <!-- general footer code  -->
     <div class="footer">
         <nav>
