@@ -124,7 +124,6 @@
       <table>
         <tr>
           <td><a href="clientaboutus.php">About Us</a> | </td>
-          <td><a href="clienthelp.php">Help</a> | </td>
           <td><a href="clientfaq.php">FAQs</a> | </td>
           <td><a href="clientlegal.php">Legal</a> | </td>
           <td><a href="clientterms.php">Terms & Conditions</a></td>
