@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" href="images/small_logo.png" type="image" sizes="100x100">
   <script src="https://kit.fontawesome.com/8f7b167549.js" crossorigin="anonymous"></script>
-  <title>About Us</title>
+  <title>Contact Us</title>
   <!-- logout button code -->
   <script>
     function logOut() {
@@ -52,35 +52,62 @@
   </div>
   <br>
   <div class="about-section">
-  <h1>About Us </h1>
+  <h1>Contact Us </h1>
+   
     <fieldset>
-      <p>Raiders is an information systems development team established in 2020.</p>
-      <p>We are the shuttle provider in South Africa with full online booking capability,
-        providing you with real time e-mail and SMS confirmations of your booking which ensures
-        that your booking experience does not have to be difficult, unreliable and complicated.
-        It is the road at your fingertips.</p>
-    </fieldset>
-    <fieldset style="margin: auto; width: 75%;">
-    <p style="text-align:left"><b> Putting people in motion</b></br>
-    Good things happen when people can move, whether across town or toward their dreams. Opportunities appear, open up, become reality. 
-   What started as a way to tap a button to get a ride has led to billions of moments of human connection as people around
-    the world go all kinds of places in all kinds of ways with the help of our technology.
-    </fieldset> 
-    <fieldset style="margin: auto; width: 75%;">
-    <p style="text-align:left"><b> Present and the future</b></br>
-    In addition to giving riders a way to get from point A to point B, 
-    we're working to bring the future closer with self-driving technology and urban air transport, helping people order food quickly and affordably,
-     removing barriers to healthcare, creating new freight-booking solutions, 
-    and helping companies provide a seamless employee travel experience.
+      <h2 style="text-align:center">Our Team</h2>
+
+
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <div class="container">
+              <h2>Minali Harjivan Chouhan</h2>
+              <p class="title">Project Manager</p>
+              <a href="mailto: minali.chouhan@gmail.com">minali.chouhan@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="column">
+            <div class="card">
+              <div class="container">
+                <h2>Mercilove Xerinda</h2>
+                <p class="title">System Analyst</p>
+                <a href="mailto: mercilove.j.xerinda@gmail.com">mercilove.j.xerinda@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="card">
+            <div class="container">
+              <h2>Tshegofatso Molobe</h2>
+              <p class="title">System Tester</p>
+              <a href="mailto: tmolobe15@gmail.com">tmolobe15@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="column">
+          <div class="card">
+            <div class="container">
+              <h2>Liam Searle</h2>
+              <p class="title">Software Developer</p>
+              <a href="mailto: liamsearle7@gmail.com">liamsearle7@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </fieldset>
   </div>
 
-  <fieldset style="margin: auto; width: 75%;">
-    <p style="text-align:left"><b> Safety</b></br>
-  Whether you’re in the back seat or behind the wheel, 
-  your safety is essential. We are committed to doing our part, and technology is at the heart of our approach. 
-  We partner with safety advocates and develop new technologies and systems to help improve safety and help make it easier for everyone to get around.
-  </fieldset>
+
+
 
   <!-- general footer code  -->
   <div class="footer">
@@ -97,8 +124,28 @@
       </table>
     </nav>
   </div>
-
-
+  <fieldset>
+<h3 style="text-align:left"> CUSTOMER CARE CENTRE</h3>
+<p style="text-align:left">
+<b>24 hours services </b>
+</p> 
+<p style="text-align:left">
+ <b>Contact number:</b>
+ <br>
+ 046 611 8000 or 087 375 0352
+</p>
+<h4 style="text-align:left"> Address:</h4>
+<p style="text-align:left">
+29 Hill Street
+</p>
+<p style="text-align:left">
+Grahamstown
+</p>
+<p style="text-align:left">
+6139
+</p>
+</fieldset>
+ 
 </body>
 
 </html>

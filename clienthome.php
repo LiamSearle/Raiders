@@ -63,7 +63,8 @@ session_start();
                     <td><a href="clientaboutus.php">About Us | </a></td>
                     <td><a href="clientfaq.php">FAQs | </a></td>
                     <td><a href="clientlegal.php">Legal | </a></td>
-                    <td><a href="clientterms.php">Terms & Conditions | </a></td>
+                    <td><a href="clientterms.php">Terms & Conditions</a> | </td>
+                    <td><a href="clientcontactus.php">Contact Us</a></td>
                     <td>&copy; Copyright 2020 Raiders</td>
                 </tr>
             </table>
