@@ -14,7 +14,7 @@
     ?>
     <form method ="post" action  = "clientlogin.php"><br>
             <a href="clientlogin.php"><input type="button" name="submit" value="OK"></a>
-    </form>;
+    </form>
     </div>
     
 </body>
