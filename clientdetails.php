@@ -41,6 +41,7 @@ session_start();
                     <div>
                         <form action="clientlogin.php" class="Logout">
                             <input type="button" name="submit" value="Logout" onclick="logOut();">
+							<input type ="button" name ="submit" value =
                         </form>
                     </div>
                 </td>
@@ -78,12 +79,16 @@ session_start();
             echo "<td>" . $row['lastName'] . "</td>";
             echo "<td>" . $row['emailAddress'] . "</td>";
             echo "<td>" . $row['contactNumber'] . "</td>";
+			echo"<td>" "<input type='submit' name='Edit' value='Submit'>" "</td>";
             echo "</tr>";
         }
         echo "</table>";
 
 
         ?>
+		<form action="editClient.php" >
+							<input type="submit" name="Edit" value="Submit"
+                        </form>
     </fieldset>
 
     <!-- general footer code  -->
