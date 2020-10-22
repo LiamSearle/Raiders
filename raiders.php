@@ -42,11 +42,16 @@
                     or die("Invalid password or username");
                 $row = mysqli_fetch_array($results);
                 $pass = $row['password'];
-                if ($pass == $passwords) {
-                    header("Location:adminhomepage.php");
-                } else {
-                    echo "<strong style=\"color:red;\">password wrong!</strong>";
+                
+                if ((substr($user, 0, 1) == "A")) {
+                    if (($pass == $passwords)) {
+                        header("Location:adminhomepage.php");
+                    } 
                 }
+                else {
+                    echo "<strong style=\"color:red;\">Incorrect Login!</strong>";
+                }
+                
                 mysqli_close($conn);
             }
             ?>

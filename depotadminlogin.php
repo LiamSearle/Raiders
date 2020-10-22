@@ -42,10 +42,13 @@
                     or die("<strong style=\"color:red;\">Invalid username</strong>");
                 $row = mysqli_fetch_array($results);
                 $pass = $row['password'];
-                if ($pass == $passwords) {
-                    header("Location:depotadminhome.php");
-                } else {
-                    echo "<strong style=\"color:red;\">Wrong password!</strong>";
+                if ((substr($user, 0, 2) == "DA")) {
+                    if ($pass == $passwords) {
+                        header("Location:depotadminhome.php");
+                    }
+                } 
+                else {
+                    echo "<strong style=\"color:red;\">Incorrect Login!</strong>";
                 }
                 mysqli_close($conn);
             }

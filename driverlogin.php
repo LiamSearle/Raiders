@@ -42,12 +42,15 @@
                     or die("<strong style=\"color:red;\">Invalid username</strong>");
                 $row = mysqli_fetch_array($results);
                 $pass = $row['password'];
-                $driverID = $row['employeeID'];
+                
 
-                if ($pass == $passwords) {
-                    header("Location:drivershomepage.php?id=$user");
-                } else {
-                    echo "<strong style=\"color:red;\">Wrong password!</strong>";
+                if ((substr($user, 0, 2) == "DR")) {
+                    if ($pass == $passwords) {
+                        header("Location:depotadminhome.php");
+                    }
+                } 
+                else {
+                    echo "<strong style=\"color:red;\">Incorrect Login!</strong>";
                 }
                 mysqli_close($conn);
             }
