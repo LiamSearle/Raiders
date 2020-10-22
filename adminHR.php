@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="icon" href="images/small_logo.png" type="image" sizes="100x100">
+    <title>Admin HR</title>
 </head>
 
 <body>
