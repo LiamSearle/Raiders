@@ -45,70 +45,14 @@
 
   <!-- creating and populating search on bookingID -->
   <form action="adminNewBookingPage.php" method="POST">
-    <h2 id="bookingHeader">Booking ID:
-      <input type="text" name="bookingID" id="bookingID">
-      <input type="submit" name="submit" value="Search"></h2>
+    
 
     <fieldset style="margin: auto; width: 70%;">
 
 
       <?php
-      /* import the config for the database */
-      require_once("config.php");
-
-      if (isset($_REQUEST['submit'])) {
-        /* establish the connection to the database */
-        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-          or die("there was an error connecting to the database.");
-
-        /* define the query */
-        $search = $_REQUEST['bookingID'];
-        //want it to be ordered by client ID asc
-        $query = "SELECT * FROM bookings INNER JOIN clients ON clients.clientID=bookings.clientID
-                  WHERE bookings.bookingID LIKE '%$search%'";
-
-
-        /* get the results of the query and put them into a variable */
-        $result = mysqli_query($conn, $query)
-          or die("There was an error executing the query to search.");
-
-
-        //took out destination/end depot in          
-        echo "<table style=\" border: 1px solid black; width: 100%;\">
-              <tr style = \"background-color: grey; font-weight: bold;\">
-              <th> BookingID </th>
-              <th> ClientID </th>
-              <th> Name </th>
-              <th> Email </th>
-              <th> Contact Number </th>
-              <th> Departure </th>
-              <th> Arrival</th>
-              <th> Departure Date </th>
-              <th> Passengers </th>
-              </tr>";
-
-        //displaying data
-        while ($row = mysqli_fetch_array($result)) {
-          echo "<tr>";
-          echo "<td>" . $row['bookingID'] . "</td>";
-          echo "<td>" . $row['clientID'] . "</td>";
-          echo "<td>" . $row['firstName'] . " " . $row['lastName'] . "</td>";
-          echo "<td>" . $row['emailAddress'] . "</td>";
-          echo "<td>" . $row['contactNumber'] . "</td>";
-          echo "<td>" . $row['initialAddress'] . ", " .  $row['initialCollectionPoint'] . "</td>";
-          echo "<td>" . $row['finalAddress'] . ", " . $row['finalCollectionPoint'] . "</td>";
-          echo "<td>" . $row['startDate'] . "</td>";
-          echo "<td>" . $row['numberPassengers'] . "</td>";
-          $numberofpassengers = $row['numberPassengers'];
-          $bookingID = $row['bookingID'];
-          echo "</tr>";
-        }
-
-        echo "</table>";
-
-        /* close the connection */
-        mysqli_close($conn);
-      } else if (isset($_REQUEST['id']) != null) {
+      
+       if (isset($_REQUEST['id']) != null) {
         /* import the config for the database */
         require_once("config.php");
 
@@ -152,6 +96,8 @@
           echo "<td>" . $row['numberPassengers'] . "</td>";
           $numberofpassengers = $row['numberPassengers'];
           $bookingID = $row['bookingID'];
+          $startDate = $row['startDate'];
+          $endDate = $row['endDate'];
           echo "</tr>";
         }
 
@@ -186,28 +132,40 @@
         or die("there was an error connecting to the database.");
 
       /* define the query */
-      $query = "SELECT model,numberOfSeats,registrationNumber, licenceCode FROM vehicle ORDER BY numberOfSeats ASC";
+      $query = "SELECT bookings.startDate,bookings.endDate, vehiclebooking.registrationNumber,vehicle.registrationNumber,vehicle.model, vehicle.numberOfSeats 
+                FROM `bookings` INNER JOIN vehiclebooking ON vehiclebooking.bookingID=bookings.bookingID 
+                INNER JOIN vehicle ON vehicle.registrationNumber=vehiclebooking.registrationNumber 
+                WHERE NOT (bookings.endDate < '$startDate' AND bookings.startDate > '$endDate') 
+                ORDER BY numberOfSeats ASC";
 
       /* get the results of the query and put them into a variable */
       $result = mysqli_query($conn, $query)
         or die("There was an error executing the query.");
 
+
+      require_once("config.php");
+
       while ($row = mysqli_fetch_array($result)) {
         if ($numberofpassengers <= $row['numberOfSeats']) {
+          
+        
           echo ("<option value='" .  $row['model'] . " - " .
-            $row['numberOfSeats'] . " seats - " .
-            $row['registrationNumber'] . "'>" .
-            $row['model'] . " - " .
-            $row['numberOfSeats'] . " seats - " .
-            $row['registrationNumber'] . "</option>");
+          $row['numberOfSeats'] . " seats - " .
+          $row['registrationNumber'] . "'>" .
+          $row['model'] . " - " .
+          $row['numberOfSeats'] . " seats - " .
+          $row['registrationNumber'] . "</option>");
 
           $registrationNo = $row['registrationNumber'];
           $vehicleLicenseCode = $row['licenceCode'];
+        
+          
         }
       }
 
-      /* close the connection */
+      /* close the connections */
       mysqli_close($conn);
+      mysqli_close($conn2);
 
       ?>
       <label for="vehicle"> Select </label>
