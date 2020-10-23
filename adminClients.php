@@ -134,12 +134,12 @@
         </tr>
       </table>
 
-      <a href="adminNewBookingPage.php?id=<?php echo $_REQUEST['id']; ?>"> Confirm</a>
+      <a href="adminNewBookingPage.php?id=<?php echo $_REQUEST['id']; ?>"><input type="button" name="confirm" value="Confirm"></a>
       <p></p>
       <form action="" method="POST">
 
         <!-- Sends a message to the client informing them the details they have entered are incorrect. -->
-        <a href="rejectdetails.php?id=<?php echo $bookingID; ?>&email=<?php echo $email; ?>"> Reject</a>
+        <a href="rejectdetails.php?id=<?php echo $bookingID; ?>&email=<?php echo $email; ?>"><input type="button" name="confirm" value="Reject"></a>
 
       </form>
 
