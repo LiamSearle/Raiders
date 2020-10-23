@@ -90,6 +90,10 @@
     <legend>Trip Number: <?php echo $tripNumber; ?></legend>
     <form method="POST">
       <table id="bedRequestsTable" style="margin: auto; width: 50%;">
+      <tr>
+          <td><label for="driverID">Driver ID:</label></td>
+          <td><input type="text" id="driverID" name="driverID" value="<?php echo $driverID; ?>" readonly></td>
+        </tr>
         <tr>
           <td><label for="firstName">First Name:</label></td>
           <td><input type="text" id="firstName" name="firstName" value="<?php echo $firstName; ?>" readonly></td>
@@ -122,6 +126,11 @@
             <td><input type="submit" name="confirmBed" value="Confirm Bed Request"></td>
           </tr>
         </form>
+        <form action="depotadminhome.php" method="POST">
+          <tr>
+            <td><input type="submit" name="rejectBed" value="Reject Bed Request"></td>
+          </tr>
+        </form>
 
       </table>
   </fieldset>
@@ -149,6 +158,28 @@
     mysqli_close($conn);
     header("Location:depotadminreports.php?id=$endDepotID");
     exit();
+  }
+
+  else if(isset($_POST['rejectBed']))
+  {
+      require_once("config.php");
+
+      /* establish the connection to the database */
+      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+      or die("there was an error connecting to the database.");
+
+      /* define the query */
+      $query = "UPDATE `driver` SET `requestStatus`='Denied' WHERE driverID ='$driverID'";
+
+      /* get the results of the query and put them into a variable */
+      $result = mysqli_query($conn, $query)
+          or die("There was an error executing the query.");
+
+
+      /* close the connection */
+      mysqli_close($conn);
+      header("Location:depotadminhome.php");
+      exit();
   }
   ?>
 
