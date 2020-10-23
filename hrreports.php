@@ -39,11 +39,12 @@
 	function onSuccess(position)
 	{
 		const {latitude, longitude} = 
-		{
+		{ 
 			latitude: '34.6283864',
 			longitude: '27.2516951'
 		};
 		const url = `https://www.google.co.za/maps/?lat=${latitude}&amp;long=${longitude}`;
+    window.location.href = url;
 		document.querySelector('a').setAttribute('href', url);
 		document.querySelector('div').style.display = 'block';
 	}
