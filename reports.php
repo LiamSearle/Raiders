@@ -44,6 +44,7 @@
   <!-- creating the tab section  -->
   <div class="tab">
     <button class="tablinks" onclick="openReport(event, 'Bookings')" id="defaultOpen">Bookings</button>
+    <button class="tablinks" onclick="openReport(event, 'Clients')">Clients</button>
     <button class="tablinks" onclick="openReport(event, 'Drivers')">Drivers</button>
     <button class="tablinks" onclick="openReport(event, 'Vehicles')">Vehicles</button>
   </div>
@@ -101,7 +102,6 @@
       <th> BookingID </th>
       <th> ClientID </th>
       <th> Name </th>
-      <th> Email </th>
       <th> Contact Number </th>
       <th> Departure </th>
       <th> Arrival </th>
@@ -118,7 +118,6 @@
           echo "<td>" . $row['bookingID'] . "</td>";
           echo "<td>" . $row['clientID'] . "</td>";
           echo "<td>" . $row['firstName'] . " " . $row['lastName'] .  "</td>";
-          echo "<td>" . $row['emailAddress'] . "</td>";
           echo "<td>" . $row['contactNumber'] . "</td>";
           echo "<td>" . $row['initialAddress'] . ", " . $row['initialCollectionPoint'] . "</td>";
           echo "<td>" . $row['finalAddress'] . ", " . $row['finalCollectionPoint'] . "</td>";
@@ -232,7 +231,6 @@
   <th> BookingID </th>
   <th> ClientID </th>
   <th> Name </th>
-  <th> Email </th>
   <th> Contact Number </th>
   <th> Departure </th>
   <th> Arrival </th>
@@ -249,7 +247,6 @@
             echo "<td>" . $row['bookingID'] . "</td>";
             echo "<td>" . $row['clientID'] . "</td>";
             echo "<td>" . $row['firstName'] . " " . $row['lastName'] .  "</td>";
-            echo "<td>" . $row['emailAddress'] . "</td>";
             echo "<td>" . $row['contactNumber'] . "</td>";
             echo "<td>" . $row['initialAddress'] . ", " . $row['initialCollectionPoint'] . "</td>";
             echo "<td>" . $row['finalAddress'] . ", " . $row['finalCollectionPoint'] . "</td>";
@@ -269,6 +266,63 @@
 
     </fieldset>
   </div> <!-- end of booking tabs code -->
+
+  <!-- clients tab -->
+  <div id="Clients" class="tabcontent">
+    <fieldset style="margin: auto; width: 100%;">
+
+    <form action="reports.php" method="POST">
+        <?php
+
+        /* import the config for the database */
+        require_once("config.php");
+
+        /* establish the connection to the database */
+        $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+          or die("there was an error connecting to the database.");
+
+        /* define the query */
+        $query = "SELECT * FROM clients";
+
+        /* get the results of the query and put them into a variable */
+        $result = mysqli_query($conn, $query)
+          or die("There was an error executing the query.");
+
+
+
+        //creating bookings table
+        echo "<table style=\" border: 1px solid black; width: 100%;\">
+  <tr style = \"background-color: grey; font-weight: bold;\">
+  <th> Client ID </th>
+  <th> First Name </th>
+  <th> Last Name </th>
+  <th> Contact Number </th>
+  <th> Email Address </th>
+  </tr>";
+
+        //displaying data
+        while ($row = mysqli_fetch_array($result)) {
+          echo "<tr>";
+          echo "<td>" . $row['clientID'] . "</td>";
+          echo "<td>" . $row['firstName'] . "</td>";
+          echo "<td>" . $row['lastName'] .  "</td>";
+          echo "<td>" . $row['contactNumber'] . "</td>";
+          echo "<td>" . $row['emailAddress'] .  "</td>";
+          echo "</tr>";
+        }
+
+        echo "</table>";
+
+        //close the connection
+        mysqli_close($conn);
+
+        ?>
+
+
+
+    </fieldset>
+  </div>
+
 
   <!-- drivers tab -->
   <div id="Drivers" class="tabcontent">

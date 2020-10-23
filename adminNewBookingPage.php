@@ -132,11 +132,14 @@
         or die("there was an error connecting to the database.");
 
       /* define the query */
-      $query = "SELECT bookings.startDate,bookings.endDate, vehiclebooking.registrationNumber,vehicle.registrationNumber,vehicle.model, vehicle.numberOfSeats 
-                FROM `bookings` INNER JOIN vehiclebooking ON vehiclebooking.bookingID=bookings.bookingID 
-                INNER JOIN vehicle ON vehicle.registrationNumber=vehiclebooking.registrationNumber 
-                WHERE NOT (bookings.endDate < '$startDate' AND bookings.startDate > '$endDate') 
-                ORDER BY numberOfSeats ASC";
+      $query = "SELECT model,numberOfSeats,registrationNumber, licenceCode 
+      FROM vehicle ORDER BY numberOfSeats ASC";
+
+      // "SELECT bookings.startDate,bookings.endDate, vehiclebooking.registrationNumber,vehicle.registrationNumber,vehicle.model, vehicle.numberOfSeats 
+      //           FROM `bookings` INNER JOIN vehiclebooking ON vehiclebooking.bookingID=bookings.bookingID 
+      //           INNER JOIN vehicle ON vehicle.registrationNumber=vehiclebooking.registrationNumber 
+      //           WHERE NOT (bookings.endDate < '$startDate' AND bookings.startDate > '$endDate') 
+      //           ORDER BY numberOfSeats ASC";
 
       /* get the results of the query and put them into a variable */
       $result = mysqli_query($conn, $query)
@@ -147,8 +150,6 @@
 
       while ($row = mysqli_fetch_array($result)) {
         if ($numberofpassengers <= $row['numberOfSeats']) {
-          
-        
           echo ("<option value='" .  $row['model'] . " - " .
           $row['numberOfSeats'] . " seats - " .
           $row['registrationNumber'] . "'>" .
