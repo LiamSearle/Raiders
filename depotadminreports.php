@@ -42,13 +42,7 @@
     </table>
   </div>
 
-  <!-- searching through the depots -->
-  <form action="depotadminreports.php" method="POST">
-    <h2 id="depotReports">Depot ID:
-      <input type="text" name="search" id="depotID">
-      <input type="submit" name="submit" value="Search">
-    </h2>
-  </form>
+
 
   <!-- populating and creating the depot reports table that shows which beds are occuppied -->
 
@@ -66,7 +60,8 @@
           or die("<strong style=\"color:red;\">There's been a glitch while trying to connect to our database!</strong>");
 
         //query instructions
-        $query = "UPDATE `depot` SET `numberBedsAvailable`=`numberBedsAvailable`-1 WHERE depot.depotID='$depotID'";
+        $query = "UPDATE `depot` SET `numberBedsAvailable`=`numberBedsAvailable`-1 
+        WHERE depot.depotID='$depotID'";
 
         $result = mysqli_query($conn, $query)
           or  die("<strong style=\"color:red;\">There's been an error with our query!!!!</strong>");
