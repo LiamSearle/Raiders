@@ -126,7 +126,7 @@
             <td><input type="submit" name="confirmBed" value="Confirm Bed Request"></td>
           </tr>
         </form>
-        <form action="depotadminhome.php" method="POST">
+        <form method="POST">
           <tr>
             <td><input type="submit" name="rejectBed" value="Reject Bed Request"></td>
           </tr>
@@ -160,7 +160,7 @@
     exit();
   }
 
-  else if(isset($_POST['rejectBed']))
+  if(isset($_POST['rejectBed']))
   {
       require_once("config.php");
 
