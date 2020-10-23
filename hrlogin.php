@@ -44,7 +44,7 @@
                 $pass = $row['password'];
                 if ((substr($user, 0, 2) == "HR")) {
                     if ($pass == $password) {
-                        header("Location:depotadminhome.php");
+                        header("Location:hrreports.php");
                     }
                 } 
                 else {

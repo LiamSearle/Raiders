@@ -46,7 +46,7 @@
 
                 if ((substr($user, 0, 2) == "DR")) {
                     if ($pass == $passwords) {
-                        header("Location:depotadminhome.php");
+                        header("Location:drivershomepage.php?id=$user");
                     }
                 } 
                 else {
