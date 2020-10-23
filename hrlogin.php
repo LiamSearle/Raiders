@@ -42,10 +42,13 @@
                     or die("<strong style=\"color:red;\">Invalid username</strong>");
                 $row = mysqli_fetch_array($results);
                 $pass = $row['password'];
-                if ($pass == $password) {
-                    header("Location:hrreports.php");
-                } else {
-                    echo "<strong style=\"color:red;\">Wrong password!</strong>";
+                if ((substr($user, 0, 2) == "HR")) {
+                    if ($pass == $password) {
+                        header("Location:hrreports.php");
+                    }
+                } 
+                else {
+                    echo "<strong style=\"color:red;\">Incorrect Login!</strong>";
                 }
                 mysqli_close($conn);
             }

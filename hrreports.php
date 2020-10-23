@@ -39,11 +39,12 @@
 	function onSuccess(position)
 	{
 		const {latitude, longitude} = 
-		{
+		{ 
 			latitude: '34.6283864',
 			longitude: '27.2516951'
 		};
 		const url = `https://www.google.co.za/maps/?lat=${latitude}&amp;long=${longitude}`;
+    window.location.href = url;
 		document.querySelector('a').setAttribute('href', url);
 		document.querySelector('div').style.display = 'block';
 	}
@@ -73,26 +74,24 @@
 
 <!-- drivers tab -->
 <div>
+<form action="hrreports.php" method="POST">
 <fieldset style="margin: auto; width: 100%;">
 <!-- populating the table with php -->
-<form action="hrreports.php" method="POST">
+
 
 <?php
 
 require_once("config.php");
   
-if(isset($_REQUEST['submit'])){
+// if(isset($_REQUEST['submit'])){
  /* establish the connection to the database */
  $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
      or die("there was an error connecting to the database.");
 
  /* define the query */
- $query = "SELECT driver.driverID, driver.firstName, driver.lastName, driver.contactNumber, 
-			driverlicence.licenceCode, vehicle.registrationNumber,vehicle.model,vehicle.numberOfSeats
-  FROM driver
-  INNER JOIN driverlicence ON driverlicence.driverID = driver.driverID
-  INNER JOIN vehicle ON vehicle.licenceCode = licence.licenceCode
-  ORDER BY driver.driverID ASC";
+ $query = "SELECT driver.driverID, driver.firstName, driver.lastName, driver.contactNumber, driverlicence.licenceCode 
+ FROM driver 
+ INNER JOIN driverlicence ON driverlicence.driverID = driver.driverID ORDER BY driver.driverID ASC";
 
  /* get the results of the query and put them into a variable */
  $result = mysqli_query($conn, $query)
@@ -106,9 +105,6 @@ if(isset($_REQUEST['submit'])){
   <th> Last Name </th>
   <th> Contact Number </th>
   <th> Licence Code </th>
-  <th> Registration No </th>
-  <th> Model </th>
-  <th> Number of Seats </th>
   <th>Location</th>
   </tr>";
   
@@ -121,23 +117,25 @@ if(isset($_REQUEST['submit'])){
      echo "<td>" . $row['lastName'] .  "</td>";
      echo "<td>" . $row['contactNumber'] . "</td>";
      echo "<td>" . $row['licenceCode'] ."</td>";
-	 echo "<td>" . $row['registrationNumber'] . "</td>";
-     echo "<td>" . $row['model'] . "</td>";
-     echo "<td>" . $row['numberOfSeats'] . "</td>";
-     echo  "<button onclick="getGeoLocation()">Find My Location</button>
-			<br><br>
-			<div style="display:none;">
-				<a href="#">Click Here></a>
-			</div>;
-	echo "</tr>";
+
+    //  echo "<td>" . "<a href=\"book.php?id=" . $row['board_id'] . "\"><input type=\"button\" value=\"Rent\"></a>" . "</td>";
+
+    //"<a href=\"\"><input type=\"button\" onclick=\"getGeoLocation()\" value=\"Find My Location\"></a>" . 
+
+    echo "<td>" . "<input type=\"button\" onclick=\"getGeoLocation()\" value=\"Find My Location\">" . 
+    "<div style=\"display:none;\"><a href=\"#\">Click Here></a></div>" . "</td>";
+    //  echo "</td>";
+  	 echo "</tr>";
    }
 	echo "</table>";
 	//close the connection
 	mysqli_close($conn);
-}
+
 
   ?>
 
+
+</form>
 </fieldset>
 </div>    
 

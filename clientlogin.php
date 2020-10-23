@@ -8,13 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="images/small_logo.png" type="image" sizes="100x100">
     <title>Client Login</title>
+
 </head>
+
+
 
 <body>
     <div class="topright">
         <a href="navigationbar.html"><img src="images/firstpage.png" style="width:42px;height:42px;"></a>
     </div>
-
 
     <div class="login">
         <img src="images/small_logo.png" alt="login picture" width="300px">
@@ -60,6 +62,7 @@
             ?>
         </p>
     </div>
+
 </body>
 
 </html>

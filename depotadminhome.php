@@ -53,7 +53,7 @@
   /* define the query */
   $query = "SELECT daytrip.bookingID,daytrip.tripNumber,
       bookings.driverID,bookings.initialCollectionPoint,bookings.finalCollectionPoint, bookings.startDate,
-      driver.firstName,driver.lastName 
+      driver.firstName,driver.lastName,driver.requestStatus 
       FROM daytrip 
       INNER JOIN bookings ON bookings.bookingID=daytrip.bookingID 
       INNER JOIN driver ON driver.driverID=bookings.driverID
@@ -76,6 +76,7 @@
    </tr>";
 
     while ($row = mysqli_fetch_array($result)) {
+      if ($row['requestStatus'] == "Pending") {
       echo "<tr>";
       echo "<td>" . "Trip Number: " . "<a href=\"bedrequests.php?id=" . $row['tripNumber'] . "\">" .
         $row['tripNumber'] .  "<br>" .
@@ -83,6 +84,7 @@
         "Departure Date: " . $row['startDate'] . "<br>" .
         "From: " . $row['initialCollectionPoint'] . " ->  " . $row['finalCollectionPoint'] .
         "</a>" . "</td>";
+      }
     }
     echo "</table>";
     ?>

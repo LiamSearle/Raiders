@@ -48,62 +48,18 @@
 
 
   <!-- search the client databases using clientID -->
-  <form action="adminclients.php" method="POST">
-    <h2 id="clientHeader">Client ID:
-      <input type="text" name="search" id="clientID">
-      <input type="submit" name="submit" value="Search">
-    </h2>
-  </form>
 
   <fieldset style="margin: auto; width: 50%;">
 
     <!-- populating the client fields -->
     <?php
 
-    //CODE ALLOWING A USER TO SEARCH BASED ON A SPECIFIC CLIENTID
+    
 
-    /* import the config for the database */
-    require_once("config.php");
-
-    if (isset($_REQUEST['submit'])) {
-      /* establish the connection to the database */
-      $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
-        or die("there was an error connecting to the database.");
-
-      /* define the query */
-      $search = $_REQUEST['search'];
-      //want it to be ordered by client ID asc
-      $query = "SELECT * FROM bookings INNER JOIN clients ON clients.clientID=bookings.clientID
-         WHERE clients.clientID LIKE '%$search%'";
-
-
-      /* get the results of the query and put them into a variable */
-      $result = mysqli_query($conn, $query)
-        or die("There was an error executing the query.");
-
-
-      while ($row = mysqli_fetch_array($result)) {
-        $bookingID = $row['bookingID'];
-        $firstName = $row['firstName'];
-        $lastName = $row['lastName'];
-        $email = $row['emailAddress'];
-        $contactNumber = $row['contactNumber'];
-        $startAddress = $row['initialAddress'];
-        $startDepot = $row['initialCollectionPoint'];
-        $finalAddress = $row['finalAddress'];
-        $endDepot = $row['finalCollectionPoint'];
-        $numberPassengers = $row['numberPassengers'];
-        $startDate = $row['startDate'];
-        $endDate = $row['endDate'];
-      }
-
-      /* close the connection */
-      mysqli_close($conn);
-    }
-
+      require_once("config.php");
     //CODE THAT SHOWS DETAILS FROM CLICKING ON THE INCOMING BOOKING REQUESTS ON ADMINHOMEPAGE 
 
-    else {
+    
       /* establish the connection to the database */
       $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
         or die("there was an error connecting to the database.");
@@ -133,7 +89,7 @@
 
       /* close the connection */
       mysqli_close($conn);
-    }
+    
     ?>
 
     <!-- creating the area client data will populate into -->
@@ -178,12 +134,12 @@
         </tr>
       </table>
 
-      <a href="adminNewBookingPage.php?id=<?php echo $_REQUEST['id']; ?>"> Confirm</a>
+      <a href="adminNewBookingPage.php?id=<?php echo $_REQUEST['id']; ?>"><input type="button" name="confirm" value="Confirm"></a>
       <p></p>
       <form action="" method="POST">
 
         <!-- Sends a message to the client informing them the details they have entered are incorrect. -->
-        <a href="rejectdetails.php?id=<?php echo $bookingID; ?>&email=<?php echo $email; ?>"> Reject</a>
+        <a href="rejectdetails.php?id=<?php echo $bookingID; ?>&email=<?php echo $email; ?>"><input type="button" name="confirm" value="Reject"></a>
 
       </form>
 
