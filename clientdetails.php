@@ -38,12 +38,7 @@ session_start();
                 <td><a class="active" href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
                 <td><a href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td>
-                    <div>
-                        <form action="clientlogin.php" class="Logout">
-                            <input type="button" name="submit" value="Logout" onclick="logOut();">
-							<input type ="button" name ="submit" value =
-                        </form>
-                    </div>
+                    <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
                 </td>
             </tr>
         </table>
@@ -79,16 +74,18 @@ session_start();
             echo "<td>" . $row['lastName'] . "</td>";
             echo "<td>" . $row['emailAddress'] . "</td>";
             echo "<td>" . $row['contactNumber'] . "</td>";
-			echo"<td>" "<input type='submit' name='Edit' value='Submit'>" "</td>";
+			// echo  "<input type='submit' name='Edit' value='Edit'>" ;
             echo "</tr>";
         }
         echo "</table>";
 
 
         ?>
-		<form action="editClient.php" >
-							<input type="submit" name="Edit" value="Submit"
-                        </form>
+<br><br>
+
+ <a href="editClient.php" ><input type="submit" name="edit" value="Edit"></a>
+
+
     </fieldset>
 
     <!-- general footer code  -->
