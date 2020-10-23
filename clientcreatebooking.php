@@ -31,6 +31,8 @@ session_start();
 </head>
 
 <body>
+
+
   <!-- general navigation bar code   -->
   <div class="nav">
     <table>
@@ -40,7 +42,7 @@ session_start();
         <td><a href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
         <td><a href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
         <td>
-          <div>
+          <div style = "position:relative; left:1350px; top:2px;" >
             <form action="clientlogin.php" class="Logout">
               <input type="button" name="submit" value="Logout" onclick="logOut();">
             </form>
@@ -50,7 +52,7 @@ session_start();
     </table>
   </div>
 
-
+<div style = "position:relative; left:35px; top:150px;">
   <fieldset style="margin: auto; width: 30%;">
     <h2>Enter booking details</h2>
     <form action="clientcreatebooking.php" method="POST">
@@ -189,6 +191,7 @@ session_start();
     }
     ?>
   </fieldset>
+</div>
 
   <!-- general footer code  -->
   <div class="footer">

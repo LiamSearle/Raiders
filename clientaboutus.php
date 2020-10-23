@@ -54,32 +54,31 @@
   <div class="about-section">
   <h1>About Us </h1>
     <fieldset>
-      <p>Raiders is an information systems development team established in 2020.</p>
+      <p><b>Raiders is an information systems development team established in 2020.</b></p>
       <p>We are the shuttle provider in South Africa with full online booking capability,
         providing you with real time e-mail and SMS confirmations of your booking which ensures
         that your booking experience does not have to be difficult, unreliable and complicated.
         It is the road at your fingertips.</p>
-    </fieldset>
-    <fieldset style="margin: auto; width: 75%;">
+
     <p style="text-align:left"><b> Putting people in motion</b></br>
     Good things happen when people can move, whether across town or toward their dreams. Opportunities appear, open up, become reality. 
    What started as a way to tap a button to get a ride has led to billions of moments of human connection as people around
     the world go all kinds of places in all kinds of ways with the help of our technology.
-    </fieldset> 
-    <fieldset style="margin: auto; width: 75%;">
+
     <p style="text-align:left"><b> Present and the future</b></br>
     In addition to giving riders a way to get from point A to point B, 
     we're working to bring the future closer with self-driving technology and urban air transport, helping people order food quickly and affordably,
      removing barriers to healthcare, creating new freight-booking solutions, 
     and helping companies provide a seamless employee travel experience.
-    </fieldset>
-  </div>
+  
 
-  <fieldset style="margin: auto; width: 75%;">
+
+ 
     <p style="text-align:left"><b> Safety</b></br>
   Whether you’re in the back seat or behind the wheel, 
   your safety is essential. We are committed to doing our part, and technology is at the heart of our approach. 
   We partner with safety advocates and develop new technologies and systems to help improve safety and help make it easier for everyone to get around.
+  </div>
   </fieldset>
 
   <!-- general footer code  -->

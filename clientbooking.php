@@ -40,7 +40,7 @@ session_start();
         <td><a class="active" href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
         </form>
         <td>
-          <div>
+          <div style = "position:relative; left:1350px; top:2px;">
             <form action="clientlogin.php" class="Logout">
               <input type="button" name="submit" value="Logout" onclick="logOut();">
             </form>
@@ -49,9 +49,10 @@ session_start();
       </tr>
     </table>
   </div>
-  <h2>Booking details</h2>
 
-  <br>
+<div style = "position:relative; left:35px; top:150px;">
+  <h1>Booking details</h1>
+
   <fieldset>
     <?php
     $id = $_SESSION['clientID'];
@@ -88,6 +89,7 @@ session_start();
     echo "</table>"
     ?>
   </fieldset>
+</div>
 
 
   <!-- general footer code  -->

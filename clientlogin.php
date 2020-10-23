@@ -17,7 +17,7 @@
 
 
     <div class="login">
-        <img src="images/small_logo.png" alt="login picture" width="160px">
+        <img src="images/small_logo.png" alt="login picture" width="300px">
         <form method="POST" action="clientlogin.php">
             <input type="text" placeholder="Username" name="username" required>
             <p><input type="password" placeholder="Password" name="password" required></p>

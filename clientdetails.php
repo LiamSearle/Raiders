@@ -38,7 +38,7 @@ session_start();
                 <td><a class="active" href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
                 <td><a href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td>
-                    <div>
+                    <div style = "position:relative; left:1350px; top:2px;">
                         <form action="clientlogin.php" class="Logout">
                             <input type="button" name="submit" value="Logout" onclick="logOut();">
                         </form>
@@ -47,10 +47,12 @@ session_start();
             </tr>
         </table>
     </div>
-    <br>
-    <h2>Details</h2>
 
+
+<div style = "position:relative; left:35px; top:150px;">
+    <h1>Details</h1>
     <fieldset style="margin: auto; width: 70%;">
+
         <?php
         //add database credentials
         require_once("config.php");
@@ -85,6 +87,7 @@ session_start();
 
         ?>
     </fieldset>
+</div>
 
     <!-- general footer code  -->
     <div class="footer">
