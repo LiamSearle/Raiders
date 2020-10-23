@@ -36,14 +36,18 @@
 </head>
 
 <body>
-
+<p style="text-align:left;">
+<a href="javascript:history.back()" ><input type="button" name="back" value="Back"></a>
+  </p>
+<div style = "position:relative; left:35px; top:10px;">
   <div class="topleft">
-    <a href="javascript:history.back()"> Back</a>
+
   </div>
   <!-- populating about us section  -->
   <div class="about-section">
+  <h1>About Us </h1>
     <fieldset>
-      <h2>About Us </h2>
+   
       <p>Raiders is an information systems development team established in 2020.</p>
       <p> Our companys main objective is to
         assist organizations with all their computer system needs. For Hamba Kahle Transport that means implementing
@@ -104,6 +108,7 @@
 
 
     </fieldset>
+  </div>
   </div>
 
   <!-- general footer code  -->

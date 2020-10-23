@@ -65,17 +65,21 @@
           <td><img src="images/logoo.png" height="50px"></td>
           <td><a class="active" href="hrreports.php"><i class="fas fa-list"></i> Reports</a></td>
           <td>
-            <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
-          </td>      
+                    <div style = "position:relative; left:1550px; top:2px;">
+                        <form action="hrlogin.php" class="Logout">
+                        <input type="button" name="submit" value="Logout" onclick="logOut();">
+                        </form>
+                    </div>
+        </td>    
       </tr>
   </table> 
 </div> 
 
 
 <!-- drivers tab -->
-<div>
+<div style = "position:relative; left:0px; top:50px;">
 <form action="hrreports.php" method="POST">
-<fieldset style="margin: auto; width: 100%;">
+<fieldset style="margin: auto; width: 90%;">
 <!-- populating the table with php -->
 
 

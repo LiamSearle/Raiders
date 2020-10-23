@@ -45,67 +45,42 @@
         <td><a href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
         <td><a href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
         <td>
-          <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
+                <div style = "position:relative; left:1350px; top:2px;" >
+                    <form action="clientlogin.php" class="Logout">
+                    <input type="button" name="submit" value="Logout" onclick="logOut();">
+                    </form>
+                </div>
         </td>
-      </tr>
     </table>
   </div>
   <br>
   <div class="about-section">
   <h1>Contact Us </h1>
+
+  <fieldset style="margin: auto; width: 30%;">
+<h3 style="text-align:centre"> CUSTOMER CARE CENTRE</h3>
+
+<p style="text-align:left">
+ <b>Contact numbers:</b>
+ <br>
+046 611 8000
+<br> 
+087 375 0352
+</p>
+<p style="text-align:left"><b>Address:</b><br>
+29 Hill Street
+<br>
+Grahamstown
+<br>
+6139
+</p>
+
+<p style="text-align:centre">
+24 Hour Online Service 
+</p> 
+</fieldset>
    
-    <fieldset>
-      <h2 style="text-align:center">Our Team</h2>
-
-
-      <div class="row">
-        <div class="column">
-          <div class="card">
-            <div class="container">
-              <h2>Minali Harjivan Chouhan</h2>
-              <p class="title">Project Manager</p>
-              <a href="mailto: minali.chouhan@gmail.com">minali.chouhan@gmail.com</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="column">
-            <div class="card">
-              <div class="container">
-                <h2>Mercilove Xerinda</h2>
-                <p class="title">System Analyst</p>
-                <a href="mailto: mercilove.j.xerinda@gmail.com">mercilove.j.xerinda@gmail.com</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="card">
-            <div class="container">
-              <h2>Tshegofatso Molobe</h2>
-              <p class="title">System Tester</p>
-              <a href="mailto: tmolobe15@gmail.com">tmolobe15@gmail.com</a>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="column">
-          <div class="card">
-            <div class="container">
-              <h2>Liam Searle</h2>
-              <p class="title">Software Developer</p>
-              <a href="mailto: liamsearle7@gmail.com">liamsearle7@gmail.com</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </fieldset>
   </div>
-
 
 
 
@@ -124,27 +99,7 @@
       </table>
     </nav>
   </div>
-  <fieldset>
-<h3 style="text-align:left"> CUSTOMER CARE CENTRE</h3>
-<p style="text-align:left">
-<b>24 hours services </b>
-</p> 
-<p style="text-align:left">
- <b>Contact number:</b>
- <br>
- 046 611 8000 or 087 375 0352
-</p>
-<h4 style="text-align:left"> Address:</h4>
-<p style="text-align:left">
-29 Hill Street
-</p>
-<p style="text-align:left">
-Grahamstown
-</p>
-<p style="text-align:left">
-6139
-</p>
-</fieldset>
+
  
 </body>
 

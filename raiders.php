@@ -15,7 +15,7 @@
         <a href="index.php"><img src="images/firstpage.png" style="width:42px;height:42px;"></a>
     </div>
     <div class="login">
-        <img src="images/small_logo.png" alt="login picture" width="160px">
+        <img src="images/small_logo.png" alt="login picture" width="300px">
         <form method="POST" action="raiders.php">
             <input type="text" placeholder="Username" name="username" required>
             <p><input type="password" placeholder="Password" name="passwords" required></p>

@@ -36,14 +36,19 @@ session_start();
                 <td><a href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
                 <td><a href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td>
-                    <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
-                </td>
+                    <div style = "position:relative; left:1350px; top:2px;">
+                        <form action="clientlogin.php" class="Logout">
+                        <input type="button" name="submit" value="Logout" onclick="logOut();">
+                        </form>
+                    </div>
+        </td>   
             </tr>
         </table>
     </div>
 
 
 <body>
+<div style = "position:relative; left:35px; top:150px;">
 <fieldset style="margin: auto; width: 30%;">
     <form action="editClient.php" method="post">
  
@@ -106,6 +111,7 @@ session_start();
         }
         ?>
 </fieldset>
+    </div>
         <script>
         function myFunction() {
             location.replace("clientdetails.php")
@@ -118,10 +124,12 @@ session_start();
         <nav>
             <table>
                 <tr>
-                    <td><a href="aboutus.php">About Us</a></td>
-                    <td><a href="#######">FAQs</a></td>
-                    <td><a href="#######">Legal</a></td>
-                    <td><a href="#######">Terms & Conditions</a></td>
+                    <td><a href="clientaboutus.php">About Us</a> | </td>
+                    <td><a href="clientlegal.php">Legal</a> | </td>
+                    <td><a href="clientterms.php">Terms & Conditions</a> | </td>
+                    <td><a href="clientcontactus.php">Contact Us</a> | </td>
+                    <td><a href="clientcontactus.php">Contact Us</a></td>          
+                    <td>&copy; Copyright 2020 Raiders</td>
                 </tr>
             </table>
         </nav>

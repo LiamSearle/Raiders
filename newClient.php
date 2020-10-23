@@ -16,7 +16,8 @@
 
 <body>
     <form action="newClient.php" method="post">
-        <h1><img src="images/small_logo.png" width="80px"><br>
+    <div style = "position:relative; left:35px; top:50px;">
+        <h1><img src="images/small_logo.png" width="160px"><br>
             Register</h1>
         <fieldset style="margin: auto; width: 30%;">
             <p>Please fill in this form to create an account
@@ -55,6 +56,7 @@
             </p>
         </fieldset>
     </form>
+</div>
     <p><?php
         //add database credentials 
         //checking if the searching form has been submitted 
@@ -88,20 +90,6 @@
             }
         </script>
 
-
-    <!-- general footer code  -->
-    <div class="footer">
-        <nav>
-            <table>
-                <tr>
-                    <td><a href="aboutus.php">About Us</a></td>
-                    <td><a href="#######">FAQs</a></td>
-                    <td><a href="#######">Legal</a></td>
-                    <td><a href="#######">Terms & Conditions</a></td>
-                </tr>
-            </table>
-        </nav>
-    </div>
 
 
 </body>

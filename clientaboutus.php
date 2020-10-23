@@ -45,7 +45,11 @@
         <td><a href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
         <td><a href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
         <td>
-          <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
+          <div style = "position:relative; left:1350px; top:2px;" >
+            <form action="clientlogin.php" class="Logout">
+              <input type="button" name="submit" value="Logout" onclick="logOut();">
+            </form>
+          </div>
         </td>
       </tr>
     </table>
@@ -54,11 +58,11 @@
   <div class="about-section">
   <h1>About Us </h1>
     <fieldset>
-      <p><b>Raiders is an information systems development team established in 2020.</b></p>
-      <p>We are the shuttle provider in South Africa with full online booking capability,
+      <h2><b>Raiders is an information systems development team established in 2020.</b></h2>
+      <p><b>We are the shuttle provider in South Africa with full online booking capability,
         providing you with real time e-mail and SMS confirmations of your booking which ensures
         that your booking experience does not have to be difficult, unreliable and complicated.
-        It is the road at your fingertips.</p>
+        It is the road at your fingertips.</b></p>
 
     <p style="text-align:left"><b> Putting people in motion</b></br>
     Good things happen when people can move, whether across town or toward their dreams. Opportunities appear, open up, become reality. 

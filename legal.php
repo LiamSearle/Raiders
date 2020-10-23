@@ -26,27 +26,13 @@
 </head>
 
 <body>
-    <!-- <div class="nav">
-<table>
-            <tr>
-                <td><img src="images/logoo.png" height="50px"></td>
-                <td><a href="homepage.php"><i class="fas fa-home"></i>Home</a></td>
-                <td><a href="clients.php"><i class="fas fa-user"></i> Clients</a></td>
-                <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>  
-                <td><a href="reports.php"><i class="fas fa-list"></i> Reports</a></td>    
-                <td>
-                    <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
-                </td>
-            </tr>
-        </table>
-</div> -->
+<p style="text-align:left;">
+<a href="javascript:history.back()" ><input type="button" name="back" value="Back"></a>
+  </p>
 
-    <div class="topleft">
-        <a href="javascript:history.back()"> Back</a>
-    </div>
-
+  <h1>Legal</h1>
     <fieldset>
-        <h2>Legal</h2>
+
 
         <p style="text-align:left">
             <b>User Agreement</b><br></br>

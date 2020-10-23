@@ -35,13 +35,17 @@
         <td><a href="driversdepot.php?id=<?php echo $_REQUEST['id']; ?>"><i class="fas fa-bed"></i> Depot</a></td>
         <td><a href="driverNotifications.php?id=<?php echo $_REQUEST['id']; ?>"><i class="fas fa-bell"></i> Notifications</a></td>
         <td>
-          <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
+                    <div style = "position:relative; left:1300px; top:2px;">
+                        <form action="driverlogin.php" class="Logout">
+                        <input type="button" name="submit" value="Logout" onclick="logOut();">
+                        </form>
+                    </div>
         </td>
       </tr>
     </table>
   </div>
-
-  <h2>Driver Schedule</h2>
+  <div style = "position:relative; left:35px; top:100px;">
+  <h1>Driver Schedule</h1>
   <?php
   /* import the config for the database */
   require_once("config.php");
@@ -86,7 +90,9 @@
 
     ?>
   </fieldset>
-  <h2><a href="driversdepot.php?id=<?php echo $driverID; ?>">Book a Depot Room</a></h2>
+
+  <h2><a href="driversdepot.php?id=<?php echo $driverID; ?>">Book a Room</a></h2>
+  </div>
 
   <!-- general footer code  -->
   <div class="footer">

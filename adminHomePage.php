@@ -37,7 +37,11 @@
                 <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td><a href="reports.php"><i class="fas fa-list"></i> Reports</a></td>
                 <td>
-                    <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
+                    <div style = "position:relative; left:1250px; top:2px;">
+                        <form action="raiders.php" class="Logout">
+                        <input type="button" name="submit" value="Logout" onclick="logOut();">
+                        </form>
+                    </div>
                 </td>
             </tr>
         </table>
@@ -63,7 +67,7 @@
 
     </div>
     <br>
-    <h2>Booking Requests</h2>
+    <h1>Booking Requests</h1>
 
 
     <fieldset style="margin: auto; width: 30%;">

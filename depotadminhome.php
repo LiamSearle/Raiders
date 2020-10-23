@@ -36,7 +36,11 @@
         <td><a href="bedrequests.php"><i class="fas fa-bed"></i>Room Request</a></td>
         <td><a href="depotadminreports.php"><i class="fas fa-list"></i> Reports</a></td>
         <td>
-          <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
+                    <div style = "position:relative; left:1300px; top:2px;">
+                        <form action="depotadminlogin.php" class="Logout">
+                        <input type="button" name="submit" value="Logout" onclick="logOut();">
+                        </form>
+                    </div>
         </td>
       </tr>
     </table>
@@ -66,8 +70,9 @@
   /* close the connection */
   mysqli_close($conn);
   ?>
+  <div style = "position:relative; left:35px; top:50px;">
+  <h1>Incoming Room Requests</h1>
 
-  <h2>Incoming Bed Requests</h2>
   <fieldset style="margin: auto; width: 30%;">
     <?php
     echo "<table>
@@ -89,6 +94,7 @@
     echo "</table>";
     ?>
   </fieldset>
+  </div>
 
 
   <!-- general footer code  -->

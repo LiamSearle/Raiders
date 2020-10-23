@@ -38,15 +38,11 @@ session_start();
                 <td><a class="active" href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
                 <td><a href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td>
-<<<<<<< HEAD
-                    <div style = "position:relative; left:1350px; top:2px;">
+                    <div style = "position:relative; left:1350px; top:2px;" >
                         <form action="clientlogin.php" class="Logout">
-                            <input type="button" name="submit" value="Logout" onclick="logOut();">
+                        <input type="button" name="submit" value="Logout" onclick="logOut();">
                         </form>
                     </div>
-=======
-                    <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
->>>>>>> 4e427bbe33b3b66f41a0937b439a04dc4eaff9d8
                 </td>
             </tr>
         </table>
@@ -91,9 +87,9 @@ session_start();
 
 
         ?>
-<br><br>
+<br>
 
- <a href="editClient.php" ><input type="submit" name="edit" value="Edit"></a>
+ <a href="editClient.php" ><input type="submit" name="edit" value="Edit" ></a>
 
 
     </fieldset>

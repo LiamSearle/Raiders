@@ -35,7 +35,11 @@
                 <td><a href="clientdetails.php"><i class="fas fa-user"></i> Details</a></td>
                 <td><a href="clientbooking.php"><i class="fas fa-address-book"></i> Bookings</a></td>
                 <td>
-                    <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
+                    <div style = "position:relative; left:1350px; top:2px;" >
+                        <form action="clientlogin.php" class="Logout">
+                        <input type="button" name="submit" value="Logout" onclick="logOut();">
+                        </form>
+                    </div>
                 </td>
             </tr>
         </table>

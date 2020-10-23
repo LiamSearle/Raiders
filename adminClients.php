@@ -39,8 +39,12 @@
         <td><a href="adminNewBookingPage.php"><i class="fas fa-address-book"></i> Bookings</a></td>
         <td><a href="reports.php"><i class="fas fa-list"></i> Reports</a></td>
         <td>
-          <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
-        </td>
+                    <div style = "position:relative; left:1250px; top:2px;">
+                        <form action="raiders.php" class="Logout">
+                        <input type="button" name="submit" value="Logout" onclick="logOut();">
+                        </form>
+                    </div>
+                </td>
       </tr>
     </table>
   </div>
@@ -48,7 +52,7 @@
 
 
   <!-- search the client databases using clientID -->
-
+  <div style = "position:relative; left:35px; top:100px;">
   <fieldset style="margin: auto; width: 50%;">
 
     <!-- populating the client fields -->
@@ -144,7 +148,7 @@
       </form>
 
   </fieldset>
-
+    </div>
 
   <!-- general footer code  -->
   <div class="footer">

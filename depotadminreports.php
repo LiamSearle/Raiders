@@ -36,7 +36,11 @@
         <td><a href="bedrequests.php"><i class="fas fa-bed"></i>Room Request</a></td>
         <td><a class="active" href="depotadminreports.php"><i class="fas fa-list"></i> Reports</a></td>
         <td>
-          <input type="submit" id="button" name="submit" value="Log Out" onclick="logOut();">
+                    <div style = "position:relative; left:1300px; top:2px;">
+                        <form action="depotadminlogin.php" class="Logout">
+                        <input type="button" name="submit" value="Logout" onclick="logOut();">
+                        </form>
+                    </div>
         </td>
       </tr>
     </table>
@@ -45,7 +49,7 @@
 
 
   <!-- populating and creating the depot reports table that shows which beds are occuppied -->
-
+  <div style = "position:relative; left:35px; top:50px;">
   <fieldset style="margin: auto; width: 70%;">
     <form action="depotadminreports.php" method="POST">
       <?php
@@ -121,6 +125,7 @@
       ?>
     </form>
   </fieldset>
+    </div>
 
   <!-- general footer code  -->
   <div class="footer">
