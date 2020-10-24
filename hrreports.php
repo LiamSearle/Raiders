@@ -76,10 +76,20 @@
 </div> 
 
 
+    <!-- creating the tab section  -->
+    <div class="tab">
+      <button class="tablinks" onclick="openReport(event, 'Drivers')" id="defaultOpen">Drivers</button>
+      <button class="tablinks" onclick="openReport(event, 'Vehicles')">Vehicles</button>
+    </div>
+
 <!-- drivers tab -->
-<div style = "position:relative; left:0px; top:50px;">
+<div id="Drivers" class="tabcontent">
+
+
+
+<fieldset style="margin: auto; width: 100%;">
 <form action="hrreports.php" method="POST">
-<fieldset style="margin: auto; width: 90%;">
+
 <!-- populating the table with php -->
 
 
@@ -103,7 +113,7 @@ require_once("config.php");
 
   //creating table
   echo "<table style=\" border: 1px solid black; width: 100%;\">
-  <tr>
+  <tr style = \"background-color: grey; font-weight: bold;\">
   <th> DriverID </th>
   <th> First Name </th>
   <th> Last Name </th>
@@ -139,9 +149,85 @@ require_once("config.php");
   ?>
 
 
-</form>
+
 </fieldset>
+</form>
 </div>    
+
+    <!-- vehicless tab -->
+    <div id="Vehicles" class="tabcontent">
+      <fieldset style="margin: auto; width: 100%;">
+
+        <form action="hrreports.php" method="POST">
+          <?php
+
+          /* import the config for the database */
+          require_once("config.php");
+
+          /* establish the connection to the database */
+          $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE)
+            or die("there was an error connecting to the database.");
+
+          /* define the query */
+          $query = "SELECT * FROM vehicle";
+
+          /* get the results of the query and put them into a variable */
+          $result = mysqli_query($conn, $query)
+            or die("There was an error executing the query.");
+
+
+
+          //creating bookings table
+          echo "<table style=\" border: 1px solid black; width: 100%;\">
+                <tr style = \"background-color: grey; font-weight: bold;\">
+                <th> Vehicle Registration No </th>
+                <th> Make </th>
+                <th> Model </th>
+                <th> Seats </th>
+                <th> Licence Code </th>
+                </tr>";
+
+          //displaying data
+          while ($row = mysqli_fetch_array($result)) {
+            echo "<tr>";
+            echo "<td>" . $row['registrationNumber'] . "</td>";
+            echo "<td>" . $row['make'] . "</td>";
+            echo "<td>" . $row['model'] .  "</td>";
+            echo "<td>" . $row['numberOfSeats'] . "</td>";
+            echo "<td>" . $row['licenceCode'] .  "</td>";
+            echo "</tr>";
+          }
+
+          echo "</table>";
+
+          //close the connection
+          mysqli_close($conn);
+
+          ?>
+                </form>
+      </fieldset>
+    </div>
+  </div>
+
+  <!-- javascript code to control the tabs  -->
+  <script>
+    function openReport(evt, report) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(report).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+  </script>
+
 
  <!-- general footer code  -->
  <div class="footer"> 
