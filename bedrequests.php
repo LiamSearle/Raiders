@@ -127,12 +127,12 @@
         </tr>
         <form action=depotadminreports.php method="POST">
           <tr>
-            <td><input type="submit" name="confirmBed" value="Confirm Bed Request"></td>
+            <td><input type="submit" name="confirmBed" value="Confirm"></td>
           </tr>
         </form>
         <form method="POST">
           <tr>
-            <td><input type="submit" name="rejectBed" value="Reject Bed Request"></td>
+            <td><input type="submit" name="rejectBed" value="Reject"></td>
           </tr>
         </form>
 

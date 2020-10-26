@@ -21,7 +21,7 @@
     <div class="login">
         <img src="images/small_logo.png" alt="login picture" width="300px">
         <form method="POST" action="clientlogin.php">
-            <input type="text" placeholder="Username" name="username" required>
+            <input type="text" placeholder="Contact Number" name="username" required>
             <p><input type="password" placeholder="Password" name="password" required></p>
             <p><input type="checkbox" name="check"><label for="checkbox">Remember me</label></p>
             <input type="submit" name="submit" value="Login"><br>

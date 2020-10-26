@@ -169,7 +169,7 @@ require_once("config.php");
             or die("there was an error connecting to the database.");
 
           /* define the query */
-          $query = "SELECT * FROM vehicle";
+          $query = "SELECT * FROM vehicle FROM numberOfSeats ASC";
 
           /* get the results of the query and put them into a variable */
           $result = mysqli_query($conn, $query)
@@ -180,7 +180,7 @@ require_once("config.php");
           //creating bookings table
           echo "<table style=\" border: 1px solid black; width: 100%;\">
                 <tr style = \"background-color: grey; font-weight: bold;\">
-                <th> Vehicle Registration No </th>
+                <th> Registration Number </th>
                 <th> Make </th>
                 <th> Model </th>
                 <th> Seats </th>
