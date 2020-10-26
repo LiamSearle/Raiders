@@ -43,10 +43,8 @@
                 $row = mysqli_fetch_array($results);
                 $pass = $row['password'];
                 
-                if ((substr($user, 0, 1) == "A")) {
-                    if (($pass == $passwords)) {
-                        header("Location:adminhomepage.php");
-                    } 
+                if ((substr($user, 0, 1) == "A") && ($pass == $passwords)) {
+                   header("Location:adminhomepage.php");
                 }
                 else {
                     echo "<strong style=\"color:red;\">Incorrect Login!</strong>";

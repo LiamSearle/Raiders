@@ -44,10 +44,8 @@
                 $pass = $row['password'];
                 
 
-                if ((substr($user, 0, 2) == "DR")) {
-                    if ($pass == $passwords) {
-                        header("Location:drivershomepage.php?id=$user");
-                    }
+                if ((substr($user, 0, 2) == "DR") && ($pass == $passwords)) {
+                    header("Location:drivershomepage.php?id=$user");
                 } 
                 else {
                     echo "<strong style=\"color:red;\">Incorrect Login!</strong>";
