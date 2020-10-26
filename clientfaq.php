@@ -50,41 +50,41 @@
     <h1> Frequently Asked Questions </h1>
     <fieldset style="margin: auto; width: 75%;">
     <h2 style="text-align:centre">General</h2>
-    <p style="text-align:left"><b><u> WHY IS THE TRANSPORT LATE?</u></b></br>
+    <p style="text-align:left"><b><u> Why is the transport late?</u></b></br>
     Raiders makes every effort to keep to schedule. We really do. 
     However, sometimes our service is disrupted and the schedule changes because of uncontrollable circumstances such as road conditions, 
     unexpectedly high passenger loads or weather. For these rare occasions when we are late, 
     we cannot say sorry enough </p>
 
-    <p style="text-align:left"><b><u> HOW DO I FILE A COMPLAINT?</u></b></br>
+    <p style="text-align:left"><b><u> How do I file a complaint?</u></b></br>
     We sincerely apologise if you’re looking to file a complaint and we will certainly do our very best to resolve the issue. 
     Please feel free to contact the Customer Care line on +27 (0)46 611 8000 or send us your complaint on Facebook, direct to our wall or inbox.
 
     Rest assured, all complaints will be handled with care and resolved. </p>
 
-    <p style="text-align:left"><b><u> MAY I BRING MY OWN DRINK AND FOOD ONBOARD?</u></b></br>
+    <p style="text-align:left"><b><u> May I bring my on food and drink onboard?</u></b></br>
     Yes, absolutely! However, no alcohol will be allowed to be consumed on board – none. 
     Raiders has a strict zero tolerance policy in this regard.</p>
 
-    <p style="text-align:left"><b><u>ARE PETS ALLOWED ON THE SHUTTLES?</u></b></br>
+    <p style="text-align:left"><b><u>Are pets allowed on the shuttle?</u></b></br>
     No animals are allowed in our vehicles, not because we don’t love them and think they’re super cute, 
     but because that’s just the rules. Of course, trained guide dogs accompanying the visually impaired will be allowed.
     </p>
 
-    <p style="text-align:left"><b><u>ARE DRIVERS AND CREW TRAINED?</u></b></br>
+    <p style="text-align:left"><b><u>Are all your drivers qualified ?</u></b></br>
     Absolutely! Safety is one of our proudest attributes. 
     All drivers and crew are carefully selected and professionally trained to meet all the required safety and service standards. 
     All drivers are also sent for refresher training on a regular basis and undergo medical examinations every year.
     </p>
 
-    <p style="text-align:left"><b><u>I HAVE SPECIAL MEDICAL REQUIREMENTS. WILL I BE ABLE TO TRAVEL?</u></b></br>
+    <p style="text-align:left"><b><u>I have special medical requirements. Will I be able to travel?</u></b></br>
     Passengers travelling with any medical condition must kindly contact Customer Care ahead of departure 
     or communicate this to us when the booking is being made. 
     Passengers are advised to keep all medication (chronic or not) with them at all times in the cabin.
     Medication must not be placed in the luggage compartment.
     </p>
 
-    <p style="text-align:left"><b><u>CAN I TRAVEL WITH VALUABLE ITEMS?</u></b></br>
+    <p style="text-align:left"><b><u>Can I travel with valuable items?</u></b></br>
     Of course, but please – be careful! Passengers should make sure to safeguard all their personal belongings and valuable items. 
     These must be kept inside the coach cabin at all times.
     Raiders will not accept any liability for the loss of any such items.
