@@ -169,7 +169,7 @@ require_once("config.php");
             or die("there was an error connecting to the database.");
 
           /* define the query */
-          $query = "SELECT * FROM vehicle FROM numberOfSeats ASC";
+          $query = "SELECT * FROM vehicle ORDER BY numberOfSeats ASC";
 
           /* get the results of the query and put them into a variable */
           $result = mysqli_query($conn, $query)
